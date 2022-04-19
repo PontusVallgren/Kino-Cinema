@@ -30,7 +30,8 @@ const NavbarKino = () => {
     shouldForwardProp: (props) => props !== "sx",
   })(() => ({
     fontWeight: "bold",
-    margin: "0 auto",
+    fontSize: "16px",
+    margin: "0 18px",
     color: "white",
     fontFamily: "Open sans",
     "&:hover": {
