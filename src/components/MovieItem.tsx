@@ -1,5 +1,6 @@
 import {NextPage} from "next"
 import Link from "next/link"
+import Image from "next/Image"
 import classes from "./MovieItem.module.css"
 import {Movie} from "../types"
 
@@ -13,10 +14,11 @@ type MovieItemProps = {
 const MovieItem: NextPage<MovieItemProps> = ({movie}) => {
     return (
         <li className={classes.movieItem}>
-            {/* `http://localhost:3000/movies/:id` */}
-            <Link href={`http://localhost:3000/`}>
+            {/* `/movies/:id` */}
+            <Link href='/'>
                 <a className={classes.link}>
-                <img src={movie.thumbnail} className={classes.thumbnail}></img>
+                <Image src={movie.thumbnail} className={classes.thumbnail}  width={310}
+      height={425} alt={`Picture of ${movie.title} cover`}></Image>
                 <h3 className={classes.title}>{movie.title}</h3>
                 </a>
             </Link>

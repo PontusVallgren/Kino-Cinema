@@ -21,50 +21,50 @@ const Data = [
     {
         id: 1,
         title: "Poch1",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
         id: 2,
         title: "Poch2",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
         id: 3,
         title: "Poch3",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
         id: 4,
         title: "Poch4",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
         id: 5,
         title: "Poch5",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },{
         id: 6,
         title: "Poch6",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     }
     ,{
         id: 7,
         title: "Poch7",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
         id: 8,
         title: "Poch8",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },{
         id: 9,
         title: "Poch9",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     }
     ,{
         id: 10,
         title: "Poch10",
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+        thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     }
 ]
 /* const Movies: NextPage<{movies: Movie[]}> = ({movies}) => {
