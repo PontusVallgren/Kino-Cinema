@@ -9,10 +9,11 @@ import classes from "./index.module.css"
 
 /* export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(`http://localhost:3000/api/movies`)
+    const data = await res.json()
     
     return {
         props: {
-            movies: await res.json()
+            movies: data
         }
     }
   }  */

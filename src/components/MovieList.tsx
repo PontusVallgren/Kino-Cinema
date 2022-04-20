@@ -11,7 +11,7 @@ type MovieListProps = {
 const MovieList: NextPage<MovieListProps> = ({movies}) => {
     return (
         <ul className={classes.moviesCtn}>
-            {movies.map((movie) => <MovieItem key={movie.title} movie={movie} />)}    
+            {movies.map((movie) => <MovieItem key={movie.id} movie={movie} />)}    
         </ul>
     )
 }

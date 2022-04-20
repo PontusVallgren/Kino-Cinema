@@ -17,7 +17,7 @@ const MovieItem: NextPage<MovieItemProps> = ({movie}) => {
             <Link href={`/movies/${movie.id}`}>
                 <a className={classes.link}>
                 <Image src={movie.thumbnail} className={classes.thumbnail}  width={310}
-      height={425} alt={`Picture of ${movie.title} cover`}></Image>
+                 height={425} alt={`Picture of ${movie.title} cover`}></Image>
                 <h3 className={classes.title}>{movie.title}</h3>
                 </a>
             </Link>

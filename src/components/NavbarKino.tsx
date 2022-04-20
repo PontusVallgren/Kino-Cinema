@@ -32,6 +32,7 @@ const NavbarKino = () => {
   useEffect(() => {
     const path = ["/", "/movies", "/contact", "/login"];
     const currentPath = path.findIndex((menu) => router.pathname === menu);
+    if (currentPath === -1) return;
     setValue(currentPath);
   }, [router]);
 

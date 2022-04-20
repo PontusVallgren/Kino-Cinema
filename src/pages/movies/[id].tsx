@@ -1,14 +1,17 @@
 import {GetStaticPaths, GetStaticProps, NextPage} from "next"
-import {Data} from "../index"
-import {Movie} from "../../../types"
+import {Data} from "./index"
+import {Movie} from "../../types"
 
 /* 
 export const getStaticPaths: GetStaticPaths = async () => {
     const res = await fetch(`http://localhost:3000/api/movies`)
     const movies = await res.json()
 
-    const ids = movies.map((movie: Movie) => movie.id)
-    const paths = ids.map((id: string) => ({params: {id: id.toString()}}))
+    const paths = movies.map((movie: Movie) => {
+        return {
+            params: { id: movie.id.toString()}
+        }
+    })
     
     return {
         paths,
@@ -20,8 +23,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticPaths: GetStaticPaths = async () => {
    const movies = Data;
 
-    const ids = movies.map((movie: Movie) => movie.id)
-    const paths = ids.map((id: string) => ({params: {id: id.toString()}}))
+    const paths = movies.map((movie) => {
+        return {
+            params: { id: movie.id.toString()}
+        }
+    })
     
     return {
         paths,
@@ -31,10 +37,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /* export const getStaticProps: GetStaticProps = async (context) => {
     const res = await fetch(`http://localhost:3000/api/movies/${context.params!.id}`)
+    const data = await res.json()
     
     return {
         props: {
-            movie: await res.json()
+            movie: data
         }
     }
 }  */
