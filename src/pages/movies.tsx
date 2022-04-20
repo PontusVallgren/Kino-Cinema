@@ -1,5 +1,6 @@
 import {NextPage} from "next"
 import MovieList from "../components/MovieList"
+import PreviousPageButton from "../components/PreviousPageButton"
 
 
 
@@ -33,6 +34,7 @@ const data = [
 const Movies: NextPage = () => {
     return (
         <>
+            <PreviousPageButton />
             <MovieList movies={data} />
         </>
     )
