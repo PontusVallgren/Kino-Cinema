@@ -14,8 +14,7 @@ type MovieItemProps = {
 const MovieItem: NextPage<MovieItemProps> = ({movie}) => {
     return (
         <li className={classes.movieItem}>
-            {/* `/movies/:id` */}
-            <Link href='/'>
+            <Link href={`/movies/${movie.id}`}>
                 <a className={classes.link}>
                 <Image src={movie.thumbnail} className={classes.thumbnail}  width={310}
       height={425} alt={`Picture of ${movie.title} cover`}></Image>
