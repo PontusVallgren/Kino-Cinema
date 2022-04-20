@@ -39,5 +39,6 @@ export const PreviousPageBtn = styled(ArrowCircleLeftRoundedIcon, {
 })(() => ({
   margin: "0.5em",
   color: "#ffff",
-  fontSize: 40
+  fontSize: 40,
+  cursor: 'pointer'
 }));
