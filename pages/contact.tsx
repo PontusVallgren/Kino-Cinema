@@ -1,3 +1,4 @@
+import { Box } from "@mui/system";
 import React from "react";
 
 const contact = () => {
@@ -5,6 +6,7 @@ const contact = () => {
     <div>
       contact
       <h1>eharware</h1>
+      <Box sx={{ height: "500px" }}>test</Box>
     </div>
   );
 };
