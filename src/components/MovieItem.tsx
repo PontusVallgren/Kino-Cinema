@@ -14,7 +14,7 @@ const MovieItem: NextPage<MovieItemProps> = ({movie}) => {
     return (
         <li className={classes.movieItem}>
             {/* `http://localhost:3000/movies/:id` */}
-            <Link href={`http://localhost:3000`}>
+            <Link href={`http://localhost:3000/`}>
                 <a className={classes.link}>
                 <img src={movie.thumbnail} className={classes.thumbnail}></img>
                 <h3 className={classes.title}>{movie.title}</h3>

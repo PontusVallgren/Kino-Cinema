@@ -5,7 +5,7 @@ import {Movie} from "../types"
 import classes from "../../styles/movies.module.css"
 
 
-//Hämtar data via API, limiterat till 6st
+//Hämtar data via API,
 
 /* export const getStaticProps: GetStaticProps = async () => {
     const res = await fetch(`http://localhost:3000/api/movies`)
@@ -51,6 +51,20 @@ const Data = [
         id: 7,
         title: "Poch7",
         thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+    },
+    {
+        id: 8,
+        title: "Poch8",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+    },{
+        id: 9,
+        title: "Poch9",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
+    }
+    ,{
+        id: 10,
+        title: "Poch10",
+        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmb7MM69YFcAvV-T7Mc6bceR73mFqmu1I9JwOMe3yJwL4N-Lsm"
     }
 ]
 /* const Movies: NextPage<{movies: Movie[]}> = ({movies}) => {
@@ -70,7 +84,7 @@ const Movies: NextPage = () => {
         <div className={classes.container}>
             <PreviousPageButton />
             <h1 className={classes.title}>Filmer</h1>
-            <MovieList movies={Data.slice(0, 6)} />
+            <MovieList movies={Data.slice(0, 9)} />
         </div>
     )
 }
