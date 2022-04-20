@@ -1,11 +1,8 @@
 import {NextPage} from "next"
 import MovieItem from "../components/MovieItem"
 import classes from "./MovieList.module.css"
+import {Movie} from "../types"
 
-type Movie = {
-    title: string,
-    thumbnail: string
-} 
 
 type MovieListProps = {
     movies: Movie[]
