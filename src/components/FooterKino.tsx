@@ -11,11 +11,9 @@ const FooterKino = () => {
         sx={{
           backgroundColor: "#212331",
           textAlign: "center",
-          padding: "20px",
-          position: "fixed",
-          left: "0",
+          padding: "30px 0",
+          position: "absolute",
           bottom: "0",
-          height: "40px",
           width: "100%",
           justifyContent: "space-evenly",
         }}
