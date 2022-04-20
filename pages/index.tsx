@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import Head from "next/head";
+import { Box } from "@mui/material";
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Hello fellow developers!</h1>
+      <Box sx={{ height: "900px" }}>hello</Box>
     </div>
   );
 };
