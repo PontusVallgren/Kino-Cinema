@@ -3,7 +3,7 @@ import React from "react";
 
 const login = () => {
   return (
-    <div>
+    <div className="main">
       login
       <Box sx={{ height: "900px" }}>hello</Box>
     </div>
