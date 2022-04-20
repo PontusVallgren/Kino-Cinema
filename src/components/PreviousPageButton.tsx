@@ -7,9 +7,10 @@ const PreviousPageButton: NextPage = () => {
     const router = useRouter();
     return (
         <>
-            <ArrowCircleLeftRoundedIcon fontSize="large" sx={{
-                padding: "0.3em",
-                color: "#4178E2"
+            <ArrowCircleLeftRoundedIcon sx={{
+                margin: "0.5em",
+                color: "#4178E2",
+                fontSize: 40
             }} onClick={() => router.back()}></ArrowCircleLeftRoundedIcon>
         </>
     )
