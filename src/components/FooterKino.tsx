@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { CenterBox, CustomText } from "./CustomMUI.tsx/CustomUI";
+import { CenterBox, CustomText } from "./CustomMUI/CustomUI";
 import SmartphoneIcon from "@mui/icons-material/Smartphone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailIcon from "@mui/icons-material/Mail";

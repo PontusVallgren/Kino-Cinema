@@ -1,4 +1,13 @@
 .title {
     text-align: center;
     margin: 0 0 2em 0;
+    color: #ffff;
+}
+
+.container {
+    background-image: url("../src/components/Img/1066909-blue-background-wallpaper-1920x1200-high-resolution.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
