@@ -1,9 +1,9 @@
 import { ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
-import NavbarKino from "../src/components/NavbarKino";
-import { theme } from "../styles/theme";
-import "../styles/globals.css";
-import FooterKino from "../src/components/FooterKino";
+import NavbarKino from "../components/NavbarKino";
+import { theme } from "../../styles/theme";
+import "../../styles/globals.css";
+import FooterKino from "../components/FooterKino";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
