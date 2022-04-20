@@ -1,13 +1,24 @@
-import { Box } from "@mui/material";
-import React from "react";
+import { Box, TextField } from "@mui/material";
+import { NextPage } from "next";
+import React, { useState } from "react";
+import { CenterHorizon } from "../components/CustomMUI/CustomUI";
 
-const login = () => {
+const Login: NextPage = () => {
+  const [isNewMember, setIsNewMember] = useState<boolean>(false);
+
   return (
     <div className="main">
-      login
-      <Box sx={{ height: "900px" }}>hello</Box>
+      {isNewMember ? (
+        <>
+          <CenterHorizon component="form">
+            <TextField></TextField>
+          </CenterHorizon>
+        </>
+      ) : (
+        "no"
+      )}
     </div>
   );
 };
 
-export default login;
+export default Login;
