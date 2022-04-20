@@ -1,0 +1,23 @@
+.movieItem {
+  display: flex;
+  min-width: 30%;
+  justify-content: center;
+  margin: 0 0.5em;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.title {
+  color: black;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.thumbnail {
+  width: 310px;
+  height: 425px;
+  border-radius: 10px;
+}
