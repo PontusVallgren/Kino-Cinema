@@ -1,9 +1,10 @@
 import { AppBar, Tab, Tabs, Toolbar } from "@mui/material";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import { menuProps } from "../types";
 import { Box } from "@mui/system";
+import { useRouter } from "next/router";
 
 const NavbarKino = () => {
   const [value, setValue] = useState<number>(0);
@@ -26,6 +27,14 @@ const NavbarKino = () => {
       path: "/login",
     },
   ];
+
+  const router = useRouter();
+  useEffect(() => {
+    const path = ["/", "/movies", "/contact", "/login"];
+    const currentPath = path.findIndex((menu) => router.pathname === menu);
+    setValue(currentPath);
+  }, [router]);
+
   const CustomTab = styled(Tab, {
     shouldForwardProp: (props) => props !== "sx",
   })(() => ({
@@ -43,12 +52,12 @@ const NavbarKino = () => {
       fontWeight: "bold",
     },
   }));
-  console.log(value, "value");
+
   return (
     <>
       <AppBar
         sx={{ backgroundColor: "#212331", padding: "10px 0" }}
-        position="sticky"
+        position="relative"
         elevation={3}
       >
         <Toolbar>
