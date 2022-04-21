@@ -1,68 +1,69 @@
-import {NextPage, GetStaticProps} from "next"
-import MovieList from "../components/MovieList"
-import PreviousPageButton from "../components/PreviousPageButton"
-import {Movie} from "../types"
-import classes from "../../styles/movies.module.css"
+import {NextPage, GetServerSideProps} from "next"
+import MovieList from "../../components/MovieList"
+import PreviousPageButton from "../../components/PreviousPageButton"
+import {Movie} from "../../types"
+import classes from "./index.module.css"
 
 
 //Hämtar data via API,
 
-/* export const getStaticProps: GetStaticProps = async () => {
+/* export const getServerSideProps: GetServerSideProps = async (context) => {
     const res = await fetch(`http://localhost:3000/api/movies`)
+    const data = await res.json()
     
     return {
         props: {
-            movies: await res.json()
+            movies: data
         }
     }
   }  */
 
-const Data = [
+export const Data = [
     {
-        id: 1,
+        id: "1",
         title: "Poch1",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
-        id: 2,
+        id: "2",
         title: "Poch2",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
-        id: 3,
+        id: "3",
         title: "Poch3",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
-        id: 4,
+        id: "4",
         title: "Poch4",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
-        id: 5,
+        id: "5",
         title: "Poch5",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },{
-        id: 6,
+        id: "6",
         title: "Poch6",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     }
     ,{
-        id: 7,
+        id: "7",
         title: "Poch7",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },
     {
-        id: 8,
+        id: "8",
         title: "Poch8",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     },{
-        id: 9,
+        id: "9",
         title: "Poch9",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     }
     ,{
-        id: 10,
+        id: "10",
         title: "Poch10",
         thumbnail: "https://i.imgur.com/hSTzwTj.jpg"
     }
