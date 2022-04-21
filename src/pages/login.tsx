@@ -9,7 +9,6 @@ import { NextPage } from "next";
 import React, { FormEvent, useState } from "react";
 import {
   CenterHorizon,
-  CustomBtn,
   CustomButton,
   CustomText,
 } from "../components/CustomMUI/CustomUI";
@@ -19,9 +18,19 @@ const Login: NextPage = () => {
   const [isMember, setIsNewMember] = useState<boolean>(true);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(userName, 777);
+    await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userName,
+        userPassword,
+      }),
+    });
+    console.log(userName, userPassword, "ya");
   };
 
   return (
@@ -44,19 +53,18 @@ const Login: NextPage = () => {
                 id="outlined-basic"
                 label="Password"
                 className={classes.userInput}
+                onChange={(e) => setUserPassword(e.target.value)}
               />
-              {/* <CustomBtn
-                btnText={"Log in"}
-                btnPadding={"1px"}
-                btnColor={"secondary"}
-                onClick={(event) => handleSubmit(event)}
-              /> */}
-              <Button onClick={handleSubmit}>hehehe</Button>
+              <CustomButton
+                onClick={handleSubmit}
+                color="secondary"
+                variant="contained"
+                type="submit"
+              >
+                Log in
+              </CustomButton>
             </FormGroup>
           </CenterHorizon>
-          <CustomButton onClick={handleSubmit} variant="contained">
-            hello
-          </CustomButton>
         </>
       ) : (
         "no"
