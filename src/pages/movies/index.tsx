@@ -1,4 +1,4 @@
-import {NextPage, GetStaticProps} from "next"
+import {NextPage, GetServerSideProps} from "next"
 import MovieList from "../../components/MovieList"
 import PreviousPageButton from "../../components/PreviousPageButton"
 import {Movie} from "../../types"
@@ -7,7 +7,7 @@ import classes from "./index.module.css"
 
 //Hämtar data via API,
 
-/* export const getStaticProps: GetStaticProps = async () => {
+/* export const getServerSideProps: GetServerSideProps = async (context) => {
     const res = await fetch(`http://localhost:3000/api/movies`)
     const data = await res.json()
     
