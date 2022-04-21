@@ -6,7 +6,7 @@ export type menuProps = {
 export type Movie = {
   id: string;
   title: string;
-  thumbnail: string;
+  coverImg: string;
 };
 
 export type CustomBtnProps = {
