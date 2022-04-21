@@ -1,3 +1,5 @@
+import { FormEvent } from "react";
+
 export type menuProps = {
   menuName: string;
   path: string;
@@ -21,4 +23,5 @@ export type CustomBtnProps = {
     | "info"
     | "warning"
     | undefined;
+  onClick: (event: FormEvent) => void;
 };
