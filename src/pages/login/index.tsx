@@ -5,8 +5,8 @@ import {
   CenterHorizon,
   CustomButton,
   CustomText,
-} from "../components/CustomMUI/CustomUI";
-import classes from "../../styles/login.module.css";
+} from "../../components/CustomMUI/CustomUI";
+import classes from "./index.module.css";
 
 const Login: NextPage = () => {
   const [isMember, setIsNewMember] = useState<boolean>(true);
