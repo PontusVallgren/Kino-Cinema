@@ -3,6 +3,8 @@ import MovieList from "../components/MovieList"
 import PreviousPageButton from "../components/PreviousPageButton"
 import {Movie} from "../types"
 import classes from "../../styles/movies.module.css"
+import FilterSelect from "../components/FilterSelect"
+import { useState } from "react"
 
 
 //Hämtar data via API,
@@ -80,10 +82,22 @@ const Data = [
 // Function with dummy data
 
 const Movies: NextPage = () => {
+    const [filter, setFilter] = useState({
+        sort: ""
+    })
+
+    const handleChange = (value: string) => {
+        setFilter({
+            sort: value
+        })
+    }
     return (
         <div className={classes.container}>
             <PreviousPageButton />
+            <div>
             <h1 className={classes.title}>Filmer</h1>
+            <FilterSelect handleChange={handleChange} value={filter.sort}/>
+            </div>
             <MovieList movies={Data.slice(0, 9)} />
         </div>
     )
