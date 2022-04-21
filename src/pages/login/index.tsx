@@ -46,6 +46,7 @@ const Login: NextPage = () => {
               <TextField
                 id="outlined-basic"
                 label="Password"
+                type="password"
                 className={classes.userInput}
                 onChange={(e) => setUserPassword(e.target.value)}
               />
