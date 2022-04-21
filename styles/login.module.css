@@ -1,10 +1,15 @@
 .userInput {
     background-color: white;
     border-radius: 5px;
+    margin: 5px;
 }
 
 .loginTitle {
     text-align: center;
     padding: 200px 0 20px 0;
     font-size: 50px;
+}
+
+.loginForm {
+    padding-bottom: 500px;
 }

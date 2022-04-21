@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import {
   CenterHorizon,
   CustomBtn,
-  CustomButton,
   CustomText,
 } from "../components/CustomMUI/CustomUI";
 import classes from "../../styles/login.module.css";
@@ -19,7 +18,7 @@ const Login: NextPage = () => {
           <CustomText className={classes.loginTitle}>
             Välkommen till Risbäck
           </CustomText>
-          <CenterHorizon component="form">
+          <CenterHorizon component="form" className={classes.loginForm}>
             <FormGroup aria-label="position">
               <TextField
                 id="outlined-basic"
@@ -34,7 +33,7 @@ const Login: NextPage = () => {
               />
               <CustomBtn
                 btnText={"Log in"}
-                btnPadding={"20px"}
+                btnPadding={"10px"}
                 btnColor={"secondary"}
               />
             </FormGroup>
