@@ -6,6 +6,7 @@ export type menuProps = {
 export type Movie = {
   id: string;
   title: string;
+  rating: string;
   coverImg: string;
 };
 

@@ -8,10 +8,10 @@ import { useState } from "react"
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const res = await fetch(`http://localhost:3000/api/movies`)
+    const res = await fetch(`http://localhost:3000/api/movies?sort=${context.query.sort}`)
     const data = await res.json()
     const limit = data.slice(0, 9) // Until fixed limit/sizing is fixed on api route
-    
+
     return {
         props: {
             movies: limit
@@ -20,21 +20,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } 
 
 const Movies: NextPage<{movies: Movie[]}> = ({movies}) => {
-    const [filter, setFilter] = useState({
-        sort: ""
-    })
+    const [sort, setSort] = useState<string>("")
 
     const handleChange = (value: string) => {
-        setFilter({
-            sort: value
-        })
+        setSort(value)
     }
     return (
         <div className={classes.container}>
             <PreviousPageButton />
             <div>
             <h1 className={classes.title}>Filmer</h1>
-            <FilterSelect handleChange={handleChange} value={filter.sort}/>
+            <FilterSelect handleChange={handleChange} value={sort}/>
             </div>
             <MovieList movies={movies} />
         </div>
