@@ -1,12 +1,10 @@
-import { FormEvent } from "react";
-
 export type menuProps = {
   menuName: string;
   path: string;
 };
 
 export type Movie = {
-  id: number;
+  id: string;
   title: string;
   thumbnail: string;
 };
