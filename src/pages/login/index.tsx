@@ -1,4 +1,5 @@
 import { FormGroup, TextField } from "@mui/material";
+import { Box } from "@mui/system";
 import { NextPage } from "next";
 import React, { FormEvent, useState } from "react";
 import {
@@ -31,35 +32,50 @@ const Login: NextPage = () => {
     <div className="main">
       {isMember ? (
         <>
-          <CustomText className={classes.loginTitle}>
-            Välkommen till Risbäck
-          </CustomText>
-          <CenterHorizon component="form" className={classes.loginForm}>
-            <FormGroup aria-label="position">
-              <TextField
-                id="outlined-basic"
-                label="Username"
-                className={classes.userInput}
-                onChange={(e) => setUserName(e.target.value)}
-                color="info"
-              />
-              <TextField
-                id="outlined-basic"
-                label="Password"
-                type="password"
-                className={classes.userInput}
-                onChange={(e) => setUserPassword(e.target.value)}
-              />
-              <CustomButton
-                onClick={handleSubmit}
-                color="secondary"
-                variant="contained"
-                type="submit"
-              >
-                Log in
-              </CustomButton>
-            </FormGroup>
-          </CenterHorizon>
+          <Box className={classes.emptySpace}>
+            <Box className={classes.loginForm}>
+              <CustomText className={classes.loginTitle}>
+                Välkommen till Risbäck
+              </CustomText>
+              <CenterHorizon component="form">
+                <FormGroup aria-label="position">
+                  <TextField
+                    id="outlined-basic"
+                    label="Username"
+                    className={classes.userInput}
+                    onChange={(e) => setUserName(e.target.value)}
+                    color="info"
+                  />
+                  <TextField
+                    id="outlined-basic"
+                    label="Password"
+                    type="password"
+                    className={classes.userInput}
+                    onChange={(e) => setUserPassword(e.target.value)}
+                  />
+                  <CustomButton
+                    onClick={handleSubmit}
+                    color="secondary"
+                    variant="contained"
+                    type="submit"
+                    className={classes.loginBtn}
+                  >
+                    Log in
+                  </CustomButton>
+                </FormGroup>
+              </CenterHorizon>
+              <Box className={classes.notMember}>
+                <CustomText>Not a member?</CustomText>
+                <p>🍀</p>
+                <CustomText
+                  onClick={() => setIsNewMember(false)}
+                  className={classes.signUp}
+                >
+                  Sign up
+                </CustomText>
+              </Box>
+            </Box>
+          </Box>
         </>
       ) : (
         "no"
