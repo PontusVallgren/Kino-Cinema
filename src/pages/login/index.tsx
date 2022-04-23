@@ -7,6 +7,7 @@ import {
   CustomButton,
   CustomText,
 } from "../../components/CustomMUI/CustomUI";
+import SignUp from "../../components/SignUp";
 import classes from "./index.module.css";
 
 const Login: NextPage = () => {
@@ -78,7 +79,7 @@ const Login: NextPage = () => {
           </Box>
         </>
       ) : (
-        "no"
+        <SignUp></SignUp>
       )}
     </div>
   );
