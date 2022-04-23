@@ -4,7 +4,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Link from "next/link"
 
 type FilterSelectProps = {
     handleChange: (value: string) => void,
@@ -13,19 +12,19 @@ type FilterSelectProps = {
 
 const FilterSelect: NextPage<FilterSelectProps> = ({handleChange, value}) => {
     return (
-        <Box sx={{ minWidth: 120 }}>
+        <Box  sx={{ minWidth: 150 }}>
         <FormControl fullWidth>
-          <InputLabel id="select-filter">Sort</InputLabel>
+          <InputLabel id="demo-simple-select-filter">Sortera</InputLabel>
           <Select
-            labelId="select-filter"
-            id="select-filter"
+            labelId="demo-simple-select-filter"
+            id="demo-simple-select-filter"
             value={value}
             label="Sort"
             onChange={(e) => handleChange(e.target.value)}
           >
-          <MenuItem value={"all"}><Link href="/movies"><a>All Movies</a></Link></MenuItem>
-          <MenuItem value={"rating"}><Link href="/movies?sort=rating"><a>Rating</a></Link></MenuItem>
-          <MenuItem value={"alphabetically"}><Link href="/movies?sort=alphabetically"><a>Alphabetically</a></Link></MenuItem>
+          <MenuItem value={"all"}>Alla filmer</MenuItem>
+          <MenuItem value={"rating"}>Högsta rating</MenuItem>
+          <MenuItem value={"order"}>Sortera A-Z</MenuItem>
           </Select>
         </FormControl>
       </Box>
