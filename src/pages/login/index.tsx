@@ -14,6 +14,7 @@ const Login: NextPage = () => {
   const [isMember, setIsNewMember] = useState<boolean>(true);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     await fetch("/api/login", {
@@ -26,9 +27,13 @@ const Login: NextPage = () => {
         userPassword,
       }),
     });
-    console.log(userName, userPassword, "ya");
   };
 
+  const handleBack = (value: boolean) => {
+    if (value) {
+      setIsNewMember(true);
+    }
+  };
   return (
     <div className="main">
       {isMember ? (
@@ -41,14 +46,16 @@ const Login: NextPage = () => {
               <CenterHorizon component="form">
                 <FormGroup aria-label="position">
                   <TextField
-                    id="outlined-basic"
+                    id="Username"
+                    variant="outlined"
                     label="Username"
                     className={classes.userInput}
                     onChange={(e) => setUserName(e.target.value)}
                     color="info"
                   />
                   <TextField
-                    id="outlined-basic"
+                    id="UserPassword"
+                    variant="outlined"
                     label="Password"
                     type="password"
                     className={classes.userInput}
@@ -79,7 +86,7 @@ const Login: NextPage = () => {
           </Box>
         </>
       ) : (
-        <SignUp></SignUp>
+        <SignUp userClickedBack={handleBack} />
       )}
     </div>
   );
