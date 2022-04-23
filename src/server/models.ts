@@ -1,17 +1,8 @@
-import { Schema, model } from "mongoose";
-import { userAccountProps } from "../types";
+import mongoose from "mongoose";
+import { model } from "mongoose";
+import { userAccountSchema } from "./schema";
 
-const userAccountSchema = new Schema<userAccountProps>({
-  userId: {
-    type: String,
-    required: true,
-  },
-  userPassword: {
-    type: String,
-    required: true,
-  },
-});
-
-const userAccount = model("userAccount", userAccountSchema);
+const userAccount =
+  mongoose.models.userAccount || model("userAccount", userAccountSchema);
 
 export { userAccount };
