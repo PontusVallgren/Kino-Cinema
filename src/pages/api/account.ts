@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { userAccount } from "../../../models";
-
+import { saveModel } from "../server/db2";
+import { userAccount } from "../server/models2";
 export default async function postAccount(
   req: NextApiRequest,
   res: NextApiResponse
@@ -13,7 +13,8 @@ export default async function postAccount(
   if (dummy) {
     console.log("yeahh");
     const yeah = new userAccount(dummy);
-    yeah.save();
+    await saveModel(yeah);
+
     res.status(200).end();
   } else {
     res.status(401).end();
