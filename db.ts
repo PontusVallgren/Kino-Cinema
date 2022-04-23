@@ -1,24 +1,12 @@
 import { Schema, connect, model } from "mongoose";
-import { userAccountProps } from "./src/types";
 
-const url = `mongodb+srv://haeju:XYxyCkzVK1bDIqis@cluster0.dx8jk.mongodb.net/risbackCinema?retryWrites=true&w=majority`;
+const url = process.env.DB_URL;
 
-connect(url, (err) => {
-  if (err) console.log(err);
-  else console.log("mongdb is connected");
-});
-
-const userAccountSchema = new Schema<userAccountProps>({
-  userId: {
-    type: String,
-    required: true,
-  },
-  userPassword: {
-    type: String,
-    required: true,
-  },
-});
-
-const userAccount = model("userAccount", userAccountSchema);
-
-export { userAccount };
+if (!url) {
+  throw Error("ENC_KEY doesn't exist in .env.local");
+} else {
+  connect(url, (err) => {
+    if (err) console.log(err);
+    else console.log("mongdb is connected");
+  });
+}

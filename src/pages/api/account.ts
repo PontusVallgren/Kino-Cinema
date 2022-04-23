@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { userAccount } from "../../../db";
+import { userAccount } from "../../../models";
 
 export default async function postAccount(
   req: NextApiRequest,
