@@ -16,11 +16,8 @@ export default async function handleUserInfo(
     if (USERS[userName] && USERS[userName] == userPassword) {
       const cookies = new Cookies(req, res);
 
-      if (!process.env.ENC_KEY) {
-        throw Error("ENC_KEY doesn't exist in .env.local");
-      }
+      const ENC_KEY = process.env.ENC_KEY || "default_key";
 
-      const ENC_KEY = process.env.ENC_KEY;
       cookies.set(
         "session",
         await Iron.seal(
