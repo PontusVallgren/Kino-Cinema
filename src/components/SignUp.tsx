@@ -9,7 +9,7 @@ const SignUp: React.FC = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId: "ooo",
+        userId: "yeyeye",
         userPassword: "hehi",
       }),
     });
