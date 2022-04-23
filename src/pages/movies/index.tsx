@@ -5,34 +5,72 @@ import FilterSelect from "../../components/FilterSelect"
 import {Movie} from "../../types"
 import classes from "./index.module.css"
 import { useState } from "react"
+import {useRouter} from "next/router"
+import {CustomButton} from "../../components/CustomMUI/CustomUI"
+
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const res = await fetch(`http://localhost:3000/api/movies?sort=${context.query.sort}`)
+    const sort = context.query.sort
+    const size = context.query.size
+
+    const filters = []
+    if (sort) {
+        filters.push(`sort=${sort}`)
+    }
+    if (size) { 
+        filters.push(`size=${size}`)
+    }
+
+    const res = await fetch(`http://localhost:3000/api/movies?${filters.join('&')}`)
     const data = await res.json()
-    const limit = data.slice(0, 9) // Until fixed limit/sizing is fixed on api route
 
     return {
         props: {
-            movies: limit
+            movies: data
         }
     }
   } 
 
 const Movies: NextPage<{movies: Movie[]}> = ({movies}) => {
-    const [sort, setSort] = useState<string>("")
+    const [filter, setFilter] = useState({
+        sort: "",
+        size: 9
+    })
+
+    const router = useRouter()
 
     const handleChange = (value: string) => {
-        setSort(value)
+        setFilter({
+            sort: value,
+            size: 9,
+        })
+
+        router.push({
+            query: {sort: value, size: 9}
+        })
     }
+  
+    const handleClick = () => {
+        setFilter({
+            ...filter,
+            size: filter.size + 6
+        })
+
+        router.push({
+            query: {sort: filter.sort, size: filter.size + 6},
+        }, undefined, { scroll: false })
+    }
+
     return (
         <div className={classes.container}>
             <PreviousPageButton />
-            <div>
+            <div className={classes.selectCtn}>
             <h1 className={classes.title}>Filmer</h1>
-            <FilterSelect handleChange={handleChange} value={sort}/>
+            <FilterSelect handleChange={handleChange} value={filter.sort}/>
             </div>
             <MovieList movies={movies} />
+            <CustomButton className={classes.loadmoreBtn} onClick={handleClick}>Ladda fler filmer</CustomButton>
         </div>
     )
 }
