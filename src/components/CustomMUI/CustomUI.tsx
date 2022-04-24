@@ -3,7 +3,6 @@ import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import ArrowCircleLeftRoundedIcon from "@mui/icons-material/ArrowCircleLeftRounded";
 import React from "react";
-import { CustomBtnProps } from "../../types";
 export const CustomText = styled(Typography, {
   shouldForwardProp: (props) => props !== "sx",
 })(() => ({
@@ -48,23 +47,8 @@ export const CustomButton = styled(Button, {
   shouldForwardProp: (props) => props !== "sx",
 })(() => ({
   fontFamily: "Open sans",
-  fontSize: "30px",
-  padding: "20px",
+  fontSize: "15",
+  padding: "5px",
   color: "white",
+  fontWeight: "bold",
 }));
-
-export const CustomBtn: React.FC<CustomBtnProps> = (
-  customBtnProps: CustomBtnProps
-) => {
-  return (
-    <>
-      <CustomButton
-        variant="contained"
-        color={customBtnProps.btnColor}
-        sx={{ padding: `${customBtnProps.btnPadding}` }}
-      >
-        <CustomText>{customBtnProps.btnText}</CustomText>
-      </CustomButton>
-    </>
-  );
-};
