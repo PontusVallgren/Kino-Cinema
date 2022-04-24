@@ -8,3 +8,8 @@ export type Movie = {
   title: string;
   thumbnail: string;
 };
+
+export interface userAccountProps {
+  userId: string;
+  userPassword: string;
+}
