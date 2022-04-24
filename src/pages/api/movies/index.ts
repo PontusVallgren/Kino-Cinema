@@ -1,5 +1,5 @@
 import {NextApiRequest, NextApiResponse} from "next"
-import movies from "../../../server/models"
+import {movies} from "../../../server/models"
 import mongoose from "mongoose"
 import {sortData} from "../../../server/utils/filter"
 

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import mongoose from "mongoose"
-import movies from "../../../server/models"
+import {movies} from "../../../server/models"
 
 mongoose.connect(process.env.DB_URL!) 
 
