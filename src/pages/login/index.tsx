@@ -1,6 +1,6 @@
 import { FormGroup, TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import React, { FormEvent, useState } from "react";
 import {
   CenterHorizon,
@@ -9,79 +9,55 @@ import {
 } from "../../components/CustomMUI/CustomUI";
 import SignUp from "../../components/SignUp";
 import classes from "./index.module.css";
+import Cookies from "cookies";
+import LoginForm from "../../components/loginForm";
+
+// export const getServerSideProps: GetServerSideProps = async (
+//   context
+// ): Promise<isCookieProps> => {
+//   const cookies = new Cookies(context.req, context.res);
+//   const sessionStr = await cookies.get("session");
+//   console.log(sessionStr, "sessionstr");
+//   if (sessionStr) {
+//     console.log("there is cookie");
+//     return {
+//       props: {
+//         isCookie: true,
+//       },
+//     };
+//   }
+//   console.log("there is no cookie");
+
+//   return { props: { isCookie: false } };
+// };
+
+// type isCookieProps = {
+//   props: {
+//     isCookie: boolean;
+//   };
+// };
 
 const Login: NextPage = () => {
-  const [isMember, setIsNewMember] = useState<boolean>(true);
-  const [userName, setUserName] = useState<string>("");
-  const [userPassword, setUserPassword] = useState<string>("");
+  const [isMember, setIsMember] = useState<boolean>(true);
+  const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    await fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userName,
-        userPassword,
-      }),
-    });
+  const handleMember = (value: boolean) => {
+    setIsMember(value);
   };
 
   const handleBack = (value: boolean) => {
     if (value) {
-      setIsNewMember(true);
+      setIsMember(true);
     }
   };
   return (
     <div className="main">
       {isMember ? (
         <>
-          <Box className={classes.emptySpace}>
-            <Box className={classes.loginForm}>
-              <CustomText className={classes.loginTitle}>
-                Välkommen till Risbäck
-              </CustomText>
-              <CenterHorizon component="form">
-                <FormGroup aria-label="position">
-                  <TextField
-                    id="Username"
-                    variant="outlined"
-                    label="Användarenamn"
-                    className={classes.userInput}
-                    onChange={(e) => setUserName(e.target.value)}
-                    color="info"
-                  />
-                  <TextField
-                    id="UserPassword"
-                    variant="outlined"
-                    label="Lösenord"
-                    type="password"
-                    className={classes.userInput}
-                    onChange={(e) => setUserPassword(e.target.value)}
-                  />
-                  <CustomButton
-                    onClick={handleSubmit}
-                    color="secondary"
-                    variant="contained"
-                    type="submit"
-                    className={classes.loginBtn}
-                  >
-                    Logga in
-                  </CustomButton>
-                </FormGroup>
-              </CenterHorizon>
-              <Box className={classes.notMember}>
-                <CustomText>Inte medlem?</CustomText>
-                <p>🍀</p>
-                <CustomText
-                  onClick={() => setIsNewMember(false)}
-                  className={classes.signUp}
-                >
-                  Registrera
-                </CustomText>
-              </Box>
+          <LoginForm newMember={handleMember} />
+          <Box className={classes.loggedIn}>
+            <Box className={classes.loginAlarm}>
+              <h1>hello i logged in</h1>
             </Box>
           </Box>
         </>
