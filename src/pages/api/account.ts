@@ -5,13 +5,11 @@ export default async function postAccount(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log("whaaaat");
   const dummy = {
-    userId: req.body.userId,
+    username: req.body.userId,
     userPassword: req.body.userPassword,
   };
   if (dummy) {
-    console.log("yeahh");
     const yeah = new userAccount(dummy);
     await saveModel(yeah);
 

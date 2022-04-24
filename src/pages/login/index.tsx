@@ -48,7 +48,7 @@ const Login: NextPage = () => {
                   <TextField
                     id="Username"
                     variant="outlined"
-                    label="Username"
+                    label="Användarenamn"
                     className={classes.userInput}
                     onChange={(e) => setUserName(e.target.value)}
                     color="info"
@@ -56,7 +56,7 @@ const Login: NextPage = () => {
                   <TextField
                     id="UserPassword"
                     variant="outlined"
-                    label="Password"
+                    label="Lösenord"
                     type="password"
                     className={classes.userInput}
                     onChange={(e) => setUserPassword(e.target.value)}
@@ -68,18 +68,18 @@ const Login: NextPage = () => {
                     type="submit"
                     className={classes.loginBtn}
                   >
-                    Log in
+                    Logga in
                   </CustomButton>
                 </FormGroup>
               </CenterHorizon>
               <Box className={classes.notMember}>
-                <CustomText>Not a member?</CustomText>
+                <CustomText>Inte medlem?</CustomText>
                 <p>🍀</p>
                 <CustomText
                   onClick={() => setIsNewMember(false)}
                   className={classes.signUp}
                 >
-                  Sign up
+                  Registrera
                 </CustomText>
               </Box>
             </Box>

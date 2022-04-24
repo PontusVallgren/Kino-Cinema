@@ -8,7 +8,6 @@ import {
   CustomText,
   PreviousPageBtn,
 } from "./CustomMUI/CustomUI";
-import PreviousPageButton from "./PreviousPageButton";
 
 type signUpProp = {
   userClickedBack: (value: boolean) => void;
@@ -16,6 +15,8 @@ type signUpProp = {
 const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
 
   const handleSignUp = async () => {
     await fetch(`/api/account`, {
@@ -25,8 +26,10 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId: userName,
-        userPassword: userPassword,
+        username: userName,
+        userpassword: userPassword,
+        firstName: firstName,
+        lastName: lastName,
       }),
     });
   };
@@ -35,24 +38,44 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
       <PreviousPageBtn onClick={() => userClickedBack(true)} />
       <Box className={classes.emptySpaceOfSignUp}>
         <Box className={classes.loginForm}>
-          <CustomText className={classes.loginTitle}>Sign up</CustomText>
+          <CustomText className={classes.loginTitle}>Regiestera</CustomText>
           <CenterHorizon component="form">
             <FormGroup aria-label="position">
+              <CustomText sx={{ marginLeft: "5px" }}>🔹Ditt konto</CustomText>
               <TextField
                 id="username"
                 variant="outlined"
-                label="Username"
+                label="Användarenamn"
                 className={classes.userInput}
                 onChange={(e) => setUserName(e.target.value)}
                 color="info"
               />
               <TextField
                 id="userPassword"
-                label="Password"
+                label="Lösenord"
                 variant="outlined"
                 type="password"
                 className={classes.userInput}
                 onChange={(e) => setUserPassword(e.target.value)}
+              />
+              <CustomText sx={{ margin: "5px 0 0 5px" }}>
+                🔹Ditt namn
+              </CustomText>
+              <TextField
+                id="firstName"
+                variant="outlined"
+                label="Förnamn"
+                className={classes.userInput}
+                onChange={(e) => setFirstName(e.target.value)}
+                color="info"
+              />
+              <TextField
+                id="userPassword"
+                label="Efternamn"
+                variant="outlined"
+                type="password"
+                className={classes.userInput}
+                onChange={(e) => setLastName(e.target.value)}
               />
               <CustomButton
                 onClick={handleSignUp}
@@ -61,7 +84,7 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
                 type="submit"
                 className={classes.loginBtn}
               >
-                Create my account
+                Skapa mitt konto
               </CustomButton>
             </FormGroup>
           </CenterHorizon>

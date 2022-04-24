@@ -1,6 +1,7 @@
 import Cookies from "cookies";
 import Iron from "@hapi/iron";
 import { NextApiRequest, NextApiResponse } from "next";
+import bcrypt from "bcrypt";
 
 const USERS: Record<string, string> = {
   haeju: "potato",
