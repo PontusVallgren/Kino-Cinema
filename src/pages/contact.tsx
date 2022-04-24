@@ -6,7 +6,7 @@ const contact = () => {
     <div className="main">
       contact
       <h1>eharware</h1>
-      <Box sx={{ height: "500px" }}>test</Box>
+      <Box sx={{ height: "2px" }}>test</Box>
     </div>
   );
 };
