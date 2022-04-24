@@ -10,6 +10,8 @@ export type Movie = {
 };
 
 export interface userAccountProps {
-  userId: string;
-  userPassword: string;
+  username: string;
+  userpassword: string;
+  firstName: string;
+  lastName: string;
 }

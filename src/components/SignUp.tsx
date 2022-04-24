@@ -65,15 +65,16 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
                 id="firstName"
                 variant="outlined"
                 label="Förnamn"
+                type="name"
                 className={classes.userInput}
                 onChange={(e) => setFirstName(e.target.value)}
                 color="info"
               />
               <TextField
-                id="userPassword"
+                id="UserPassword"
                 label="Efternamn"
                 variant="outlined"
-                type="password"
+                type="name"
                 className={classes.userInput}
                 onChange={(e) => setLastName(e.target.value)}
               />

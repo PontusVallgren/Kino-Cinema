@@ -1,17 +1,25 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { saveModel } from "../server/db2";
-import { userAccount } from "../server/models2";
+import { saveModel } from "../server/db";
+import { userAccounts } from "../server/models";
+import bcrypt from "bcrypt";
+
 export default async function postAccount(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const dummy = {
-    username: req.body.userId,
-    userPassword: req.body.userPassword,
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(req.body.userpassword, salt);
+
+  const userInfo = {
+    username: req.body.username,
+    userpassword: hash,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
   };
-  if (dummy) {
-    const yeah = new userAccount(dummy);
-    await saveModel(yeah);
+
+  if (userInfo) {
+    const userAccount = new userAccounts(userInfo);
+    await saveModel(userAccount);
 
     res.status(200).end();
   } else {
