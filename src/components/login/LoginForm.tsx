@@ -127,7 +127,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
                 onClick={handleClose}
                 className={classes.loggedInBtn}
               >
-                Gå hem
+                Till startsidan
               </CustomButton>
             </Link>
           </Box>
