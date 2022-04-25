@@ -1,8 +1,8 @@
 import { FormGroup, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState } from "react";
-import classes from "../pages/login/index.module.css";
-import { CenterHorizon, CustomText, CustomButton } from "./CustomMUI/CustomUI";
+import classes from "../../pages/login/index.module.css";
+import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
 
 type LoginForm = {
   newMember: (value: boolean) => void;

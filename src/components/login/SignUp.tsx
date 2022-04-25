@@ -1,13 +1,14 @@
 import { FormGroup, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import classes from "../pages/login/index.module.css";
+import classes from "../../pages/login/index.module.css";
+
 import {
   CenterHorizon,
   CustomButton,
   CustomText,
   PreviousPageBtn,
-} from "./CustomMUI/CustomUI";
+} from "../CustomMUI/CustomUI";
 
 type signUpProp = {
   userClickedBack: (value: boolean) => void;

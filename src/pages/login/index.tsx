@@ -1,41 +1,8 @@
-import { FormGroup, TextField } from "@mui/material";
-import { Box } from "@mui/system";
-import { GetServerSideProps, NextPage } from "next";
-import React, { FormEvent, useState } from "react";
-import {
-  CenterHorizon,
-  CustomButton,
-  CustomText,
-} from "../../components/CustomMUI/CustomUI";
-import SignUp from "../../components/SignUp";
-import classes from "./index.module.css";
-import Cookies from "cookies";
-import LoginForm from "../../components/loginForm";
+import { NextPage } from "next";
+import React, { useState } from "react";
 
-// export const getServerSideProps: GetServerSideProps = async (
-//   context
-// ): Promise<isCookieProps> => {
-//   const cookies = new Cookies(context.req, context.res);
-//   const sessionStr = await cookies.get("session");
-//   console.log(sessionStr, "sessionstr");
-//   if (sessionStr) {
-//     console.log("there is cookie");
-//     return {
-//       props: {
-//         isCookie: true,
-//       },
-//     };
-//   }
-//   console.log("there is no cookie");
-
-//   return { props: { isCookie: false } };
-// };
-
-// type isCookieProps = {
-//   props: {
-//     isCookie: boolean;
-//   };
-// };
+import SignUp from "../../components/login/SignUp";
+import LoginForm from "../../components/login/LoginForm";
 
 const Login: NextPage = () => {
   const [isMember, setIsMember] = useState<boolean>(true);
@@ -55,11 +22,11 @@ const Login: NextPage = () => {
       {isMember ? (
         <>
           <LoginForm newMember={handleMember} />
-          <Box className={classes.loggedIn}>
+          {/* <Box className={classes.loggedIn}>
             <Box className={classes.loginAlarm}>
               <h1>hello i logged in</h1>
             </Box>
-          </Box>
+          </Box> */}
         </>
       ) : (
         <SignUp userClickedBack={handleBack} />
