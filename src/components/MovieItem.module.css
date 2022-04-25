@@ -1,12 +1,15 @@
-.movieItem {
+.card {
   display: flex;
-  min-width: 30%;
   justify-content: center;
+  width: 25rem;
   margin: 0 0.5em 4em 0.5em;
+  text-align: center;
 }
+
 
 .link {
   text-decoration: none;
+  max-width: 310px;
 }
 
 .title {
@@ -16,7 +19,11 @@
   text-align: center;
   margin: 0.5em 0 0 0;
 }
+.title:hover {
+  color:rgb(230, 230, 230)
+}
 
 .thumbnail {
   border-radius: 10px;
+  min-height: 425px;
 }

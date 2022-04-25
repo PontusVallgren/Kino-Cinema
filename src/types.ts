@@ -6,7 +6,8 @@ export type menuProps = {
 export type Movie = {
   id: string;
   title: string;
-  thumbnail: string;
+  rating: string;
+  coverImg: string;
 };
 
 export interface userAccountProps {

@@ -10,4 +10,18 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    position: relative;
+}
+
+.loadmoreBtn {
+    display: flex;
+    margin: 0 auto;
+}
+
+.selectCtn {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
 }
