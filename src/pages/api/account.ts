@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { saveModel } from "../server/db";
-import { userAccounts } from "../server/models";
 import bcrypt from "bcrypt";
+import { saveModel } from "../../server/db";
+import { userAccounts } from "../../server/models";
 
 export default async function postAccount(
   req: NextApiRequest,
