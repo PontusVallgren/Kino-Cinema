@@ -67,13 +67,30 @@
 
 .loggedIn {
     position: absolute;
-    width: 50vw;
-    top: 30%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 30%);
-    background-color: rgba(0, 0, 0, 0.418);
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 100px 50px;
+    background-color: aliceblue;
+    border-radius: 20px;
 }
 
-.loginAlarm {
-    height: 300px;
+.logAlarm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    width: 400px;
+}
+
+.loggedInBtn {
+    margin-top: 0.8rem;
+    padding: 10px 25px;
+}
+
+.loggedInIcon {
+    font-size: 3.5rem;
+    margin-bottom: 0.2rem;
 }
