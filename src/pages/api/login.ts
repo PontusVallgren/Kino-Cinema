@@ -1,9 +1,9 @@
 import Cookies from "cookies";
 import Iron from "@hapi/iron";
 import { NextApiRequest, NextApiResponse } from "next";
-import { userAccounts } from "../server/models";
-import { getData } from "../server/db";
 import bcrypt from "bcrypt";
+import { userAccounts } from "../../server/models";
+import { getData } from "../../server/db";
 
 export default async function handleUserInfo(
   req: NextApiRequest,
