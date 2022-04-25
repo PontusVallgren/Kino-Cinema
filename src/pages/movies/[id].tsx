@@ -4,7 +4,9 @@ import {Movie} from "../../types"
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const res = await fetch(`http://localhost:3000/api/movies/${context.params!.id}`)
+    const protocol = context.req.headers["x-forwarded-proto"] || "http";
+    const baseUrl = context.req ? `${protocol}://${context.req.headers.host}` : "";
+    const res = await fetch(`${baseUrl}/api/movies/${context.params!.id}`)
     const data = await res.json()
     
     return {
