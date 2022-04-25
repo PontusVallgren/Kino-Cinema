@@ -2,7 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["i.imgur.com", "catalog.cinema-api.com"],
+    domains: [
+      "i.imgur.com",
+      "catalog.cinema-api.com",
+      "assets.cdn.moviepilot.de",
+      "roxarmy.com",
+    ],
   },
 };
 
