@@ -1,4 +1,4 @@
-import { userAccountProps } from "../../types";
+import { userAccountProps } from "../types";
 import { Schema } from "mongoose";
 
 export const userAccountSchema = new Schema<userAccountProps>({

@@ -1,5 +1,5 @@
 import { connect, connection, Document, Model } from "mongoose";
-import { userAccountProps } from "../../types";
+import { userAccountProps } from "../types";
 
 const url = process.env.DB_URL;
 
