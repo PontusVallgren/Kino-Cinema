@@ -1,35 +1,10 @@
 import { AppBar, Tab, Tabs, Toolbar } from "@mui/material";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import { menuProps } from "../types";
 import { Box } from "@mui/system";
 import { useRouter } from "next/router";
-
-// export const getServerSideProps: GetServerSideProps = async (
-//   context
-// ): Promise<isCookieProps> => {
-//   const cookies = new Cookies(context.req, context.res);
-//   const sessionStr = await cookies.get("session");
-//   console.log(sessionStr, "sessionstr");
-//   if (sessionStr) {
-//     console.log("there is cookie");
-//     return {
-//       props: {
-//         isCookie: true,
-//       },
-//     };
-//   }
-//   console.log("there is no cookie");
-
-//   return { props: { isCookie: false } };
-// };
-
-// type isCookieProps = {
-//   props: {
-//     isCookie: boolean;
-//   };
-// };
 
 const NavbarKino: React.FC = () => {
   const [value, setValue] = useState<number>(0);
