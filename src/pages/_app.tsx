@@ -9,9 +9,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavbarKino />
-        <Component {...pageProps} />
-        <FooterKino />
+        <div>
+          <NavbarKino />
+        </div>
+        <div>
+          <Component {...pageProps} />
+        </div>
+        <div>
+          <FooterKino />
+        </div>
       </ThemeProvider>
     </>
   );

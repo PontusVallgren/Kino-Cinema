@@ -39,7 +39,7 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
       <PreviousPageBtn onClick={() => userClickedBack(true)} />
       <Box className={classes.emptySpaceOfSignUp}>
         <Box className={classes.loginForm}>
-          <CustomText className={classes.loginTitle}>Regiestera</CustomText>
+          <CustomText className={classes.loginTitle}>Registrera</CustomText>
           <CenterHorizon component="form">
             <FormGroup aria-label="position">
               <CustomText sx={{ marginLeft: "5px" }}>🔹Ditt konto</CustomText>
