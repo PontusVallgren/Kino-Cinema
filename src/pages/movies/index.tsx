@@ -76,4 +76,4 @@ const Movies: NextPage<{movies: Movie[]}> = ({movies}) => {
     )
 }
 
-export default Movies
+export default Movies;

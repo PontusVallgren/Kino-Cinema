@@ -1,5 +1,5 @@
-import { connect, connection } from "mongoose";
-import { Document } from "mongoose";
+import { connect, connection, Document, Model } from "mongoose";
+import { userAccountProps } from "../types";
 
 const url = process.env.DB_URL;
 
@@ -11,3 +11,22 @@ export const saveModel = async (model: Document<any>) => {
   await model.save();
   await connection.close();
 };
+
+export const getData = async (model: Model<any>) => {
+  await connect(url);
+  const result = await model.find();
+  await connection.close();
+
+  return result;
+};
+
+// export const getData = async (
+//   model: Model<userAccountProps>
+// ): Promise<userAccountProps[]> => {
+//   await connect(url);
+//   const result = await model.find();
+
+//   await connection.close();
+
+//   return result;
+// };

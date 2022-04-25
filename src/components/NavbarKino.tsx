@@ -6,12 +6,12 @@ import { menuProps } from "../types";
 import { Box } from "@mui/system";
 import { useRouter } from "next/router";
 
-const NavbarKino = () => {
+const NavbarKino: React.FC = () => {
   const [value, setValue] = useState<number>(0);
 
   const menus: menuProps[] = [
     {
-      menuName: "home",
+      menuName: "Hem",
       path: "/",
     },
     {
@@ -23,7 +23,7 @@ const NavbarKino = () => {
       path: "/contact",
     },
     {
-      menuName: "Login",
+      menuName: "Logga in",
       path: "/login",
     },
   ];
@@ -53,7 +53,6 @@ const NavbarKino = () => {
       fontWeight: "bold",
     },
   }));
-
   return (
     <>
       <AppBar
