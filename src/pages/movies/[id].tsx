@@ -1,10 +1,9 @@
 import {GetServerSideProps, NextPage} from "next"
-import {Data} from "./index"
 import {Movie} from "../../types"
 
 
 
-/* export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
     const res = await fetch(`http://localhost:3000/api/movies/${context.params!.id}`)
     const data = await res.json()
     
@@ -13,18 +12,7 @@ import {Movie} from "../../types"
             movie: data
         }
     }
-}  */
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    const movie = Data.find(movie => movie.id == context.params!.id )
-    return {
-        props: {
-            movie: movie
-        }
-    }
-}
-
-
+} 
 
 const MovieDetails: NextPage<{movie: Movie}> = ({movie}) => {
     return (
