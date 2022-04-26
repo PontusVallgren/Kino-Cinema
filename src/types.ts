@@ -8,6 +8,8 @@ export type Movie = {
   title: string;
   rating: string;
   coverImg: string;
+  backgroundImg: string;
+  trailer: string;
 };
 
 export interface userAccountProps {

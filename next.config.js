@@ -7,6 +7,7 @@ const nextConfig = {
       "catalog.cinema-api.com",
       "assets.cdn.moviepilot.de",
       "roxarmy.com",
+      "image.tmdb.org",
     ],
   },
 };
