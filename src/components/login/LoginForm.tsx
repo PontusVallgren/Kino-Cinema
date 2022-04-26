@@ -15,7 +15,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
-  const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
+  const { changeLogInState } = useContext(LoggedInContext);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

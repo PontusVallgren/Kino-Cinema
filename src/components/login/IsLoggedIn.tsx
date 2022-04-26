@@ -1,11 +1,6 @@
 import React, { createContext, useState, FC, PropsWithChildren } from "react";
 import { ILoggedInContextType, ChildrenProps } from "../../types";
 
-// const defaultState = {
-//   isLoggedIn: false,
-//   changeLogInState: () => {},
-// };
-
 export const LoggedInContext = createContext<ILoggedInContextType>({
   isLoggedIn: false,
   changeLogInState: () => ({}),

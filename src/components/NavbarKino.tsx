@@ -10,7 +10,6 @@ import { CenterBox } from "./CustomMUI/CustomUI";
 
 const NavbarKino: React.FC = () => {
   const { isLoggedIn } = useContext(LoggedInContext);
-  console.log(isLoggedIn, "ya");
   const [value, setValue] = useState<number>(0);
 
   const menus: menuProps[] = [
@@ -41,7 +40,7 @@ const NavbarKino: React.FC = () => {
     );
     if (currentPath === -1) return;
     setValue(currentPath);
-  }, [router]);
+  }, [router, isLoggedIn]);
 
   const CustomTab = styled(Tab, {
     shouldForwardProp: (props) => props !== "sx",

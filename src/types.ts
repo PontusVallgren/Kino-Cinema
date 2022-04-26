@@ -20,7 +20,6 @@ export interface userAccountProps {
 export interface ILoggedInContextType {
   isLoggedIn: boolean;
   changeLogInState: () => void;
-  // defaultState?: { isLoggedIn: boolean };
 }
 
 export interface ChildrenProps {
