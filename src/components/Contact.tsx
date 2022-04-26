@@ -28,16 +28,20 @@ export default function Contact() {
           <h3 className={classes.title}>Risbäck Cinema</h3>
           <p>Tel: 0121- 123 45 678</p>
           <p>Adress: Risbäcksgatan 1337</p>
-          <p> 155 66 Risbäck</p>
+          <p> 917 03 Risbäck</p>
           <h4 className={classes.rightField}>
             Vid bokning av rullstol eller större sällskap, fler än 8 personer:
             Kontakta oss gärna dagen innan planerat besök. Bokning sker på tel:
             0121- 123 45 678. Telefontider är samma som våra öppettider.
           </h4>
-          <h4 className={classes.title}>Öppettider:</h4>
+          <h4 className={classes.title2}>Öppettider:</h4>
           <p>Måndag - Fredag 10.00 -21.00</p>
           <p>Lördag 10.00-22.00</p>
           <p>Söndag 12.00-22.00</p>
+          <p className={classes.rightField}>
+            Hitta hit:
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13637.868047055947!2d15.514982128363497!3d64.7055073030511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4670ddacaf8e20e3%3A0x4c33ae912aa817e2!2s917%2003%20Risb%C3%A4ck!5e0!3m2!1ssv!2sse!4v1650966245031!5m2!1ssv!2sse"></iframe>
+          </p>
         </TabPanel>
         <TabPanel className={classes.smallBox} value="2">
           Item Two
@@ -97,7 +101,7 @@ export default function Contact() {
             <strong>Barntillåten:</strong> Tillåten för alla åldrar.
           </p>
         </TabPanel>
-        <TabPanel value="4">Item Four</TabPanel>
+        <TabPanel value="4">"helo"</TabPanel>
       </TabContext>
     </Box>
     // </Box>

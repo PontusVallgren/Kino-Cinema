@@ -27,10 +27,14 @@ ta bort breaks och justera med css mellanrummen*/
   margin-top: 1.2em;
   margin-bottom: 1em;
 }
+.title2 {
+  margin-top: 3em;
+  margin-bottom: 1em;
+}
 .rightField {
   font-size: 13px;
   margin-left: 25em;
-  margin-top: -5.8em;
+  margin-top: -9em;
 }
 .ages {
   padding: 1em;
