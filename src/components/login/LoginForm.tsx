@@ -1,18 +1,20 @@
 import {
   FormGroup,
-  IconButton,
-  InputAdornment,
   Modal,
   TextField,
+  Zoom,
+  IconButton,
+  InputAdornment,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useContext } from "react";
 import classes from "../../pages/login/index.module.css";
 import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Link from "next/link";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { visiblePasswordState } from "../../types";
+import { LoggedInContext } from "./IsLoggedIn";
 
 type LoginForm = {
   newMember: (value: boolean) => void;
@@ -27,6 +29,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
     password: "",
     showPassword: false,
   });
+  const { changeLogInState } = useContext(LoggedInContext);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -55,7 +58,6 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   ) => {
     event.preventDefault();
   };
-
   const handleClose = () => setOpenModal(false);
 
   return (
@@ -148,17 +150,22 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
       >
         <Box className={classes.loggedIn}>
           <Box className={classes.logAlarm}>
-            <CheckCircleIcon
-              className={classes.loggedInIcon}
-              color="secondary"
-            />
+            <Zoom in={true} style={{ transitionDelay: "280ms" }}>
+              <CheckCircleIcon
+                className={classes.loggedInIcon}
+                color="secondary"
+              />
+            </Zoom>
             <h1>{`Välkommen ${userName}!`}</h1>
             <h3>Nu är du loggad</h3>
             <Link href="/" passHref>
               <CustomButton
                 color="primary"
                 variant="contained"
-                onClick={handleClose}
+                onClick={() => {
+                  handleClose();
+                  changeLogInState();
+                }}
                 className={classes.loggedInBtn}
               >
                 Till startsidan

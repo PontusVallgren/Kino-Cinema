@@ -22,3 +22,11 @@ export interface visiblePasswordState {
 
   showPassword: boolean;
 }
+export interface ILoggedInContextType {
+  isLoggedIn: boolean;
+  changeLogInState: () => void;
+}
+
+export interface ChildrenProps {
+  children: any;
+}
