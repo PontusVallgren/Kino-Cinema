@@ -76,10 +76,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
                 )}
               </Box>
               <CustomButton
-                onClick={(e) => {
-                  handleSubmit(e);
-                  changeLogInState();
-                }}
+                onClick={handleSubmit}
                 color="secondary"
                 variant="contained"
                 type="submit"
@@ -116,7 +113,10 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
               <CustomButton
                 color="primary"
                 variant="contained"
-                onClick={handleClose}
+                onClick={() => {
+                  handleClose();
+                  changeLogInState();
+                }}
                 className={classes.loggedInBtn}
               >
                 Till startsidan

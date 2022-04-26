@@ -10,6 +10,7 @@ import { CenterBox } from "./CustomMUI/CustomUI";
 
 const NavbarKino: React.FC = () => {
   const { isLoggedIn } = useContext(LoggedInContext);
+  console.log(isLoggedIn, "ya");
   const [value, setValue] = useState<number>(0);
 
   const menus: menuProps[] = [
