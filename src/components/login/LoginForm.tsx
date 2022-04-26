@@ -1,15 +1,11 @@
 import { FormGroup, Modal, TextField, Zoom } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useContext } from "react";
 import classes from "../../pages/login/index.module.css";
-import {
-  CenterHorizon,
-  CustomText,
-  CustomButton,
-  CenterBox,
-} from "../CustomMUI/CustomUI";
+import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Link from "next/link";
+import { LoggedInContext } from "./IsLoggedIn";
 
 type LoginForm = {
   newMember: (value: boolean) => void;
@@ -19,6 +15,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
+  const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -79,7 +76,10 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
                 )}
               </Box>
               <CustomButton
-                onClick={handleSubmit}
+                onClick={(e) => {
+                  handleSubmit(e);
+                  changeLogInState();
+                }}
                 color="secondary"
                 variant="contained"
                 type="submit"
