@@ -27,7 +27,7 @@ const LoggedInModal: React.FC<modalProps> = ({
             />
           </Zoom>
           <h1>{`Välkommen ${userName}!`}</h1>
-          <h3>Nu är du loggad</h3>
+          <h3>Nu är du inloggad</h3>
           <Link href="/" passHref>
             <CustomButton
               color="primary"
