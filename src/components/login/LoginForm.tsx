@@ -1,14 +1,22 @@
-import { FormGroup, TextField } from "@mui/material";
+import { FormGroup, Modal, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState } from "react";
 import classes from "../../pages/login/index.module.css";
-import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
+import {
+  CenterHorizon,
+  CustomText,
+  CustomButton,
+  CenterBox,
+} from "../CustomMUI/CustomUI";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import Link from "next/link";
 
 type LoginForm = {
   newMember: (value: boolean) => void;
 };
 const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
 
@@ -25,7 +33,20 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
       }),
     });
     if (res.status === 401) setPasswordWrong(true);
+    if (res.status === 200) setOpen(true);
   };
+  const style = {
+    position: "absolute" as "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: "150px",
+  };
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -90,6 +111,28 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
           </Box>
         </Box>
       </Box>
+      <Modal open={open} aria-labelledby="modal" aria-describedby="loggedin">
+        <Box className={classes.loggedIn}>
+          <Box className={classes.logAlarm}>
+            <CheckCircleIcon
+              className={classes.loggedInIcon}
+              color="secondary"
+            />
+            <h1>{`Välkommen ${userName}!`}</h1>
+            <h3>Nu är du loggad</h3>
+            <Link href="/" passHref>
+              <CustomButton
+                color="primary"
+                variant="contained"
+                onClick={handleClose}
+                className={classes.loggedInBtn}
+              >
+                Till startsidan
+              </CustomButton>
+            </Link>
+          </Box>
+        </Box>
+      </Modal>
     </>
   );
 };

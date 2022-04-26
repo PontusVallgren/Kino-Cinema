@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 import SignUp from "../../components/login/SignUp";
 import LoginForm from "../../components/login/LoginForm";
+import classes from "./index.module.css";
+import { Box } from "@mui/system";
 
 const Login: NextPage = () => {
   const [isMember, setIsMember] = useState<boolean>(true);
@@ -20,14 +22,7 @@ const Login: NextPage = () => {
   return (
     <div className="main">
       {isMember ? (
-        <>
-          <LoginForm newMember={handleMember} />
-          {/* <Box className={classes.loggedIn}>
-            <Box className={classes.loginAlarm}>
-              <h1>hello i logged in</h1>
-            </Box>
-          </Box> */}
-        </>
+        <LoginForm newMember={handleMember} />
       ) : (
         <SignUp userClickedBack={handleBack} />
       )}
