@@ -25,8 +25,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
-  const [values, setValues] = React.useState<visiblePasswordState>({
-    password: "",
+  const [values, setValues] = useState<visiblePasswordState>({
     showPassword: false,
   });
   const { changeLogInState } = useContext(LoggedInContext);
@@ -48,7 +47,6 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   };
   const handleClickShowPassword = () => {
     setValues({
-      ...values,
       showPassword: !values.showPassword,
     });
   };

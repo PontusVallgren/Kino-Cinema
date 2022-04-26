@@ -5,7 +5,7 @@ import {
   TextField,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import classes from "../../pages/login/index.module.css";
 
 import {
@@ -16,6 +16,7 @@ import {
 } from "../CustomMUI/CustomUI";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { visiblePasswordState } from "../../types";
+import { validatePassword } from "../../server/utils/password";
 
 type signUpProp = {
   userClickedBack: (value: boolean) => void;
@@ -23,32 +24,45 @@ type signUpProp = {
 
 const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
   const [userName, setUserName] = useState<string>("");
+  const [strongPassword, setStrongPassword] = useState<boolean>(true);
   const [userPassword, setUserPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
-
-  const [values, setValues] = React.useState<visiblePasswordState>({
-    password: "",
+  const [values, setValues] = useState<visiblePasswordState>({
     showPassword: false,
   });
-  const handleSignUp = async () => {
-    await fetch(`/api/account`, {
-      method: "POST",
 
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: userName,
-        userpassword: userPassword,
-        firstName: firstName,
-        lastName: lastName,
-      }),
-    });
+  const handleSignUp = async (e: FormEvent) => {
+    if (!strongPassword) {
+      console.log(strongPassword, "pass");
+      e.preventDefault();
+      return;
+    } else {
+      await fetch(`/api/useraccount`, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: userName,
+          userpassword: userPassword,
+          firstName: firstName,
+          lastName: lastName,
+        }),
+      });
+    }
   };
+  const handleStrongPassword = (value: string) => {
+    if (!validatePassword(value)) {
+      setStrongPassword(false);
+    } else {
+      setStrongPassword(true);
+    }
+  };
+
   const handleClickShowPassword = () => {
     setValues({
-      ...values,
       showPassword: !values.showPassword,
     });
   };
@@ -65,7 +79,7 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
       <Box className={classes.emptySpaceOfSignUp}>
         <Box className={classes.loginForm}>
           <CustomText className={classes.loginTitle}>Registrera</CustomText>
-          <CenterHorizon component="form">
+          <CenterHorizon component="form" onSubmit={(e) => handleSignUp(e)}>
             <FormGroup aria-label="position">
               <CustomText sx={{ marginLeft: "5px" }}>🔹Ditt konto</CustomText>
               <TextField
@@ -102,9 +116,21 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
                     </InputAdornment>
                   ),
                 }}
-                onChange={(e) => setUserPassword(e.target.value)}
+                onChange={(e) => {
+                  setUserPassword(e.target.value);
+                  handleStrongPassword(e.target.value);
+                }}
               />
-              <CustomText sx={{ margin: "5px 0 0 5px" }}>
+              <Box className={classes.emptyWarning}>
+                {strongPassword ? (
+                  ""
+                ) : (
+                  <CustomText className={strongPassword ? "" : classes.warning}>
+                    Lösenord : mer än 8 bokstavär + nummer + stor bokstav
+                  </CustomText>
+                )}
+              </Box>
+              <CustomText sx={{ margin: "10px 0 0 5px" }}>
                 🔹Ditt namn
               </CustomText>
               <TextField
@@ -127,7 +153,6 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
                 onChange={(e) => setLastName(e.target.value)}
               />
               <CustomButton
-                onClick={handleSignUp}
                 color="primary"
                 variant="contained"
                 type="submit"

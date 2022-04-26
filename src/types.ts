@@ -18,8 +18,6 @@ export interface userAccountProps {
 }
 
 export interface visiblePasswordState {
-  password: string;
-
   showPassword: boolean;
 }
 export interface ILoggedInContextType {
