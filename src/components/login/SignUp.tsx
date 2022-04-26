@@ -17,14 +17,15 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { visiblePasswordState } from "../../types";
 import { validatePassword } from "../../server/utils/password";
-
+import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
 type signUpProp = {
-  userClickedBack: (value: boolean) => void;
+  goBack: (value: boolean) => void;
 };
 
-const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
+const SignUp: React.FC<signUpProp> = ({ goBack }) => {
   const [userName, setUserName] = useState<string>("");
   const [strongPassword, setStrongPassword] = useState<boolean>(true);
+  const [usernameExists, setUsernameExists] = useState<boolean>(false);
   const [userPassword, setUserPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
@@ -33,14 +34,10 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
   });
 
   const handleSignUp = async (e: FormEvent) => {
-    if (!strongPassword) {
-      console.log(strongPassword, "pass");
-      e.preventDefault();
-      return;
-    } else {
-      await fetch(`/api/useraccount`, {
+    e.preventDefault();
+    if (strongPassword) {
+      const res = await fetch(`/api/useraccount`, {
         method: "POST",
-
         headers: {
           "Content-Type": "application/json",
         },
@@ -51,6 +48,14 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
           lastName: lastName,
         }),
       });
+      if (res.status === 200) {
+        const timer = setTimeout(() => {
+          goBack(true);
+        }, 600);
+        return () => clearTimeout(timer);
+      } else {
+        setUsernameExists(true);
+      }
     }
   };
   const handleStrongPassword = (value: string) => {
@@ -75,7 +80,7 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
 
   return (
     <>
-      <PreviousPageBtn onClick={() => userClickedBack(true)} />
+      <PreviousPageBtn onClick={() => goBack(true)} />
       <Box className={classes.emptySpaceOfSignUp}>
         <Box className={classes.loginForm}>
           <CustomText className={classes.loginTitle}>Registrera</CustomText>
@@ -89,7 +94,19 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
                 className={classes.userInput}
                 required
                 onChange={(e) => setUserName(e.target.value)}
+                onFocus={() => (usernameExists ? setUsernameExists(false) : "")}
                 color="info"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      {usernameExists ? (
+                        <DoNotDisturbAltIcon color="error" />
+                      ) : (
+                        ""
+                      )}
+                    </InputAdornment>
+                  ),
+                }}
               />
               <TextField
                 id="userPassword"

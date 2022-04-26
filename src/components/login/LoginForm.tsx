@@ -148,7 +148,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
       >
         <Box className={classes.loggedIn}>
           <Box className={classes.logAlarm}>
-            <Zoom in={true} style={{ transitionDelay: "280ms" }}>
+            <Zoom in={true} style={{ transitionDelay: "320ms" }}>
               <CheckCircleIcon
                 className={classes.loggedInIcon}
                 color="secondary"
