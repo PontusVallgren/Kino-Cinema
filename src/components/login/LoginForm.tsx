@@ -1,15 +1,11 @@
-import { FormGroup, Modal, TextField } from "@mui/material";
+import { FormGroup, Modal, TextField, Zoom } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useContext } from "react";
 import classes from "../../pages/login/index.module.css";
-import {
-  CenterHorizon,
-  CustomText,
-  CustomButton,
-  CenterBox,
-} from "../CustomMUI/CustomUI";
+import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Link from "next/link";
+import { LoggedInContext } from "./IsLoggedIn";
 
 type LoginForm = {
   newMember: (value: boolean) => void;
@@ -19,6 +15,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
+  const { changeLogInState } = useContext(LoggedInContext);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -35,17 +32,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
     if (res.status === 401) setPasswordWrong(true);
     if (res.status === 200) setOpen(true);
   };
-  const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: "150px",
-  };
-  const handleOpen = () => setOpen(true);
+
   const handleClose = () => setOpen(false);
 
   return (
@@ -114,17 +101,22 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
       <Modal open={open} aria-labelledby="modal" aria-describedby="loggedin">
         <Box className={classes.loggedIn}>
           <Box className={classes.logAlarm}>
-            <CheckCircleIcon
-              className={classes.loggedInIcon}
-              color="secondary"
-            />
+            <Zoom in={true} style={{ transitionDelay: "280ms" }}>
+              <CheckCircleIcon
+                className={classes.loggedInIcon}
+                color="secondary"
+              />
+            </Zoom>
             <h1>{`Välkommen ${userName}!`}</h1>
             <h3>Nu är du loggad</h3>
             <Link href="/" passHref>
               <CustomButton
                 color="primary"
                 variant="contained"
-                onClick={handleClose}
+                onClick={() => {
+                  handleClose();
+                  changeLogInState();
+                }}
                 className={classes.loggedInBtn}
               >
                 Till startsidan

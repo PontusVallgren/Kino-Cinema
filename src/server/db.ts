@@ -15,7 +15,6 @@ export const saveModel = async (model: Document<any>) => {
 export const getData = async (model: Model<any>) => {
   await connect(url);
   const result = await model.find();
-  await connection.close();
 
   return result;
 };

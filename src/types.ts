@@ -16,3 +16,12 @@ export interface userAccountProps {
   firstName: string;
   lastName: string;
 }
+
+export interface ILoggedInContextType {
+  isLoggedIn: boolean;
+  changeLogInState: () => void;
+}
+
+export interface ChildrenProps {
+  children: any;
+}
