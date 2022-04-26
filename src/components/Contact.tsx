@@ -4,8 +4,8 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import React from "react";
 import { Box } from "@mui/system";
+import Questions from "./Questions";
 import classes from "./Contact.module.css";
-//pages/login/index.module.css";
 
 export default function Contact() {
   const [value, setValue] = React.useState("1");
@@ -44,7 +44,7 @@ export default function Contact() {
           </p>
         </TabPanel>
         <TabPanel className={classes.smallBox} value="2">
-          Item Two
+          <Questions></Questions>
         </TabPanel>
         <TabPanel className={classes.smallBox} value="3">
           <h3 className={classes.title}>Åldersgränser på bio:</h3>
@@ -63,10 +63,9 @@ export default function Contact() {
               className={classes.statensmedie}
               href="https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-20101882-om-aldersgranser-for-film-som-ska_sfs-2010-1882"
             >
-              . Här ,
+              . Här
             </a>
-            kan du läsa mer om vilka åldergränser på bio som gäller och vad som
-            menas med dem.
+            , kan du läsa mer information åldersgränser på bio.
           </p>
           <h4 className={classes.title}>
             Är åldergräns på film en rekommendation?
@@ -101,7 +100,7 @@ export default function Contact() {
             <strong>Barntillåten:</strong> Tillåten för alla åldrar.
           </p>
         </TabPanel>
-        <TabPanel value="4">"helo"</TabPanel>
+        <TabPanel value="4">sasas</TabPanel>
       </TabContext>
     </Box>
     // </Box>

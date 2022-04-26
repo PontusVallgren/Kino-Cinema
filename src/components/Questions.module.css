@@ -1,0 +1,12 @@
+.list {
+  background-color: white;
+  font-size: 1px;
+}
+.subheader {
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}
+.items {
+  font-weight: bold;
+}
