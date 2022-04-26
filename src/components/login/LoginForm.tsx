@@ -1,24 +1,32 @@
-import { FormGroup, Modal, TextField } from "@mui/material";
+import {
+  FormGroup,
+  IconButton,
+  InputAdornment,
+  Modal,
+  TextField,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState } from "react";
 import classes from "../../pages/login/index.module.css";
-import {
-  CenterHorizon,
-  CustomText,
-  CustomButton,
-  CenterBox,
-} from "../CustomMUI/CustomUI";
+import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Link from "next/link";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { visiblePasswordState } from "../../types";
 
 type LoginForm = {
   newMember: (value: boolean) => void;
 };
+
 const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
-  const [open, setOpen] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
+  const [values, setValues] = React.useState<visiblePasswordState>({
+    password: "",
+    showPassword: false,
+  });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -33,20 +41,22 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
       }),
     });
     if (res.status === 401) setPasswordWrong(true);
-    if (res.status === 200) setOpen(true);
+    if (res.status === 200) setOpenModal(true);
   };
-  const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: "150px",
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
   };
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+
+  const handleClose = () => setOpenModal(false);
 
   return (
     <>
@@ -60,24 +70,44 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
               <TextField
                 id="Username"
                 variant="outlined"
-                label="Användarenamn"
+                label="Användarnamn"
                 className={classes.userInput}
                 onChange={(e) => {
                   setUserName(e.target.value);
                   setPasswordWrong(false);
                 }}
+                required
                 color="info"
               />
               <TextField
                 id="UserPassword"
                 variant="outlined"
                 label="Lösenord"
-                type="password"
+                type={values.showPassword ? "text" : "password"}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
                 className={classes.userInput}
                 onChange={(e) => {
                   setUserPassword(e.target.value);
                   setPasswordWrong(false);
                 }}
+                required
               />
               <Box className={classes.emptyWarning}>
                 {passwordWrong ? (
@@ -111,7 +141,11 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
           </Box>
         </Box>
       </Box>
-      <Modal open={open} aria-labelledby="modal" aria-describedby="loggedin">
+      <Modal
+        open={openModal}
+        aria-labelledby="modal"
+        aria-describedby="loggedin"
+      >
         <Box className={classes.loggedIn}>
           <Box className={classes.logAlarm}>
             <CheckCircleIcon

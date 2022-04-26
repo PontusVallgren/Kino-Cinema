@@ -1,4 +1,9 @@
-import { FormGroup, TextField } from "@mui/material";
+import {
+  FormGroup,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import classes from "../../pages/login/index.module.css";
@@ -9,16 +14,23 @@ import {
   CustomText,
   PreviousPageBtn,
 } from "../CustomMUI/CustomUI";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { visiblePasswordState } from "../../types";
 
 type signUpProp = {
   userClickedBack: (value: boolean) => void;
 };
+
 const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
 
+  const [values, setValues] = React.useState<visiblePasswordState>({
+    password: "",
+    showPassword: false,
+  });
   const handleSignUp = async () => {
     await fetch(`/api/account`, {
       method: "POST",
@@ -34,6 +46,19 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
       }),
     });
   };
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
+
   return (
     <>
       <PreviousPageBtn onClick={() => userClickedBack(true)} />
@@ -46,8 +71,9 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
               <TextField
                 id="username"
                 variant="outlined"
-                label="Användarenamn"
+                label="Användarnamn"
                 className={classes.userInput}
+                required
                 onChange={(e) => setUserName(e.target.value)}
                 color="info"
               />
@@ -55,8 +81,27 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
                 id="userPassword"
                 label="Lösenord"
                 variant="outlined"
-                type="password"
+                type={values.showPassword ? "text" : "password"}
                 className={classes.userInput}
+                required
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
                 onChange={(e) => setUserPassword(e.target.value)}
               />
               <CustomText sx={{ margin: "5px 0 0 5px" }}>
@@ -68,6 +113,7 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
                 label="Förnamn"
                 type="name"
                 className={classes.userInput}
+                required
                 onChange={(e) => setFirstName(e.target.value)}
                 color="info"
               />
@@ -77,6 +123,7 @@ const SignUp: React.FC<signUpProp> = ({ userClickedBack }) => {
                 variant="outlined"
                 type="name"
                 className={classes.userInput}
+                required
                 onChange={(e) => setLastName(e.target.value)}
               />
               <CustomButton

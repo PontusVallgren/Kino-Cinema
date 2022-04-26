@@ -16,3 +16,9 @@ export interface userAccountProps {
   firstName: string;
   lastName: string;
 }
+
+export interface visiblePasswordState {
+  password: string;
+
+  showPassword: boolean;
+}
