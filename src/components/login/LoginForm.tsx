@@ -10,17 +10,12 @@ import { Box } from "@mui/system";
 import React, { FormEvent, useState, useContext } from "react";
 import classes from "../../pages/login/index.module.css";
 import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import Link from "next/link";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { visiblePasswordState } from "../../types";
+import { LoginProps, visiblePasswordState } from "../../types";
 import { LoggedInContext } from "./IsLoggedIn";
+import LoggedInModal from "./LoggedInModal";
 
-type LoginForm = {
-  newMember: (value: boolean) => void;
-};
-
-const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
+const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
   const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
@@ -28,7 +23,6 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   const [values, setValues] = useState<visiblePasswordState>({
     showPassword: false,
   });
-  const { changeLogInState } = useContext(LoggedInContext);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -45,6 +39,7 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
     if (res.status === 401) setPasswordWrong(true);
     if (res.status === 200) setOpenModal(true);
   };
+
   const handleClickShowPassword = () => {
     setValues({
       showPassword: !values.showPassword,
@@ -56,7 +51,6 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
   ) => {
     event.preventDefault();
   };
-  const handleClose = () => setOpenModal(false);
 
   return (
     <>
@@ -141,37 +135,11 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
           </Box>
         </Box>
       </Box>
-      <Modal
-        open={openModal}
-        aria-labelledby="modal"
-        aria-describedby="loggedin"
-      >
-        <Box className={classes.loggedIn}>
-          <Box className={classes.logAlarm}>
-            <Zoom in={true} style={{ transitionDelay: "320ms" }}>
-              <CheckCircleIcon
-                className={classes.loggedInIcon}
-                color="secondary"
-              />
-            </Zoom>
-            <h1>{`Välkommen ${userName}!`}</h1>
-            <h3>Nu är du loggad</h3>
-            <Link href="/" passHref>
-              <CustomButton
-                color="primary"
-                variant="contained"
-                onClick={() => {
-                  handleClose();
-                  changeLogInState();
-                }}
-                className={classes.loggedInBtn}
-              >
-                Till startsidan
-              </CustomButton>
-            </Link>
-          </Box>
-        </Box>
-      </Modal>
+      <LoggedInModal
+        openModal={openModal}
+        userName={userName}
+        setOpenModal={setOpenModal}
+      />
     </>
   );
 };
