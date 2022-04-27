@@ -8,6 +8,7 @@ const nextConfig = {
       "assets.cdn.moviepilot.de",
       "roxarmy.com",
       "image.tmdb.org",
+      "www.looper.com",
     ],
   },
 };
