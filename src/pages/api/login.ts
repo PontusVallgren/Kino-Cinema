@@ -21,7 +21,8 @@ export default async function handleUserInfo(
 
     if (rightPassword) {
       const cookies = new Cookies(req, res);
-      const ENC_KEY = process.env.ENC_KEY || "default_key";
+      const ENC_KEY =
+        process.env.ENC_KEY || "default_key_for_risback_cinema_hello_there";
 
       cookies.set(
         "session",
