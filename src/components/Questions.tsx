@@ -94,7 +94,7 @@ export default function Questions() {
       <Collapse in={fourOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText secondary="Vi anordnar barnkalas, företagsevanemang och andra event på förfågan. Boka i biljettkassan eller  kontakta oss via telefon för bokning och prsiuppgifter. " />
+            <ListItemText secondary="Vi anordnar barnkalas, företagsevanemang och andra event på förfågan. Boka i biljettkassan eller  kontakta oss via telefon för bokning och prisuppgifter. " />
           </ListItemButton>
         </List>
       </Collapse>
@@ -106,7 +106,7 @@ export default function Questions() {
       <Collapse in={fiveOpen} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            <ListItemText secondary="Ja, som biogäst är det ok att ta med sig egna snacks. För dem som önskar handla på plats har ett mindre utbud av snacks till försäljning i biokassan." />
+            <ListItemText secondary="Ja, som biogäst är det ok att ta med sig egna snacks. För dem som önskar handla på plats har vi ett mindre utbud av snacks till försäljning i biokassan." />
           </ListItemButton>
         </List>
       </Collapse>
@@ -124,7 +124,7 @@ export default function Questions() {
       </Collapse>
 
       <ListItemButton onClick={handleClick_Seven}>
-        <ListItemText primary="Var kan kontakta er om jag har övriga frågor eller synpunkter? " />
+        <ListItemText primary="Var kan jag kontakta er om jag har övriga frågor eller synpunkter? " />
         {sevenOpen ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={sevenOpen} timeout="auto" unmountOnExit>

@@ -5,6 +5,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import React from "react";
 import { Box } from "@mui/system";
 import Questions from "./Questions";
+import FeedBackForm from "./FeedBackForm";
 import classes from "./Contact.module.css";
 
 export default function Contact() {
@@ -21,7 +22,7 @@ export default function Contact() {
             <Tab label="Kontakta oss" value="1" />
             <Tab label="Frågor och Svar" value="2" />
             <Tab label="Åldersgränser" value="3" />
-            <Tab label="Lämna feedback" value="4" />
+            <Tab label="Lämna Feedback" value="4" />
           </TabList>
         </Box>
         <TabPanel className={classes.smallBox} value="1">
@@ -100,7 +101,9 @@ export default function Contact() {
             <strong>Barntillåten:</strong> Tillåten för alla åldrar.
           </p>
         </TabPanel>
-        <TabPanel value="4">sasas</TabPanel>
+        <TabPanel className={classes.smallBox} value="4">
+          <FeedBackForm></FeedBackForm>
+        </TabPanel>
       </TabContext>
     </Box>
     // </Box>
