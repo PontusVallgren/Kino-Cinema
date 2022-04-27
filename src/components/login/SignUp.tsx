@@ -50,10 +50,7 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
         }),
       });
       if (res.status === 200) {
-        const timer = setTimeout(() => {
-          goBack(true);
-        }, 300);
-        return () => clearTimeout(timer);
+        goBack(true);
       } else {
         setUsernameExists(true);
       }
