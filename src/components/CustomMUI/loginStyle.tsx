@@ -1,6 +1,5 @@
+import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-// import { makeStyles } from "@material-ui/core/styles";
 
 const useLoginStyles = makeStyles((theme: Theme) => ({
   userInput: {
