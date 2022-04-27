@@ -50,6 +50,7 @@
 .warning {
     font-size: 1.2rem;
     margin-left: 5px;
+    padding-bottom: 5px;
     color: rgb(247, 72, 72);
     animation: blink 1s;
     animation-iteration-count: 2;
