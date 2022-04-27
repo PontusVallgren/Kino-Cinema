@@ -6,7 +6,6 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState } from "react";
-import classes from "../../pages/login/index.module.css";
 
 import {
   CenterHorizon,
@@ -18,6 +17,8 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { visiblePasswordState } from "../../types";
 import { validatePassword } from "../../server/utils/password";
 import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
+import useLoginStyles from "../CustomMUI/loginStyle";
+
 type signUpProp = {
   goBack: (value: boolean) => void;
 };
@@ -32,7 +33,7 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
   const [values, setValues] = useState<visiblePasswordState>({
     showPassword: false,
   });
-
+  const classes = useLoginStyles();
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
     if (strongPassword) {
