@@ -21,7 +21,7 @@ const Login: NextPage = () => {
       {isMember ? (
         <LoginForm newMember={handleMember} />
       ) : (
-        <SignUp userClickedBack={handleBack} />
+        <SignUp goBack={handleBack} />
       )}
     </div>
   );

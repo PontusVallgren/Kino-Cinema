@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcrypt";
-import { saveModel } from "../../server/db";
+import { getData, saveModel } from "../../server/db";
 import { userAccounts } from "../../server/models";
 
 export default async function postAccount(
@@ -9,6 +9,10 @@ export default async function postAccount(
 ) {
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(req.body.userpassword, salt);
+  const accounts = await getData(userAccounts);
+  const isSameAccount = accounts.find(
+    (account) => account.username === req.body.username
+  );
 
   const userInfo = {
     username: req.body.username,
@@ -17,7 +21,7 @@ export default async function postAccount(
     lastName: req.body.lastName,
   };
 
-  if (userInfo) {
+  if (!isSameAccount && userInfo) {
     const userAccount = new userAccounts(userInfo);
     await saveModel(userAccount);
 

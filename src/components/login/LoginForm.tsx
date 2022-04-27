@@ -1,21 +1,28 @@
-import { FormGroup, Modal, TextField, Zoom } from "@mui/material";
+import {
+  FormGroup,
+  Modal,
+  TextField,
+  Zoom,
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState, useContext } from "react";
 import classes from "../../pages/login/index.module.css";
 import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import Link from "next/link";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { LoginProps, visiblePasswordState } from "../../types";
 import { LoggedInContext } from "./IsLoggedIn";
+import LoggedInModal from "./LoggedInModal";
 
-type LoginForm = {
-  newMember: (value: boolean) => void;
-};
-const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
+const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
   const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
-  const [open, setOpen] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
-  const { changeLogInState } = useContext(LoggedInContext);
+  const [values, setValues] = useState<visiblePasswordState>({
+    showPassword: false,
+  });
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -30,10 +37,20 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
       }),
     });
     if (res.status === 401) setPasswordWrong(true);
-    if (res.status === 200) setOpen(true);
+    if (res.status === 200) setOpenModal(true);
   };
 
-  const handleClose = () => setOpen(false);
+  const handleClickShowPassword = () => {
+    setValues({
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -47,24 +64,44 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
               <TextField
                 id="Username"
                 variant="outlined"
-                label="Användarenamn"
+                label="Användarnamn"
                 className={classes.userInput}
                 onChange={(e) => {
                   setUserName(e.target.value);
                   setPasswordWrong(false);
                 }}
+                required
                 color="info"
               />
               <TextField
                 id="UserPassword"
                 variant="outlined"
                 label="Lösenord"
-                type="password"
+                type={values.showPassword ? "text" : "password"}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
                 className={classes.userInput}
                 onChange={(e) => {
                   setUserPassword(e.target.value);
                   setPasswordWrong(false);
                 }}
+                required
               />
               <Box className={classes.emptyWarning}>
                 {passwordWrong ? (
@@ -98,33 +135,11 @@ const LoginForm: React.FC<LoginForm> = ({ newMember }) => {
           </Box>
         </Box>
       </Box>
-      <Modal open={open} aria-labelledby="modal" aria-describedby="loggedin">
-        <Box className={classes.loggedIn}>
-          <Box className={classes.logAlarm}>
-            <Zoom in={true} style={{ transitionDelay: "280ms" }}>
-              <CheckCircleIcon
-                className={classes.loggedInIcon}
-                color="secondary"
-              />
-            </Zoom>
-            <h1>{`Välkommen ${userName}!`}</h1>
-            <h3>Nu är du loggad</h3>
-            <Link href="/" passHref>
-              <CustomButton
-                color="primary"
-                variant="contained"
-                onClick={() => {
-                  handleClose();
-                  changeLogInState();
-                }}
-                className={classes.loggedInBtn}
-              >
-                Till startsidan
-              </CustomButton>
-            </Link>
-          </Box>
-        </Box>
-      </Modal>
+      <LoggedInModal
+        openModal={openModal}
+        userName={userName}
+        setOpenModal={setOpenModal}
+      />
     </>
   );
 };
