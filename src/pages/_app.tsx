@@ -5,6 +5,8 @@ import { theme } from "../../styles/theme";
 import "../../styles/globals.css";
 import FooterKino from "../components/FooterKino";
 import Head from "next/head";
+import React from "react";
+import LoggedInProvider from "../components/login/IsLoggedIn";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,15 +17,17 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <div>
-          <NavbarKino />
-        </div>
-        <div>
-          <Component {...pageProps} />
-        </div>
-        <div>
-          <FooterKino />
-        </div>
+        <LoggedInProvider>
+          <div>
+            <NavbarKino />
+          </div>
+          <div>
+            <Component {...pageProps} />
+          </div>
+          <div>
+            <FooterKino />
+          </div>
+        </LoggedInProvider>
       </ThemeProvider>
     </>
   );
