@@ -3,6 +3,7 @@ import {
   TextField,
   IconButton,
   InputAdornment,
+  Grow,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState, useContext } from "react";
@@ -12,8 +13,6 @@ import { LoginProps, visiblePasswordState } from "../../types";
 import LoggedInModal from "./LoggedInModal";
 import useLoginStyles from "../CustomMUI/loginStyle";
 import { LoggedInContext } from "./IsLoggedIn";
-// import { keyframes } from "@emotion/core";
-// import { experimentalStyled as styled } from "@material-ui/core/styles";
 
 const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
   const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
@@ -110,9 +109,17 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
               />
               <Box className={classes.emptyWarning}>
                 {passwordWrong ? (
-                  <CustomText className={passwordWrong ? classes.warning : ""}>
-                    Ditt konto / lösenord är inte rätt
-                  </CustomText>
+                  <Grow
+                    in={true}
+                    style={{ transformOrigin: "0 0 0" }}
+                    {...{ timeout: 1000 }}
+                  >
+                    <CustomText
+                      className={passwordWrong ? classes.warning : ""}
+                    >
+                      Ditt konto / lösenord är inte rätt
+                    </CustomText>
+                  </Grow>
                 ) : (
                   ""
                 )}

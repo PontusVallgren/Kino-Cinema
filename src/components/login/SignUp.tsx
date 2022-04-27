@@ -1,5 +1,6 @@
 import {
   FormGroup,
+  Grow,
   IconButton,
   InputAdornment,
   TextField,
@@ -140,9 +141,17 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
                 {strongPassword ? (
                   ""
                 ) : (
-                  <CustomText className={strongPassword ? "" : classes.warning}>
-                    Lösenord : mer än 8 bokstavär + nummer + stor bokstav
-                  </CustomText>
+                  <Grow
+                    in={true}
+                    style={{ transformOrigin: "0 0 0" }}
+                    {...{ timeout: 1000 }}
+                  >
+                    <CustomText
+                      className={strongPassword ? "" : classes.warning}
+                    >
+                      Lösenord : mer än 8 bokstavär + nummer + stor bokstav
+                    </CustomText>
+                  </Grow>
                 )}
               </Box>
               <CustomText sx={{ margin: "10px 0 0 5px" }}>

@@ -1,15 +1,5 @@
 import { makeStyles } from "tss-react/mui";
 const useLoginStyles = makeStyles()((theme) => ({
-  "@global": {
-    "@keyframes blink": {
-      "0%": {
-        opacity: 0,
-      },
-      "100%": {
-        opacity: 1,
-      },
-    },
-  },
   userInput: {
     backgroundColor: "white",
     borderRadius: "8px",
@@ -56,8 +46,6 @@ const useLoginStyles = makeStyles()((theme) => ({
     marginLeft: "5px",
     paddingBottom: "5px",
     color: "#f74848",
-    animation: "blink 1s",
-    animationIterationCount: 2,
   },
   emptyWarning: {
     height: "1.2rem",
