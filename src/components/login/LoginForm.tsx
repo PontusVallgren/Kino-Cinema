@@ -12,6 +12,8 @@ import { LoginProps, visiblePasswordState } from "../../types";
 import LoggedInModal from "./LoggedInModal";
 import useLoginStyles from "../CustomMUI/loginStyle";
 import { LoggedInContext } from "./IsLoggedIn";
+// import { keyframes } from "@emotion/core";
+// import { experimentalStyled as styled } from "@material-ui/core/styles";
 
 const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
   const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
@@ -22,7 +24,7 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
   const [values, setValues] = useState<visiblePasswordState>({
     showPassword: false,
   });
-  const classes = useLoginStyles();
+  const { classes } = useLoginStyles();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

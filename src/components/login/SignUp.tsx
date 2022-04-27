@@ -33,7 +33,7 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
   const [values, setValues] = useState<visiblePasswordState>({
     showPassword: false,
   });
-  const classes = useLoginStyles();
+  const { classes } = useLoginStyles();
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
     if (strongPassword) {

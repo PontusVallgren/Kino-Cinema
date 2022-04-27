@@ -13,7 +13,7 @@ const LoggedInModal: React.FC<modalProps> = ({
   setOpenModal,
 }) => {
   const handleClose = () => setOpenModal(false);
-  const classes = useLoginStyles();
+  const { classes } = useLoginStyles();
 
   return (
     <Modal open={openModal} aria-labelledby="modal" aria-describedby="loggedin">
