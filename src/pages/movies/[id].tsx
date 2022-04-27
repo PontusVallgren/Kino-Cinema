@@ -1,6 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import DetailPageHero from "../../components/DetailPageHero";
+import MovieInformation from "../../components/MovieInformation";
 import Trailer from "../../components/Trailer";
 import { Movie } from "../../types";
 import classes from "./index.module.css";
@@ -33,9 +34,7 @@ const MovieDetails: NextPage<{ movie: Movie }> = ({ movie }) => {
       {showTrailer && (
         <Trailer trailer={movie.trailer} toggleTrailer={toggleTrailer} />
       )}
-      <h1>
-        This is movie detail page for: {movie.title} with ID: {movie.id}
-      </h1>
+      <MovieInformation movie={movie} />
     </div>
   );
 };

@@ -21,6 +21,7 @@ const DetailPageHero: NextPage<DetailsPageHeroProps> = ({
         alt={`Movie banner`}
         objectFit='cover'
         objectPosition='center top'
+        priority
       />
       <PlayCircleIcon
         onClick={toggleTrailer}

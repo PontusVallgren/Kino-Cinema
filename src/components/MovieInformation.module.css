@@ -1,0 +1,22 @@
+.information {
+    width: 600px;
+    color: #ffff;
+    padding: 5em;
+}
+
+.title {
+    font-size: 35px;
+    margin: 0 0 0.3rem 0;
+}
+
+.details span {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0.3rem 0 0;
+}
+
+.description {
+    margin: 1rem 0 0 0;
+    font-size: 20px;
+    line-height: 1.3em;
+}

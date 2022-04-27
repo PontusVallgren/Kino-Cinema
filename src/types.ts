@@ -10,6 +10,10 @@ export type Movie = {
   coverImg: string;
   backgroundImg: string;
   trailer: string;
+  genres: string[];
+  length: string;
+  age: number;
+  description: string;
 };
 
 export interface userAccountProps {
