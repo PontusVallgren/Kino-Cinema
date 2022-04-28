@@ -5,8 +5,8 @@ const nextConfig = {
     domains: [
       'i.imgur.com',
       'catalog.cinema-api.com',
-      'morbius.tthelostcity.com',
-      'www.saltypopcorn.co.uk',
+      'assets.cdn.moviepilot.de',
+      'roxarmy.com',
     ],
   },
 };

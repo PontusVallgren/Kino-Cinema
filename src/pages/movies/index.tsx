@@ -21,8 +21,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     if (size) { 
         filters.push(`size=${size}`)
     }
-
-    const res = await fetch(`http://localhost:3000/api/movies?${filters.join('&')}`)
+    const protocol = context.req.headers["x-forwarded-proto"] || "http";
+    const baseUrl = context.req ? `${protocol}://${context.req.headers.host}` : "";
+    const res = await fetch(`${baseUrl}/api/movies?${filters.join('&')}`)
     const data = await res.json()
 
     return {

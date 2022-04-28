@@ -6,7 +6,6 @@ import LoginForm from "../../components/login/LoginForm";
 
 const Login: NextPage = () => {
   const [isMember, setIsMember] = useState<boolean>(true);
-  const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
 
   const handleMember = (value: boolean) => {
     setIsMember(value);
@@ -20,16 +19,9 @@ const Login: NextPage = () => {
   return (
     <div className="main">
       {isMember ? (
-        <>
-          <LoginForm newMember={handleMember} />
-          {/* <Box className={classes.loggedIn}>
-            <Box className={classes.loginAlarm}>
-              <h1>hello i logged in</h1>
-            </Box>
-          </Box> */}
-        </>
+        <LoginForm newMember={handleMember} />
       ) : (
-        <SignUp userClickedBack={handleBack} />
+        <SignUp goBack={handleBack} />
       )}
     </div>
   );

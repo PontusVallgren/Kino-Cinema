@@ -13,7 +13,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="main">
         <h1>Hello fellow developers!</h1>
-        <Box sx={{ height: "900px" }}>hello</Box>
+        <Box sx={{ height: "110vh", backgroundColor: "yello" }}>hello</Box>
       </div>
     </>
   );

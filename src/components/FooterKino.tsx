@@ -31,7 +31,7 @@ const FooterKino = () => {
           <LocationOnIcon
             sx={{ position: "relative", top: "6px", color: "#ee5252" }}
           />
-          Location : Risbäckgatan 1337
+          Location : Risbäcksgatan 1337
         </CustomText>
       </Box>
       <Box>
@@ -44,7 +44,7 @@ const FooterKino = () => {
               marginRight: "3px",
             }}
           />
-          Riskback@risback.com
+          Risback@risback.com
         </CustomText>
       </Box>
     </CenterBox>

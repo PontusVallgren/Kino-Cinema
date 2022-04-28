@@ -1,8 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
-html {
-    height: 100%;
-}
-
 * {
     padding: 0;
     margin: 0;
@@ -13,7 +9,6 @@ html {
 
 .main {
     background-image: url("../src/components/Img/1066909-blue-background-wallpaper-1920x1200-high-resolution.jpg");
-    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -21,4 +16,10 @@ html {
 
 a {
     text-decoration: none;
+}
+
+#__next {
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
 }

@@ -3,7 +3,7 @@ import { model, models } from "mongoose";
 import { userAccountSchema } from "./schema";
 
 const userAccounts =
-  models.userAccounts || model("userAccount", userAccountSchema);
+  models.userAccounts || model("userAccounts", userAccountSchema);
 
 const movieSchema = new mongoose.Schema({
   id: { type: String, required: true },
