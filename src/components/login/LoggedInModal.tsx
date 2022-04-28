@@ -1,6 +1,6 @@
 import { Modal, Zoom } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useContext } from "react";
+import React from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Link from "next/link";
 import { CustomButton } from "../CustomMUI/CustomUI";
