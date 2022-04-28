@@ -12,13 +12,31 @@ const MyPage: NextPage = () => {
   return (
     <div className="main">
       <CustomButton color="error" variant="contained">
-        Custombutton
+        Logga ut
       </CustomButton>
       <CustomText className={classes.titleHeader}>Mina Sidor</CustomText>
       <CenterHorizon>
-        <div className={classes.mainContent}>
-          <p>Johan</p>
-          <p>Ekström</p>
+        <div className={classes.background}>
+          <div className={classes.mainContent}>
+            <h2>Profil</h2>
+            <div className={classes.nameInfo}>
+              <label>
+                Förnamn
+                <h4>Johan</h4>
+              </label>
+              <label>
+                Efternamn
+                <h4>Ekström</h4>
+              </label>
+              <label>
+                Användarnamn
+                <h4>JohanEkstroem</h4>
+              </label>
+            </div>
+            <div className={classes.tickets}>
+              <h2>Mina biljetter</h2>
+            </div>
+          </div>
         </div>
       </CenterHorizon>
     </div>
