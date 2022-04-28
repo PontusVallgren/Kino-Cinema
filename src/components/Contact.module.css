@@ -1,0 +1,42 @@
+.wrapper {
+  padding-top: 8em;
+  padding-bottom: 9em;
+}
+
+.bigBox {
+  background-color: rgba(0, 0, 0, 0.37);
+  border-radius: 20px;
+  font-size: 1em;
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px 0 20px 0;
+  border-radius: 20px;
+}
+.smallBox {
+  background-color: white;
+}
+
+.statensmedie:hover {
+  color: rgb(4, 251, 243);
+}
+.title {
+  margin-top: 1.2em;
+  margin-bottom: 1em;
+}
+.title2 {
+  margin-top: 3em;
+  margin-bottom: 1em;
+}
+.rightField {
+  font-size: 13px;
+  margin-left: 25em;
+  margin-top: -9em;
+}
+.ages {
+  padding: 1em;
+}
+.title0 {
+  text-align: center;
+  margin-left: -25em;
+  color: #ffff;
+}
