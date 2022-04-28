@@ -1,20 +1,19 @@
 import { Modal, Zoom } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useContext } from "react";
+import React from "react";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import classes from "../../pages/login/index.module.css";
 import Link from "next/link";
 import { CustomButton } from "../CustomMUI/CustomUI";
-import { LoggedInContext } from "./IsLoggedIn";
 import { modalProps } from "../../types";
+import useLoginStyles from "../CustomMUI/loginStyle";
 
 const LoggedInModal: React.FC<modalProps> = ({
   openModal,
   userName,
   setOpenModal,
 }) => {
-  const { changeLogInState } = useContext(LoggedInContext);
   const handleClose = () => setOpenModal(false);
+  const { classes } = useLoginStyles();
 
   return (
     <Modal open={openModal} aria-labelledby="modal" aria-describedby="loggedin">
@@ -32,10 +31,7 @@ const LoggedInModal: React.FC<modalProps> = ({
             <CustomButton
               color="primary"
               variant="contained"
-              onClick={() => {
-                handleClose();
-                changeLogInState();
-              }}
+              onClick={handleClose}
               className={classes.loggedInBtn}
             >
               Till startsidan

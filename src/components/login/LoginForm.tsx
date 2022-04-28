@@ -1,28 +1,29 @@
 import {
   FormGroup,
-  Modal,
   TextField,
-  Zoom,
   IconButton,
   InputAdornment,
+  Grow,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState, useContext } from "react";
-import classes from "../../pages/login/index.module.css";
 import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { LoginProps, visiblePasswordState } from "../../types";
-import { LoggedInContext } from "./IsLoggedIn";
 import LoggedInModal from "./LoggedInModal";
+import useLoginStyles from "../CustomMUI/loginStyle";
+import { LoggedInContext } from "./IsLoggedIn";
 
 const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
   const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
+  const { changeLogInState } = useContext(LoggedInContext);
   const [values, setValues] = useState<visiblePasswordState>({
     showPassword: false,
   });
+  const { classes } = useLoginStyles();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -37,7 +38,10 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
       }),
     });
     if (res.status === 401) setPasswordWrong(true);
-    if (res.status === 200) setOpenModal(true);
+    if (res.status === 200) {
+      setOpenModal(true);
+      changeLogInState(true);
+    }
   };
 
   const handleClickShowPassword = () => {
@@ -105,9 +109,17 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
               />
               <Box className={classes.emptyWarning}>
                 {passwordWrong ? (
-                  <CustomText className={passwordWrong ? classes.warning : ""}>
-                    Ditt konto / lösenord är inte rätt
-                  </CustomText>
+                  <Grow
+                    in={true}
+                    style={{ transformOrigin: "0 0 0" }}
+                    {...{ timeout: 1000 }}
+                  >
+                    <CustomText
+                      className={passwordWrong ? classes.warning : ""}
+                    >
+                      Ditt konto / lösenord är inte rätt
+                    </CustomText>
+                  </Grow>
                 ) : (
                   ""
                 )}
