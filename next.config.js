@@ -7,6 +7,10 @@ const nextConfig = {
       "catalog.cinema-api.com",
       "assets.cdn.moviepilot.de",
       "roxarmy.com",
+      "cdn2.cinafilm.com",
+      "static-koimoi.akamaized.net",
+      "morbius.tthelostcity.com",
+      "www.saltypopcorn.co.uk",
     ],
   },
 };
