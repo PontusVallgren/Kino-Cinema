@@ -6,7 +6,7 @@ const thanks = () => {
   return (
     <div className="main">
       <Thanks></Thanks>
-      <Box sx={{ height: "2px" }}>test</Box>
+      <Box sx={{ height: "2px" }}></Box>
     </div>
   );
 };

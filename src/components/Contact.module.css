@@ -1,19 +1,16 @@
-/* .userInput {
-  background-color: white;
-  border-radius: 8px;
-  width: 500px;
-  margin: 5px;
-  border: 0 solid black;
-} 
+.wrapper {
+  padding-top: 8em;
+  padding-bottom: 9em;
+}
 
-ta bort breaks och justera med css mellanrummen*/
 .bigBox {
   background-color: rgba(0, 0, 0, 0.37);
   border-radius: 20px;
   font-size: 1em;
   width: 700px;
   margin: 0 auto;
-  padding: 100px 0 150px 0;
+  padding: 20px 0 20px 0;
+  border-radius: 20px;
 }
 .smallBox {
   background-color: white;

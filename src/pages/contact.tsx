@@ -6,7 +6,7 @@ const contact = () => {
   return (
     <div className="main">
       <Contact></Contact>
-      <Box sx={{ height: "2px" }}>test</Box>
+      <Box sx={{ height: "2px" }}></Box>
     </div>
   );
 };
