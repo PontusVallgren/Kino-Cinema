@@ -1,4 +1,4 @@
-import Cookies from 'cookies';
+import Cookies, { connect } from 'cookies';
 import Iron from '@hapi/iron';
 import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
@@ -8,8 +8,8 @@ import {
   CustomText,
 } from '../../components/CustomMUI/CustomUI';
 import classes from './index.module.css';
-
-//const ENC_KEY = 'Jm!S!xQ?mtyhH@a4XUU3ka?HYXx^86FA@^6sp5_6%Be9x8B^7D$Z#Fe2pc&*Q%';
+import { getData } from '../../server/db';
+import { userAccounts } from '../../server/models';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
@@ -31,6 +31,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       //Incorrect enctrypted string
     }
   }
+
   return {
     notFound: true,
   };
@@ -38,8 +39,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 type MyPageProps = {
   username: string;
+  loggedIn: boolean;
 };
-const MyPage: NextPage<MyPageProps> = ({ username }) => {
+const MyPage: NextPage<MyPageProps> = ({ username, loggedIn }) => {
+  function test() {
+    connect;
+  }
   return (
     <div className="main">
       <CustomButton color="error" variant="contained">
@@ -88,14 +93,9 @@ const MyPage: NextPage<MyPageProps> = ({ username }) => {
           </div>
         </div>
       </CenterHorizon>
+      <button onClick={test}>Test</button>
     </div>
   );
 };
 
 export default MyPage;
-/* 
-1. When user types in correct username and password, redirects to mypage.
-  A. Render hardcoded stuff in localhost:3000/login
-  B. Fetch data from DB
-  C. Replace hardcoded stuff. (Stuff is: firstname, lastname) 
-  */

@@ -1,12 +1,12 @@
 import {
   FormGroup,
+  Grow,
   IconButton,
   InputAdornment,
   TextField,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState } from "react";
-import classes from "../../pages/login/index.module.css";
 
 import {
   CenterHorizon,
@@ -18,6 +18,8 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { visiblePasswordState } from "../../types";
 import { validatePassword } from "../../server/utils/password";
 import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
+import useLoginStyles from "../CustomMUI/loginStyle";
+
 type signUpProp = {
   goBack: (value: boolean) => void;
 };
@@ -32,7 +34,7 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
   const [values, setValues] = useState<visiblePasswordState>({
     showPassword: false,
   });
-
+  const { classes } = useLoginStyles();
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
     if (strongPassword) {
@@ -49,10 +51,7 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
         }),
       });
       if (res.status === 200) {
-        const timer = setTimeout(() => {
-          goBack(true);
-        }, 300);
-        return () => clearTimeout(timer);
+        goBack(true);
       } else {
         setUsernameExists(true);
       }
@@ -142,9 +141,17 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
                 {strongPassword ? (
                   ""
                 ) : (
-                  <CustomText className={strongPassword ? "" : classes.warning}>
-                    Lösenord : mer än 8 bokstavär + nummer + stor bokstav
-                  </CustomText>
+                  <Grow
+                    in={true}
+                    style={{ transformOrigin: "0 0 0" }}
+                    {...{ timeout: 1000 }}
+                  >
+                    <CustomText
+                      className={strongPassword ? "" : classes.warning}
+                    >
+                      Lösenord : mer än 8 bokstavär + nummer + stor bokstav
+                    </CustomText>
+                  </Grow>
                 )}
               </Box>
               <CustomText sx={{ margin: "10px 0 0 5px" }}>
