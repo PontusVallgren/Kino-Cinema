@@ -1,11 +1,11 @@
-import { NextPage } from "next";
+import React from "react";
 
 type TrailerProps = {
   trailer: string;
   toggleTrailer: () => void;
 };
 
-const Trailer: NextPage<TrailerProps> = ({ trailer, toggleTrailer }) => {
+const Trailer: React.FC<TrailerProps> = ({ trailer, toggleTrailer }) => {
   return (
     <div
       onClick={toggleTrailer}

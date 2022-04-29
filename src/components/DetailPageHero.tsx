@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import React from "react";
 import Image from "next/Image";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 
@@ -7,7 +7,7 @@ type DetailsPageHeroProps = {
   toggleTrailer: () => void;
 };
 
-const DetailPageHero: NextPage<DetailsPageHeroProps> = ({
+const DetailPageHero: React.FC<DetailsPageHeroProps> = ({
   banner,
   toggleTrailer,
 }) => {

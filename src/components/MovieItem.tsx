@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import React from "react";
 import Link from "next/link";
 import Image from "next/Image";
 import classes from "./MovieItem.module.css";
@@ -8,7 +8,7 @@ type MovieItemProps = {
   movie: Movie;
 };
 
-const MovieItem: NextPage<MovieItemProps> = ({ movie }) => {
+const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
   return (
     <li className={classes.card}>
       <Link href={`/movies/${movie.id}`}>
