@@ -16,6 +16,15 @@ export type Movie = {
   description: string;
 };
 
+export type DetailsInfo = {
+  title: string;
+  rating: string;
+  genres: string[];
+  age: string;
+  length: string;
+  description: string;
+};
+
 export interface userAccountProps {
   username: string;
   userpassword: string;

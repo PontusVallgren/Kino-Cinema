@@ -3,23 +3,42 @@ import { useState } from "react";
 import DetailPageHero from "../../components/DetailPageHero";
 import MovieInformation from "../../components/MovieInformation";
 import Trailer from "../../components/Trailer";
-import { Movie } from "../../types";
+import { movies } from "../../server/models";
+import { DetailsInfo } from "../../types";
 import classes from "./index.module.css";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(
-    `http:localhost:3000/api/movies/${context.params!.id}`
-  );
-  const data = await res.json();
+  const id = context.params!.id;
+  const data = await movies.find();
+  const movie = data.find((movie) => movie.id === id);
 
   return {
     props: {
-      movie: data,
+      backgroundImg: movie.backgroundImg,
+      trailer: movie.trailer,
+      details: {
+        title: movie.title,
+        rating: movie.rating,
+        genres: movie.genres,
+        age: movie.age,
+        length: movie.length,
+        description: movie.description,
+      },
     },
   };
 };
 
-const MovieDetails: NextPage<{ movie: Movie }> = ({ movie }) => {
+type MovieDetailsProps = {
+  backgroundImg: string;
+  trailer: string;
+  details: DetailsInfo;
+};
+
+const MovieDetails: NextPage<MovieDetailsProps> = ({
+  backgroundImg,
+  trailer,
+  details,
+}) => {
   const [showTrailer, setShowTrailer] = useState(false);
 
   const toggleTrailer = () => {
@@ -27,14 +46,11 @@ const MovieDetails: NextPage<{ movie: Movie }> = ({ movie }) => {
   };
   return (
     <div className={classes.container}>
-      <DetailPageHero
-        toggleTrailer={toggleTrailer}
-        banner={movie.backgroundImg}
-      />
+      <DetailPageHero toggleTrailer={toggleTrailer} banner={backgroundImg} />
       {showTrailer && (
-        <Trailer trailer={movie.trailer} toggleTrailer={toggleTrailer} />
+        <Trailer trailer={trailer} toggleTrailer={toggleTrailer} />
       )}
-      <MovieInformation movie={movie} />
+      <MovieInformation movie={details} />
     </div>
   );
 };

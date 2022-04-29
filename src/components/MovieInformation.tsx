@@ -1,10 +1,10 @@
-import { Movie } from "../types";
 import classes from "./MovieInformation.module.css";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import { DetailsInfo } from "../types";
 
 type MovieInformationProps = {
-  movie: Movie;
+  movie: DetailsInfo;
 };
 
 const MovieInformation: React.FC<MovieInformationProps> = ({ movie }) => {
