@@ -27,5 +27,10 @@
   padding: 5px;
 }
 
-.tickets {
+.tickets li {
+  display: flex;
+  justify-content: space-around;
+}
+.tickets span {
+  font-weight: 700;
 }
