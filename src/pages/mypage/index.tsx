@@ -8,8 +8,6 @@ import {
   CustomText,
 } from '../../components/CustomMUI/CustomUI';
 import classes from './index.module.css';
-import { getData } from '../../server/db';
-import { userAccounts } from '../../server/models';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
@@ -20,10 +18,24 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (sessionStr) {
     try {
       const session = await Iron.unseal(sessionStr, ENC_KEY, Iron.defaults);
+      const config = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username: session.username }),
+      };
+
+      const response = await fetch('http://localhost:3000/api/getuser', config);
+      const data = await response.json();
+
       if (session.loggedIn) {
         return {
           props: {
             username: session.username,
+            firstname: data.firstname,
+            lastname: data.lastname,
           },
         };
       }
@@ -39,11 +51,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 type MyPageProps = {
   username: string;
+  firstname: string;
+  lastname: string;
   loggedIn: boolean;
 };
-const MyPage: NextPage<MyPageProps> = ({ username, loggedIn }) => {
-  function test() {
-    connect;
+const MyPage: NextPage<MyPageProps> = ({
+  username,
+  firstname,
+  lastname,
+  loggedIn,
+}) => {
+  async function test() {
+    const response = await fetch('/api/getuser');
+    const data = await response.json();
+    console.log(data);
   }
   return (
     <div className="main">
@@ -58,11 +79,11 @@ const MyPage: NextPage<MyPageProps> = ({ username, loggedIn }) => {
             <div className={classes.nameInfo}>
               <label>
                 Förnamn
-                <h4>Johan</h4>
+                <h4>{firstname}</h4>
               </label>
               <label>
                 Efternamn
-                <h4>Ekström</h4>
+                <h4>{lastname}</h4>
               </label>
               <label>
                 Användarnamn
