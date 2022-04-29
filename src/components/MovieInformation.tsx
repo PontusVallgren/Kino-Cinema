@@ -27,14 +27,3 @@ const MovieInformation: React.FC<MovieInformationProps> = ({ movie }) => {
 };
 
 export default MovieInformation;
-
-/* 
-
-
-
-
-           <span
-        className={classes.details}
-      >{`*${movie.rating} | ${movie.genres[0]} | ${movie.age}+ | ${movie.length}`}</span>
-
-*/
