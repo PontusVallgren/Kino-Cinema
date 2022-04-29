@@ -8,6 +8,10 @@
     font-size: 35px;
     margin: 0 0 0.3rem 0;
 }
+.details {
+    display: flex;
+    align-items: center;
+}
 
 .details span {
     font-size: 18px;

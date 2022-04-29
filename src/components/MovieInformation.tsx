@@ -12,10 +12,8 @@ const MovieInformation: React.FC<MovieInformationProps> = ({ movie }) => {
     <div className={classes.information}>
       <h1 className={classes.title}>{movie.title}</h1>
       <div className={classes.details}>
-        <span>
-          <StarRateIcon fontSize='inherit'></StarRateIcon>
-          {`${movie.rating} |`}
-        </span>
+        <StarRateIcon fontSize='inherit'></StarRateIcon>
+        <span>{`${movie.rating} |`}</span>
         <span>{`${movie.genres[0]} |`}</span>
         <span>{`${movie.age}+ |`}</span>
         <AccessTimeFilledIcon fontSize='inherit'></AccessTimeFilledIcon>
