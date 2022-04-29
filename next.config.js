@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-<<<<<<< HEAD
   reactStrictMode: true,
   images: {
     domains: [
@@ -21,21 +20,6 @@ const nextConfig = {
       "d2iltjk184xms5.cloudfront.net",
     ],
   },
-=======
-    reactStrictMode: true,
-    images: {
-        domains: [
-            "i.imgur.com",
-            "catalog.cinema-api.com",
-            "assets.cdn.moviepilot.de",
-            "roxarmy.com",
-            "cdn2.cinafilm.com",
-            "static-koimoi.akamaized.net",
-            "morbius.tthelostcity.com",
-            "www.saltypopcorn.co.uk",
-        ],
-    },
->>>>>>> main
 };
 
 module.exports = nextConfig;
