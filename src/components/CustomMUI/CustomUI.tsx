@@ -1,8 +1,7 @@
-import { Button, Tab, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
 import ArrowCircleLeftRoundedIcon from "@mui/icons-material/ArrowCircleLeftRounded";
-import React from "react";
 export const CustomText = styled(Typography, {
   shouldForwardProp: (props) => props !== "sx",
 })(() => ({

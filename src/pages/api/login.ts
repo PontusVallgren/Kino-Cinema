@@ -1,11 +1,10 @@
 import Cookies from "cookies";
 import Iron from "@hapi/iron";
 import { NextApiRequest, NextApiResponse } from "next";
+import bcrypt from "bcrypt";
+import { userAccounts } from "../../server/models";
+import { getData } from "../../server/db";
 
-const USERS: Record<string, string> = {
-  haeju: "potato",
-  johan: "what are you looking at",
-};
 export default async function handleUserInfo(
   req: NextApiRequest,
   res: NextApiResponse
@@ -13,14 +12,18 @@ export default async function handleUserInfo(
   if (req.method == "POST") {
     const { userName, userPassword } = req.body;
 
-    if (USERS[userName] && USERS[userName] == userPassword) {
+    const accounts = await getData(userAccounts);
+
+    const userInfo = accounts.find((account) => account.username === userName);
+    const rightPassword = userInfo
+      ? await bcrypt.compare(userPassword, userInfo.userpassword)
+      : undefined;
+
+    if (rightPassword) {
       const cookies = new Cookies(req, res);
+      const ENC_KEY =
+        process.env.ENC_KEY || "default_key_for_risback_cinema_hello_there";
 
-      if (!process.env.ENC_KEY) {
-        throw Error("ENC_KEY doesn't exist in .env.local");
-      }
-
-      const ENC_KEY = process.env.ENC_KEY;
       cookies.set(
         "session",
         await Iron.seal(

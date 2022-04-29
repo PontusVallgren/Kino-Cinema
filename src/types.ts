@@ -17,6 +17,30 @@ export type Movie = {
 };
 
 export interface userAccountProps {
-  userId: string;
-  userPassword: string;
+  username: string;
+  userpassword: string;
+  firstName: string;
+  lastName: string;
+}
+
+export interface visiblePasswordState {
+  showPassword: boolean;
+}
+export interface ILoggedInContextType {
+  isLoggedIn: boolean;
+  changeLogInState: (value: boolean) => void;
+}
+
+export interface ChildrenProps {
+  children: any;
+}
+
+export type LoginProps = {
+  newMember: (value: boolean) => void;
+};
+
+export interface modalProps {
+  openModal: boolean;
+  userName: string;
+  setOpenModal: (value: boolean) => void;
 }
