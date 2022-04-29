@@ -7,23 +7,18 @@ import classes from "./index.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { CustomButton } from "../../components/CustomMUI/CustomUI";
+import { movies } from "../../server/models";
+import { sortData } from "../../server/utils/filter";
+import mongoose from "mongoose";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const sort = context.query.sort;
-  const size = context.query.size;
+  mongoose.connect(process.env.DB_URL!);
+  const res = await movies.find();
+  const sort = context.query.sort as string;
+  const size = (context.query.size as string) || "9";
 
-  const filters = [];
-  if (sort) {
-    filters.push(`sort=${sort}`);
-  }
-  if (size) {
-    filters.push(`size=${size}`);
-  }
-
-  const res = await fetch(
-    `http:localhost:3000/api/movies?${filters.join("&")}`
-  );
-  const data = await res.json();
+  const filterData = sortData(res, sort, size);
+  const data = JSON.parse(JSON.stringify(filterData));
 
   return {
     props: {
@@ -37,7 +32,6 @@ const Movies: NextPage<{ movies: Movie[] }> = ({ movies }) => {
     sort: "",
     size: 9,
   });
-
   const router = useRouter();
 
   const handleChange = (value: string) => {
