@@ -61,11 +61,6 @@ const MyPage: NextPage<MyPageProps> = ({
   lastname,
   loggedIn,
 }) => {
-  async function test() {
-    const response = await fetch('/api/getuser');
-    const data = await response.json();
-    console.log(data);
-  }
   return (
     <div className="main">
       <CustomButton color="error" variant="contained">
@@ -114,7 +109,6 @@ const MyPage: NextPage<MyPageProps> = ({
           </div>
         </div>
       </CenterHorizon>
-      <button onClick={test}>Test</button>
     </div>
   );
 };
