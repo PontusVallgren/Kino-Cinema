@@ -17,7 +17,13 @@ type ReviewItemProps = {
 const ReviewItem: React.FC<ReviewItemProps> = ({ review }) => {
   return (
     <li className={classes.reviewItem_ctn}>
-      <Image src={placeholder} width='80px' height='80px' layout='fixed' />
+      <Image
+        src={placeholder}
+        width='80px'
+        height='80px'
+        layout='fixed'
+        alt='avatar'
+      />
       <div className={classes.reviewItem_info}>
         <h1>{review.username}</h1>
         <span className={classes.reviewItem_rating}>
