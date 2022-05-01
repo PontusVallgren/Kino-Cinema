@@ -1,5 +1,7 @@
 import React from "react";
 import ReviewItem from "./ReviewItem";
+import classes from "./Reviews.module.css";
+import { v4 as uuidv4 } from "uuid";
 
 type Review = {
   username: string;
@@ -13,9 +15,9 @@ type ReviewListProps = {
 
 const ReviewList: React.FC<ReviewListProps> = ({ reviews }) => {
   return (
-    <ul>
+    <ul className={classes.reviewList}>
       {reviews.map((review) => (
-        <ReviewItem key={review.comment} review={review} />
+        <ReviewItem key={uuidv4()} review={review} />
       ))}
     </ul>
   );

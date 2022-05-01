@@ -2,7 +2,6 @@ import React, { FormEvent, SyntheticEvent, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Rating from "@mui/material/Rating";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 type ReviewProps = {
@@ -30,27 +29,37 @@ const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
         comment: input,
       }),
     });
+    setInput("");
   };
 
   return (
     <>
-      <h1>Skriv en recension</h1>
       <Box
         component='form'
         sx={{
-          "& .MuiTextField-root": { m: 1, width: "500px" },
+          "& .MuiTextField-root": {
+            width: "500px",
+          },
+          display: "flex",
+          flexDirection: "column",
+          paddingX: 10,
+          paddingBottom: 2,
+          color: "white",
         }}
         noValidate
         autoComplete='off'
         method='POST'
         onSubmit={onSubmit}
       >
-        <Typography component='legend'>Rating</Typography>
+        <h1>Skriv en recension</h1>
         <Rating
           name='simple-controlled'
           value={rating}
           onChange={(event, newRating) => {
             setRating(newRating);
+          }}
+          sx={{
+            paddingY: 1,
           }}
         />
         <TextField
@@ -59,9 +68,12 @@ const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
           multiline
           rows={4}
           onChange={onChange}
-          defaultValue={input}
+          value={input}
+          sx={{
+            paddingBottom: 1,
+          }}
         />
-        <Button type='submit' variant='contained'>
+        <Button type='submit' variant='contained' sx={{ width: "500px" }}>
           Skicka
         </Button>
       </Box>

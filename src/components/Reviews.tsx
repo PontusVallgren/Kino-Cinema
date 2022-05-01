@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import ReviewForm from "./ReviewForm";
 import ReviewList from "./ReviewList";
+import classes from "./Reviews.module.css";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 type ReviewsProps = {
   reviews: [];
@@ -15,8 +18,23 @@ const Reviews: React.FC<ReviewsProps> = ({ reviews, id }) => {
   };
   return (
     <div>
-      <h1>Reviews</h1>
-      <button onClick={handleToggle}>OPEN</button>
+      <div className={classes.btnCtn}>
+        <h1>Recensioner</h1>
+        {!showReviews && (
+          <KeyboardArrowDownIcon
+            fontSize='large'
+            cursor='pointer'
+            onClick={handleToggle}
+          ></KeyboardArrowDownIcon>
+        )}
+        {showReviews && (
+          <KeyboardArrowUpIcon
+            fontSize='large'
+            cursor='pointer'
+            onClick={handleToggle}
+          ></KeyboardArrowUpIcon>
+        )}
+      </div>
       {showReviews && (
         <>
           <ReviewList reviews={reviews} />
