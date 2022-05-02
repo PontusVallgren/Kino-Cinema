@@ -14,28 +14,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const sessionStr = cookies.get('session');
   const ENC_KEY =
     process.env.ENC_KEY || 'default_key_for_risback_cinema_hello_there';
-
   if (sessionStr) {
     try {
       const session = await Iron.unseal(sessionStr, ENC_KEY, Iron.defaults);
-      const config = {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username: session.username }),
-      };
-
-      const response = await fetch('http://localhost:3000/api/getuser', config);
-      const data = await response.json();
-
       if (session.loggedIn) {
         return {
           props: {
             username: session.username,
-            firstname: data.firstname,
-            lastname: data.lastname,
+            firstname: session.firstName,
+            lastname: session.lastName,
+            loggedIn: session.loggedIn,
           },
         };
       }
@@ -66,7 +54,7 @@ const MyPage: NextPage<MyPageProps> = ({
       <CustomButton color="error" variant="contained">
         Logga ut
       </CustomButton>
-      <CustomText className={classes.titleHeader}>Mina Sidor</CustomText>
+      <CustomText>Mina Sidor</CustomText>
       <CenterHorizon>
         <div className={classes.background}>
           <div className={classes.mainContent}>
