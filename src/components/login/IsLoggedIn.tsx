@@ -6,7 +6,7 @@ export const LoggedInContext = createContext<ILoggedInContextType>({
   changeLogInState: (value: boolean) => ({}),
 });
 
-const LoggedInProvider: FC<PropsWithChildren<ChildrenProps>> = ({
+const LoggedInProvider: FC<PropsWithChildren<{}>> = ({
   children,
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
