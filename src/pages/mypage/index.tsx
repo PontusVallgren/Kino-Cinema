@@ -1,14 +1,14 @@
 import Cookies, { connect } from 'cookies';
 import Iron from '@hapi/iron';
 import { GetServerSideProps, NextPage } from 'next';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   CenterHorizon,
   CustomButton,
   CustomText,
 } from '../../components/CustomMUI/CustomUI';
 import classes from './index.module.css';
-
+import { LoggedInContext } from '../../components/login/IsLoggedIn';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
   const sessionStr = cookies.get('session');
@@ -49,9 +49,23 @@ const MyPage: NextPage<MyPageProps> = ({
   lastname,
   loggedIn,
 }) => {
+  const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
+  const handleOnClickLogout = async () => {
+    changeLogInState(false);
+    const res = await fetch('/api/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
   return (
     <div className="main">
-      <CustomButton color="error" variant="contained">
+      <CustomButton
+        color="error"
+        variant="contained"
+        onClick={handleOnClickLogout}
+      >
         Logga ut
       </CustomButton>
       <CustomText>Mina Sidor</CustomText>
