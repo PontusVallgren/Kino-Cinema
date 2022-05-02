@@ -2,10 +2,9 @@ import { Box } from "@mui/system";
 import React from "react";
 import Contact from "../components/Contact";
 import PreviousPageButton from "../components/PreviousPageButton";
-import contactStyle from "../components/CustomMUI/contactStyle";
+import classes from "../components/Contact.module.css";
 
 const contact = () => {
-  const { classes } = contactStyle();
   return (
     <div className="main">
       <PreviousPageButton />

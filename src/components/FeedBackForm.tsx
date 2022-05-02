@@ -1,14 +1,12 @@
 import { TextField } from "@mui/material";
 import React from "react";
-import feedbackStyle from "./CustomMUI/feedbackStyle";
+import classes from "./FeedBackForm.module.css";
 import Button from "@mui/material/Button";
 
 export default function FeedBackForm() {
-  const { classes } = feedbackStyle();
-
   const handleFormSubmit = async (e: any) => {
     // e.preventDefault();
-    // e.target.reset();
+    e.target.reset();
   };
 
   return (
