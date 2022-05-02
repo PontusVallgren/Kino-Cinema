@@ -6,7 +6,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import classes from "./Questions.module.css";
+import questionsStyle from "./CustomMUI/questionsStyle";
 
 export default function Questions() {
   const [open, setOpen] = React.useState(false);
@@ -16,6 +16,8 @@ export default function Questions() {
   const [fiveOpen, setfiveOpen] = React.useState(false);
   const [sixOpen, setSixOpen] = React.useState(false);
   const [sevenOpen, setSevenOpen] = React.useState(false);
+
+  const { classes } = questionsStyle();
 
   const handleClick = () => {
     setOpen(!open);
