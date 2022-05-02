@@ -7,7 +7,7 @@ import { Box } from "@mui/system";
 import Questions from "./Questions";
 import FeedBackForm from "./FeedBackForm";
 import contactStyle from "./CustomMUI/contactStyle";
-import Image from "next/image";
+import Image from "next/Image";
 import risback from "./Img/risback.png";
 
 export default function Contact() {
@@ -53,6 +53,7 @@ export default function Contact() {
                 Klicka här för karta på Google Maps.
               </a>
               <Image
+                id="map"
                 src={risback}
                 alt="map of Risback"
                 width="150px"
