@@ -7,8 +7,8 @@ import { Box } from "@mui/system";
 import Questions from "./Questions";
 import FeedBackForm from "./FeedBackForm";
 import contactStyle from "./CustomMUI/contactStyle";
-import Image from "next/image";
-import risback from "./Img/risback.png";
+// import Image from "next/image";
+// import risback from "./Img/risback.jpg";
 
 export default function Contact() {
   const [value, setValue] = React.useState("1");
@@ -52,13 +52,6 @@ export default function Contact() {
               >
                 Klicka här för karta på Google Maps.
               </a>
-              <Image
-                src={risback}
-                alt="map of Risback"
-                width="150px"
-                height="100px"
-                layout="responsive"
-              />
             </p>
           </TabPanel>
           <TabPanel className={classes.smallBox} value="2">

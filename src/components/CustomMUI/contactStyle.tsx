@@ -18,7 +18,7 @@ const contactStyle = makeStyles()((theme) => ({
   smallBox: {
     backgroundColor: "white",
     fontFamily: "Open sans",
-    paddingBottom: "5em",
+    paddingBottom: "8em",
   },
 
   statensmedie: {
@@ -51,9 +51,9 @@ const contactStyle = makeStyles()((theme) => ({
   },
   title0: {
     color: "#ffff",
-    margin: "0 0 0 3em",
+    marginLeft: "-25em",
     fontFamily: "Open sans",
-    textAlign: "left",
+    textAlign: "center",
   },
   maplink: {
     color: "black",
