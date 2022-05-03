@@ -83,7 +83,7 @@ const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
         )}
         {!isLoggedIn && (
           <div style={{ display: "flex", alignItems: "center" }}>
-            <Link href='/login'>
+            <Link href='/login' passHref>
               <Button variant='contained' sx={{ width: "150px" }}>
                 LOGGA IN
               </Button>
