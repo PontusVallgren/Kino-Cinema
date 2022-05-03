@@ -76,9 +76,23 @@ const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
             paddingBottom: 1,
           }}
         />
-        <Button type='submit' variant='contained' sx={{ width: "500px" }}>
-          Skicka
-        </Button>
+        {isLoggedIn && (
+          <Button type='submit' variant='contained' sx={{ width: "500px" }}>
+            Skicka
+          </Button>
+        )}
+        {!isLoggedIn && (
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Link href='/login'>
+              <Button variant='contained' sx={{ width: "150px" }}>
+                LOGGA IN
+              </Button>
+            </Link>
+            <p style={{ marginLeft: "1em" }}>
+              Logga in för att skriva en recension
+            </p>
+          </div>
+        )}
       </Box>
     </>
   );
