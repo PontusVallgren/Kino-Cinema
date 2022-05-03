@@ -20,6 +20,9 @@ const nextConfig = {
       "d2iltjk184xms5.cloudfront.net",
     ],
   },
+  url: {
+    domains: ["goo.gl", "statensmedierad.se", "riksdagen.se"],
+  },
 };
 
 module.exports = nextConfig;

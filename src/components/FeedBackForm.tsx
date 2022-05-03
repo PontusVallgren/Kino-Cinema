@@ -1,21 +1,19 @@
 import { TextField } from "@mui/material";
 import React from "react";
-import classes from "./FeedBackForm.module.css";
+import feedbackStyle from "./CustomMUI/feedbackStyle";
 import Button from "@mui/material/Button";
 
 export default function FeedBackForm() {
-  const handleFormSubmit = async (e: any) => {
-    // e.preventDefault();
-    e.target.reset();
-  };
-
+  const { classes } = feedbackStyle();
   return (
     <>
       <h2>Övriga synpunkter eller frågor? Lämna gärna ett meddelande.</h2>
       <form
+
         action='https://formsubmit.co/83afa7b9f826648c2534bbfc2f3f3571'
         method='POST'
         onSubmit={handleFormSubmit}
+
       >
         <TextField
           type='hidden'
