@@ -1,7 +1,8 @@
-import Cookies, { connect } from 'cookies';
+import Cookies from 'cookies';
 import Iron from '@hapi/iron';
 import { GetServerSideProps, NextPage } from 'next';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
+import Router from 'next/router';
 import {
   CenterHorizon,
   CustomButton,
@@ -51,6 +52,7 @@ const MyPage: NextPage<MyPageProps> = ({
 }) => {
   const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
   const handleOnClickLogout = async () => {
+    Router.push('/');
     changeLogInState(false);
     const res = await fetch('/api/logout', {
       method: 'POST',
