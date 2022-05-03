@@ -7,7 +7,7 @@ export default function Thanks() {
   return (
     <>
       <h1 className={classes.thanx}>Tack! Vi återkommer så snart vi kan.</h1>
-      <Link passHref href="/">
+      <Link href="/">
         <Button className={classes.homebtn} variant="outlined" size="large">
           Till första sidan
         </Button>

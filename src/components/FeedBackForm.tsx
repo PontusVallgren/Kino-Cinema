@@ -5,19 +5,12 @@ import Button from "@mui/material/Button";
 
 export default function FeedBackForm() {
   const { classes } = feedbackStyle();
-
-  const handleFormSubmit = async (e: any) => {
-    // e.preventDefault();
-    // e.target.reset();
-  };
-
   return (
     <>
       <h2>Övriga synpunkter eller frågor? Lämna gärna ett meddelande.</h2>
       <form
         action="https://formsubmit.co/83afa7b9f826648c2534bbfc2f3f3571"
         method="POST"
-        onSubmit={handleFormSubmit}
       >
         <TextField
           type="hidden"

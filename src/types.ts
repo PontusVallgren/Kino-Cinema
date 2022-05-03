@@ -25,10 +25,6 @@ export interface ILoggedInContextType {
   changeLogInState: (value: boolean) => void;
 }
 
-export interface ChildrenProps {
-  children: any;
-}
-
 export type LoginProps = {
   newMember: (value: boolean) => void;
 };
