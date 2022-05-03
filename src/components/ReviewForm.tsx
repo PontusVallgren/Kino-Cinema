@@ -21,7 +21,7 @@ const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    await fetch(`http://localhost:3000/api/movies/${id}/reviews`, {
+    await fetch(`/api/movies/${id}/reviews`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
