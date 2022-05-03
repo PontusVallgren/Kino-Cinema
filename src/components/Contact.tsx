@@ -54,6 +54,7 @@ export default function Contact() {
               </a>
               <Image
                 src={risback}
+                id="risback"
                 alt="map of Risback"
                 width="150px"
                 height="100px"
