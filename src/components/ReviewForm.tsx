@@ -1,8 +1,10 @@
-import React, { FormEvent, SyntheticEvent, useState } from "react";
+import React, { FormEvent, SyntheticEvent, useContext, useState } from "react";
+import { LoggedInContext } from "./login/IsLoggedIn";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
+import Link from "next/link";
 
 type ReviewProps = {
   id: string;
@@ -11,6 +13,7 @@ type ReviewProps = {
 const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
   const [input, setInput] = useState("");
   const [rating, setRating] = React.useState<number | null>(2);
+  const { isLoggedIn, username } = useContext(LoggedInContext);
   const onChange = (e: SyntheticEvent) => {
     const { value } = e.target as HTMLInputElement;
     setInput(value);
@@ -24,7 +27,7 @@ const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: "Kalle", // Change to current username
+        username: username,
         rating: rating,
         comment: input,
       }),

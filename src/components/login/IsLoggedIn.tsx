@@ -3,6 +3,7 @@ import { ILoggedInContextType, ChildrenProps } from "../../types";
 
 export const LoggedInContext = createContext<ILoggedInContextType>({
   isLoggedIn: false,
+  username: "",
   changeLogInState: (value: boolean) => ({}),
 });
 
@@ -10,10 +11,16 @@ const LoggedInProvider: FC<PropsWithChildren<ChildrenProps>> = ({
   children,
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const changeLogInState = (value: boolean) => setIsLoggedIn(value);
+  const [username, setUsername] = useState("");
+  const changeLogInState = (value: boolean, username: string) => {
+    setIsLoggedIn(value);
+    setUsername(username);
+  };
 
   return (
-    <LoggedInContext.Provider value={{ isLoggedIn, changeLogInState }}>
+    <LoggedInContext.Provider
+      value={{ isLoggedIn, username, changeLogInState }}
+    >
       {children}
     </LoggedInContext.Provider>
   );

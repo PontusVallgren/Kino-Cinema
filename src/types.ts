@@ -37,7 +37,8 @@ export interface visiblePasswordState {
 }
 export interface ILoggedInContextType {
   isLoggedIn: boolean;
-  changeLogInState: (value: boolean) => void;
+  username: string;
+  changeLogInState: (value: boolean, username: string) => void;
 }
 
 export interface ChildrenProps {
