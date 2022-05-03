@@ -6,7 +6,7 @@
 
 .container {
     background-image: url("../../../src/components/Img/1066909-blue-background-wallpaper-1920x1200-high-resolution.jpg");
-    min-height: 100vh;
+    min-height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,7 +16,8 @@
 
 .loadmoreBtn {
     display: flex;
-    margin: 0 auto;
+    margin: 0 auto 2em auto;
+    padding: 1em;
 }
 
 .selectCtn {

@@ -68,7 +68,12 @@ const Movies: NextPage<{ movies: Movie[] }> = ({ movies }) => {
         <FilterSelect handleChange={handleChange} value={filter.sort} />
       </div>
       <MovieList movies={movies} />
-      <CustomButton className={classes.loadmoreBtn} onClick={handleClick}>
+      <CustomButton
+        color='primary'
+        variant='contained'
+        className={classes.loadmoreBtn}
+        onClick={handleClick}
+      >
         Ladda fler filmer
       </CustomButton>
     </div>
