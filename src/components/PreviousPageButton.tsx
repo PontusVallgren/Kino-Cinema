@@ -1,8 +1,8 @@
-import { NextPage } from "next";
+import React from "react";
 import { useRouter } from "next/router";
 import { PreviousPageBtn } from "./CustomMUI/CustomUI";
 
-const PreviousPageButton: NextPage = () => {
+const PreviousPageButton: React.FC = () => {
   const router = useRouter();
   return (
     <>

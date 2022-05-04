@@ -40,7 +40,7 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
     if (res.status === 401) setPasswordWrong(true);
     if (res.status === 200) {
       setOpenModal(true);
-      changeLogInState(true);
+      changeLogInState(true, userName);
     }
   };
 
@@ -63,33 +63,33 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
           <CustomText className={classes.loginTitle}>
             Välkommen till Risbäck
           </CustomText>
-          <CenterHorizon component="form">
-            <FormGroup aria-label="position">
+          <CenterHorizon component='form'>
+            <FormGroup aria-label='position'>
               <TextField
-                id="Username"
-                variant="outlined"
-                label="Användarnamn"
+                id='Username'
+                variant='outlined'
+                label='Användarnamn'
                 className={classes.userInput}
                 onChange={(e) => {
                   setUserName(e.target.value);
                   setPasswordWrong(false);
                 }}
                 required
-                color="info"
+                color='info'
               />
               <TextField
-                id="UserPassword"
-                variant="outlined"
-                label="Lösenord"
+                id='UserPassword'
+                variant='outlined'
+                label='Lösenord'
                 type={values.showPassword ? "text" : "password"}
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">
+                    <InputAdornment position='end'>
                       <IconButton
-                        aria-label="toggle password visibility"
+                        aria-label='toggle password visibility'
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
-                        edge="end"
+                        edge='end'
                       >
                         {values.showPassword ? (
                           <VisibilityOff />
@@ -126,9 +126,9 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
               </Box>
               <CustomButton
                 onClick={handleSubmit}
-                color="secondary"
-                variant="contained"
-                type="submit"
+                color='secondary'
+                variant='contained'
+                type='submit'
                 className={classes.loginBtn}
               >
                 Logga in
