@@ -14,12 +14,6 @@
     position: relative;
 }
 
-.loadmoreBtn {
-    display: flex;
-    margin: 0 auto 2em auto;
-    padding: 1em;
-}
-
 .selectCtn {
     display: flex;
     justify-content: space-between;

@@ -6,7 +6,10 @@ import { Movie } from "../../types";
 import classes from "./index.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { CustomButton } from "../../components/CustomMUI/CustomUI";
+import {
+  CenterHorizon,
+  CustomButton,
+} from "../../components/CustomMUI/CustomUI";
 import { movies } from "../../server/models";
 import { sortData } from "../../server/utils/filter";
 import mongoose from "mongoose";
@@ -68,14 +71,16 @@ const Movies: NextPage<{ movies: Movie[] }> = ({ movies }) => {
         <FilterSelect handleChange={handleChange} value={filter.sort} />
       </div>
       <MovieList movies={movies} />
-      <CustomButton
-        color='primary'
-        variant='contained'
-        className={classes.loadmoreBtn}
-        onClick={handleClick}
-      >
-        Ladda fler filmer
-      </CustomButton>
+      <CenterHorizon sx={{ mb: 3 }}>
+        <CustomButton
+          color='primary'
+          variant='contained'
+          sx={{ p: 2 }}
+          onClick={handleClick}
+        >
+          Ladda fler filmer
+        </CustomButton>
+      </CenterHorizon>
     </div>
   );
 };
