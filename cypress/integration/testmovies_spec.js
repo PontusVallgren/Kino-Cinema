@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
-//ev check antal movies on page- samt sortering om möjligt
-describe("visit moviepage", () => {
+
+describe("usertesting moviepage", () => {
   beforeEach(() => {
     cy.visit("http://127.0.0.1:3000/movies");
   });
@@ -21,10 +21,14 @@ describe("visit moviepage", () => {
   it("Be able to click another movie and get more info about the film", () => {
     cy.findAllByRole("img", { name: /The Batman/i }).click();
   });
-  //have to set crossorigin ok to text prev.btn
-  // it("Be able to click the backward-arrow", () => {
-  //   cy.get("[data-testid=ArrowCircleLeftRoundedIcon]").click();
-  // });
+  it("be to see trailer on movieinformation-page", () => {
+    cy.findAllByRole("img", { name: /The Batman/i }).click();
+    cy.findByRole("img", { name: /Movie banner/i }).should("be.visible");
+  });
+  it("be to see trailer another trailer movieinformation-page", () => {
+    cy.findAllByRole("img", { name: /Morbius/i }).click();
+    cy.findByRole("img", { name: /Movie banner/i }).should("be.visible");
+  });
 });
 
 export {};
