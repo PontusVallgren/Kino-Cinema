@@ -6,7 +6,6 @@ import Reviews from "../../components/Reviews";
 import Trailer from "../../components/Trailer";
 import { movies } from "../../server/models";
 import { DetailsInfo } from "../../types";
-import classes from "./index.module.css";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params!.id;
@@ -53,7 +52,7 @@ const MovieDetails: NextPage<MovieDetailsProps> = ({
   };
 
   return (
-    <div className={classes.container}>
+    <div className='main'>
       <DetailPageHero toggleTrailer={toggleTrailer} banner={backgroundImg} />
       {showTrailer && (
         <Trailer trailer={trailer} toggleTrailer={toggleTrailer} />

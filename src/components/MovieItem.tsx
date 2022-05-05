@@ -1,29 +1,36 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/Image";
-import classes from "./MovieItem.module.css";
 import { Movie } from "../types";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import { CustomText } from "./CustomMUI/CustomUI";
+import useMovieStyles from "./CustomMUI/movieStyles";
 
 type MovieItemProps = {
   movie: Movie;
 };
 
 const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
+  const { classes } = useMovieStyles();
   return (
-    <li className={classes.card}>
-      <Link href={`/movies/${movie.id}`}>
-        <a className={classes.link}>
-          <Image
-            src={movie.coverImg}
-            className={classes.thumbnail}
-            width={310}
-            height={425}
-            alt={`Picture of ${movie.title} cover`}
-          ></Image>
-          <h3 className={classes.title}>{movie.title}</h3>
-        </a>
-      </Link>
-    </li>
+    <Grid item xs={6} md={4} lg={4}>
+      <Paper elevation={0} className={classes.card}>
+        <Link href={`/movies/${movie.id}`}>
+          <a>
+            <Image
+              src={movie.coverImg}
+              className={classes.thumbnail}
+              layout='responsive'
+              width={310}
+              height={425}
+              alt={`Picture of ${movie.title} cover`}
+            ></Image>
+            <CustomText className={classes.title}>{movie.title}</CustomText>
+          </a>
+        </Link>
+      </Paper>
+    </Grid>
   );
 };
 
