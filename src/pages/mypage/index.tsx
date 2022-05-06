@@ -53,7 +53,7 @@ const MyPage: NextPage<MyPageProps> = ({
   const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
   const handleOnClickLogout = async () => {
     Router.push('/');
-    changeLogInState(false);
+    changeLogInState(false, username);
     const res = await fetch('/api/logout', {
       method: 'POST',
       headers: {
