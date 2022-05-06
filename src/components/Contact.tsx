@@ -25,7 +25,7 @@ export default function Contact() {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="tabs">
-              <Tab label="Kontakta oss" value="1" />
+              <Tab label="Kontakta oss" value="1" id="contact_us" />
               <Tab label="Frågor och Svar" value="2" />
               <Tab label="Åldersgränser" value="3" />
               <Tab label="Lämna Feedback" value="4" />
@@ -53,7 +53,6 @@ export default function Contact() {
                 Klicka här för karta på Google Maps.
               </a>
               <Image
-                id="map"
                 src={risback}
                 id="risback"
                 alt="map of Risback"

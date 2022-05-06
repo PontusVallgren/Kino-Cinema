@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-describe("test server, getting port 3000 and test routes ", function () {
+describe("test server, getting homepage and test routes ", function () {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:3000");
+    cy.visit("/");
   });
   it("getting filmer", function () {
     cy.contains("Filmer").click();

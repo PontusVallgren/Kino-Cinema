@@ -2,7 +2,7 @@
 
 describe("usertesting moviepage", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:3000/movies");
+    cy.visit("/movies");
   });
   it("make sure that filterfunction has options", () => {
     setTimeout(() => {

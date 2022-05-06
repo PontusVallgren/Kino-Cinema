@@ -1,12 +1,8 @@
 /// <reference types="cypress" />
 
 describe("visit moviepage, click on the trailer and trying to make a review", () => {
-  it("getting homepage", function () {
-    cy.visit("http://127.0.0.1:3000");
-  });
-
   it("getting movies", function () {
-    cy.visit("http://127.0.0.1:3000/movies");
+    cy.visit("/movies");
   });
 
   it("Be able to click on movie Batman and get more info about the film", () => {
@@ -20,7 +16,9 @@ describe("visit moviepage, click on the trailer and trying to make a review", ()
   });
   it("user should be able to write text in input-field on review ", () => {
     const newText = "I liked this movie. It was awesome!! <3";
-    cy.findByRole("textbox", "Kommentar").type(`${newText}`);
+    cy.findByRole("textbox")
+      .get("[id=outlined-multiline-static]")
+      .type(`${newText}`);
   });
 });
 // it("user should be able to click logga in-btn", () => {

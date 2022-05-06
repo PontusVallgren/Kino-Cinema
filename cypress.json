@@ -1,3 +1,7 @@
 {
-  "baseUrl": "http://127.0.0.1:3000"
+  "baseUrl": "http://127.0.0.1:3000",
+  "env": {
+    "CYPRESS_TEST_USERNAME": "KalleAnka",
+    "CYPRESS_TEST_PASSWORD": "farbrorAnka13"
+  }
 }
