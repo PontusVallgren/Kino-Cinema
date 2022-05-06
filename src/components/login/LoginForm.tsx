@@ -1,18 +1,12 @@
-import {
-  FormGroup,
-  TextField,
-  IconButton,
-  InputAdornment,
-  Grow,
-} from "@mui/material";
+import { FormGroup, TextField, Grow } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState, useContext } from "react";
 import { CenterHorizon, CustomText, CustomButton } from "../CustomMUI/CustomUI";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { LoginProps, visiblePasswordState } from "../../types";
+import { LoginProps } from "../../types";
 import LoggedInModal from "./LoggedInModal";
 import useLoginStyles from "../CustomMUI/loginStyle";
 import { LoggedInContext } from "./IsLoggedIn";
+import PasswordField from "./PasswordField";
 
 const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
   const [passwordWrong, setPasswordWrong] = useState<boolean>(false);
@@ -20,9 +14,7 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
   const [userName, setUserName] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
   const { changeLogInState } = useContext(LoggedInContext);
-  const [values, setValues] = useState<visiblePasswordState>({
-    showPassword: false,
-  });
+
   const { classes } = useLoginStyles();
 
   const handleSubmit = async (e: FormEvent) => {
@@ -44,18 +36,6 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
     }
   };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
   return (
     <>
       <Box className={classes.emptySpace}>
@@ -63,49 +43,27 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
           <CustomText className={classes.loginTitle}>
             Välkommen till Risbäck
           </CustomText>
-          <CenterHorizon component='form'>
-            <FormGroup aria-label='position'>
+          <CenterHorizon component="form">
+            <FormGroup aria-label="position">
               <TextField
-                id='Username'
-                variant='outlined'
-                label='Användarnamn'
+                id="Username"
+                variant="outlined"
+                label="Användarnamn"
                 className={classes.userInput}
                 onChange={(e) => {
                   setUserName(e.target.value);
                   setPasswordWrong(false);
                 }}
                 required
-                color='info'
+                color="info"
               />
-              <TextField
-                id='UserPassword'
-                variant='outlined'
-                label='Lösenord'
-                type={values.showPassword ? "text" : "password"}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <IconButton
-                        aria-label='toggle password visibility'
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge='end'
-                      >
-                        {values.showPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
+              <PasswordField
+                setUserPassword={(value) => {
+                  setUserPassword(value);
                 }}
-                className={classes.userInput}
-                onChange={(e) => {
-                  setUserPassword(e.target.value);
-                  setPasswordWrong(false);
+                setPasswordWrong={(value) => {
+                  setPasswordWrong(value);
                 }}
-                required
               />
               <Box className={classes.emptyWarning}>
                 {passwordWrong ? (
@@ -126,9 +84,9 @@ const LoginForm: React.FC<LoginProps> = ({ newMember }) => {
               </Box>
               <CustomButton
                 onClick={handleSubmit}
-                color='secondary'
-                variant='contained'
-                type='submit'
+                color="secondary"
+                variant="contained"
+                type="submit"
                 className={classes.loginBtn}
               >
                 Logga in

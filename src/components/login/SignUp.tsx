@@ -1,10 +1,4 @@
-import {
-  FormGroup,
-  Grow,
-  IconButton,
-  InputAdornment,
-  TextField,
-} from "@mui/material";
+import { FormGroup, Grow, InputAdornment, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { FormEvent, useState } from "react";
 
@@ -14,11 +8,9 @@ import {
   CustomText,
   PreviousPageBtn,
 } from "../CustomMUI/CustomUI";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { visiblePasswordState } from "../../types";
-import { validatePassword } from "../../server/utils/password";
 import DoNotDisturbAltIcon from "@mui/icons-material/DoNotDisturbAlt";
 import useLoginStyles from "../CustomMUI/loginStyle";
+import PasswordField from "./PasswordField";
 
 type signUpProp = {
   goBack: (value: boolean) => void;
@@ -31,10 +23,9 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
   const [userPassword, setUserPassword] = useState<string>("");
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
-  const [values, setValues] = useState<visiblePasswordState>({
-    showPassword: false,
-  });
+
   const { classes } = useLoginStyles();
+
   const handleSignUp = async (e: FormEvent) => {
     e.preventDefault();
     if (strongPassword) {
@@ -57,25 +48,11 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
       }
     }
   };
-  const handleStrongPassword = (value: string) => {
-    if (!validatePassword(value)) {
-      setStrongPassword(false);
-    } else {
-      setStrongPassword(true);
-    }
-  };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
+  const userInputField = [
+    { id: "firstName", label: "Förnamn", onChange: setFirstName },
+    { id: "lastName", label: "Efternamn", onChange: setLastName },
+  ];
 
   return (
     <>
@@ -107,40 +84,17 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
                   ),
                 }}
               />
-              <TextField
-                id="userPassword"
-                label="Lösenord"
-                variant="outlined"
-                type={values.showPassword ? "text" : "password"}
-                className={classes.userInput}
-                required
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {values.showPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
+
+              <PasswordField
+                setUserPassword={(value: string) => {
+                  setUserPassword(value);
                 }}
-                onChange={(e) => {
-                  setUserPassword(e.target.value);
-                  handleStrongPassword(e.target.value);
+                setStrongPassword={(value: boolean) => {
+                  setStrongPassword(value);
                 }}
               />
               <Box className={classes.emptyWarning}>
-                {strongPassword ? (
-                  ""
-                ) : (
+                {!strongPassword && (
                   <Grow
                     in={true}
                     style={{ transformOrigin: "0 0 0" }}
@@ -148,6 +102,7 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
                   >
                     <CustomText
                       className={strongPassword ? "" : classes.warning}
+                      sx={{ fontSize: "14px" }}
                     >
                       Lösenord : mer än 8 bokstavär + nummer + stor bokstav
                     </CustomText>
@@ -157,25 +112,20 @@ const SignUp: React.FC<signUpProp> = ({ goBack }) => {
               <CustomText sx={{ margin: "10px 0 0 5px" }}>
                 🔹Ditt namn
               </CustomText>
-              <TextField
-                id="firstName"
-                variant="outlined"
-                label="Förnamn"
-                type="name"
-                className={classes.userInput}
-                required
-                onChange={(e) => setFirstName(e.target.value)}
-                color="info"
-              />
-              <TextField
-                id="UserPassword"
-                label="Efternamn"
-                variant="outlined"
-                type="name"
-                className={classes.userInput}
-                required
-                onChange={(e) => setLastName(e.target.value)}
-              />
+
+              {userInputField.map((item) => (
+                <TextField
+                  key={item.id}
+                  id={item.id}
+                  label={item.label}
+                  variant="outlined"
+                  type="name"
+                  className={classes.userInput}
+                  required
+                  onChange={(e) => item.onChange(e.target.value)}
+                  color="info"
+                />
+              ))}
               <CustomButton
                 color="primary"
                 variant="contained"
