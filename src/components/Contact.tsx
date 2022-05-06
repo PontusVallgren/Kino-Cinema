@@ -6,14 +6,16 @@ import React from "react";
 import { Box } from "@mui/system";
 import Questions from "./Questions";
 import FeedBackForm from "./FeedBackForm";
-import classes from "./Contact.module.css";
-
+import contactStyle from "./CustomMUI/contactStyle";
+import Image from "next/Image";
+import risback from "./Img/risback.png";
 
 export default function Contact() {
   const [value, setValue] = React.useState("1");
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+  const { classes } = contactStyle();
   return (
     <Box className={classes.wrapper}>
       <Box
@@ -44,8 +46,20 @@ export default function Contact() {
             <p>Lördag 10.00-22.00</p>
             <p>Söndag 12.00-22.00</p>
             <p className={classes.rightField}>
-              Hitta hit:
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13637.868047055947!2d15.514982128363497!3d64.7055073030511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4670ddacaf8e20e3%3A0x4c33ae912aa817e2!2s917%2003%20Risb%C3%A4ck!5e0!3m2!1ssv!2sse!4v1650966245031!5m2!1ssv!2sse"></iframe>
+              <a
+                className={classes.maplink}
+                href="https://goo.gl/maps/Wi72QAZAp6iRqcED6"
+              >
+                Klicka här för karta på Google Maps.
+              </a>
+              <Image
+                id="map"
+                src={risback}
+                alt="map of Risback"
+                width="150px"
+                height="100px"
+                layout="responsive"
+              />
             </p>
           </TabPanel>
           <TabPanel className={classes.smallBox} value="2">
@@ -72,6 +86,7 @@ export default function Contact() {
               </a>
               , kan du läsa mer information åldersgränser på bio.
             </p>
+
             <h4 className={classes.title}>
               Är åldergräns på film en rekommendation?
             </h4>

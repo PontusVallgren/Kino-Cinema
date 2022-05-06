@@ -8,6 +8,21 @@ export type Movie = {
   title: string;
   rating: string;
   coverImg: string;
+  backgroundImg: string;
+  trailer: string;
+  genres: string[];
+  length: string;
+  age: number;
+  description: string;
+};
+
+export type DetailsInfo = {
+  title: string;
+  rating: string;
+  genres: string[];
+  age: string;
+  length: string;
+  description: string;
 };
 
 export interface userAccountProps {
@@ -22,7 +37,8 @@ export interface visiblePasswordState {
 }
 export interface ILoggedInContextType {
   isLoggedIn: boolean;
-  changeLogInState: (value: boolean) => void;
+  username: string;
+  changeLogInState: (value: boolean, username: string) => void;
 }
 
 export type LoginProps = {
