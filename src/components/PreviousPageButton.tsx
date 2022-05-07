@@ -6,7 +6,10 @@ const PreviousPageButton: React.FC = () => {
   const router = useRouter();
   return (
     <>
-      <PreviousPageBtn onClick={() => router.back()}></PreviousPageBtn>
+      <PreviousPageBtn
+        style={{ alignSelf: "baseline" }}
+        onClick={() => router.back()}
+      ></PreviousPageBtn>
     </>
   );
 };

@@ -3,8 +3,8 @@ const useMovieStyles = makeStyles()((theme) => ({
   selectBox: {
     display: "flex",
     justifyContent: "space-between",
-    width: "80%",
     margin: "0 auto",
+    padding: "1.2em",
   },
   thumbnail: {
     minWidth: "100%",

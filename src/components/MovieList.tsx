@@ -11,7 +11,7 @@ type MovieListProps = {
 const MovieList: React.FC<MovieListProps> = ({ movies }) => {
   return (
     <Container>
-      <Grid container spacing={4}>
+      <Grid container spacing={4} justifyContent='center'>
         {movies.map((movie) => (
           <MovieItem key={movie.id} movie={movie} />
         ))}

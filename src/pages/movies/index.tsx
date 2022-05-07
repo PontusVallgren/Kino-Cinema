@@ -13,8 +13,9 @@ import {
 import { movies } from "../../server/models";
 import { sortData } from "../../server/utils/filter";
 import mongoose from "mongoose";
-import { Box, Container } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import useMovieStyles from "../../components/CustomMUI/movieStyles";
+import { display } from "@mui/system";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   mongoose.connect(process.env.DB_URL!);
@@ -68,15 +69,21 @@ const Movies: NextPage<{ movies: Movie[] }> = ({ movies }) => {
   };
 
   return (
-    <Container maxWidth={false} className='main'>
+    <Container
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      maxWidth={false}
+      className='main'
+    >
       <PreviousPageButton />
-      <Box className={classes.selectBox}>
-        <CustomText variant='h3' gutterBottom>
-          Filmer
-        </CustomText>
-        <FilterSelect handleChange={handleChange} value={filter.sort} />
+      <Box>
+        <Box className={classes.selectBox}>
+          <CustomText variant='h3' gutterBottom>
+            Filmer
+          </CustomText>
+          <FilterSelect handleChange={handleChange} value={filter.sort} />
+        </Box>
+        <MovieList movies={movies} />
       </Box>
-      <MovieList movies={movies} />
       <CenterHorizon sx={{ mb: 3 }}>
         <CustomButton
           color='primary'

@@ -14,7 +14,7 @@ type MovieItemProps = {
 const MovieItem: React.FC<MovieItemProps> = ({ movie }) => {
   const { classes } = useMovieStyles();
   return (
-    <Grid item xs={6} md={4} lg={4}>
+    <Grid item xs={8} md={6} lg={4} xl={3}>
       <Paper elevation={0} className={classes.card}>
         <Link href={`/movies/${movie.id}`}>
           <a>
