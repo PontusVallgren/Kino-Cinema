@@ -1,6 +1,5 @@
 import React from "react";
 import MovieItem from "../components/MovieItem";
-import classes from "./MovieList.module.css";
 import { Movie } from "../types";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";

@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import DetailPageHero from "../../components/DetailPageHero";
@@ -52,14 +53,14 @@ const MovieDetails: NextPage<MovieDetailsProps> = ({
   };
 
   return (
-    <div className='main'>
+    <Box className='main'>
       <DetailPageHero toggleTrailer={toggleTrailer} banner={backgroundImg} />
       {showTrailer && (
         <Trailer trailer={trailer} toggleTrailer={toggleTrailer} />
       )}
       <MovieInformation movie={details} />
       <Reviews reviews={reviews} id={id} />
-    </div>
+    </Box>
   );
 };
 

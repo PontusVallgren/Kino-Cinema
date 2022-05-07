@@ -1,7 +1,8 @@
 import React from "react";
 import ReviewItem from "./ReviewItem";
-import classes from "./Reviews.module.css";
 import { v4 as uuidv4 } from "uuid";
+import List from "@mui/material/List";
+import useMovieStyles from "./CustomMUI/movieStyles";
 
 type Review = {
   username: string;
@@ -14,12 +15,13 @@ type ReviewListProps = {
 };
 
 const ReviewList: React.FC<ReviewListProps> = ({ reviews }) => {
+  const { classes } = useMovieStyles();
   return (
-    <ul className={classes.reviewList}>
+    <List className={classes.reviewList}>
       {reviews.map((review) => (
         <ReviewItem key={uuidv4()} review={review} />
       ))}
-    </ul>
+    </List>
   );
 };
 
