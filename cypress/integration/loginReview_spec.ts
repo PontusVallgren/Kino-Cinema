@@ -42,7 +42,7 @@ describe("usertesting 'Logga in'-page", () => {
       .get("#outlined-multiline-static")
       .type(`${newText}`);
 
-    //we have not a btn to remove reviews-- there for test ends here.
+    //we have not a btn to remove reviews-- therefor test ends here.
 
     cy.get('[href="/mypage"] > .MuiButtonBase-root')
       .should("be.visible")
