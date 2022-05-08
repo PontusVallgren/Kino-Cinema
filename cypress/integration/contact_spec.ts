@@ -11,9 +11,6 @@ describe("usertesting 'kontakta oss'- page", () => {
   it("user should be able to click one of the questions again to close it", () => {
     cy.get(":nth-child(2) > .MuiListItemText-root > .MuiTypography-root");
   });
-  it("user should be able to click on 'Åldersgränser'", () => {
-    cy.contains("Åldersgränser").click();
-  });
   it("user should be able to click on 'Lämna Feedback'", () => {
     cy.contains("Lämna Feedback").click();
   });

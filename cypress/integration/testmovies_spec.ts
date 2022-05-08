@@ -1,13 +1,12 @@
 /// <reference types="cypress" />
 
 describe("usertesting moviepage", () => {
-  beforeEach(() => {
+  it("test that filterfunction can sort by highest rating", () => {
     cy.visit("/movies");
-  });
-  it("make sure that filterfunction has options", () => {
-    setTimeout(() => {
-      cy.get("[id =demo-simple-select-filter]").children().should("exist");
-    }, 10);
+    cy.get(".MuiOutlinedInput-root > #demo-simple-select-filter")
+      .click()
+      .get('[data-value="rating"]')
+      .click();
   });
 
   it("be able to load more movies on the page", () => {
@@ -16,19 +15,9 @@ describe("usertesting moviepage", () => {
 
   it("Be able to click a movie and get more info about the film", () => {
     cy.findAllByRole("img", { name: /Morbius/i }).click();
-  });
-
-  it("Be able to click another movie and get more info about the film", () => {
-    cy.findAllByRole("img", { name: /The Batman/i }).click();
-  });
-  it("be to see trailer on movieinformation-page", () => {
-    cy.findAllByRole("img", { name: /The Batman/i }).click();
     cy.findByRole("img", { name: /Movie banner/i }).should("be.visible");
   });
-  it("be to see trailer another trailer movieinformation-page", () => {
-    cy.findAllByRole("img", { name: /Morbius/i }).click();
-    cy.findByRole("img", { name: /Movie banner/i }).should("be.visible");
-  });
+  //not clicking the trailer, just checking its visible
 });
 
 export {};
