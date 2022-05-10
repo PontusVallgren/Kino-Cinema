@@ -16,6 +16,12 @@ export type Movie = {
   description: string;
 };
 
+export type Review = {
+  username: string;
+  rating: number;
+  comment: string;
+};
+
 export type DetailsInfo = {
   title: string;
   rating: string;

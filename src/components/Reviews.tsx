@@ -6,9 +6,10 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Box } from "@mui/material";
 import { CustomText } from "./CustomMUI/CustomUI";
 import useMovieStyles from "./CustomMUI/movieStyles";
+import { Review } from "../types";
 
 type ReviewsProps = {
-  reviews: [];
+  reviews: Review[];
   id: string;
 };
 
