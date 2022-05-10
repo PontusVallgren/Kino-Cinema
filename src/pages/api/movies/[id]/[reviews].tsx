@@ -20,13 +20,8 @@ export default async function handler(
       }
     );
 
-    res.status(200).json("Success");
+    res.status(200).end();
   } else {
-    res.status(404);
+    res.status(404).end();
   }
 }
-
-/* 
-Hitta film collection med rätt id
-
-*/
