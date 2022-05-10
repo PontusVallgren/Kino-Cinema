@@ -1,33 +1,55 @@
 import { TextField } from "@mui/material";
-import React from "react";
+import React, { useState, FormEvent } from "react";
 import feedbackStyle from "./CustomMUI/feedbackStyle";
 import Button from "@mui/material/Button";
 
 export default function FeedBackForm() {
   const { classes } = feedbackStyle();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      let response = await fetch("/api/feedback", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+        }),
+      });
+      let responseJson = await response.json();
+      if (response.status === 200) {
+        setName(""), setEmail("");
+        setMessage("Tack! Formuläret är nu sänt.");
+        console.log(responseJson);
+      } else {
+        setMessage(
+          "oj, nu blev det fel. Kontrollera formuläret och försök igen."
+        );
+      }
+    } catch (err) {
+      console.log("something went wrong..");
+    }
+  };
+
   return (
     <>
       <h2>Övriga synpunkter eller frågor? Lämna gärna ett meddelande.</h2>
-      <form
-        action="https://formsubmit.co/83afa7b9f826648c2534bbfc2f3f3571"
-        method="POST"
-      >
-        <TextField
-          type="hidden"
-          name="_next"
-          value="/thanks"
-          sx={{ display: "none" }}
-        ></TextField>
-        <TextField
-          type="text"
-          name="_honey"
-          sx={{ display: "none" }}
-        ></TextField>
+      <form onSubmit={handleSubmit}>
         <TextField
           className={classes.name}
+          type="text"
           label="Namn"
-          name="name"
+          value={name}
+          name="username"
           id="input_name"
+          onChange={(e) => setName(e.target.value)}
           fullWidth
           autoComplete="none"
           required
@@ -35,19 +57,24 @@ export default function FeedBackForm() {
         <TextField
           type="email"
           label="Email"
-          name="email"
+          name="Email"
+          value={email}
           id="input_email"
+          onChange={(e) => setEmail(e.target.value)}
           fullWidth
           autoComplete="none"
           required
         />
         <TextField
+          type="text"
           label="Meddelande"
           name="message"
+          value={message}
           id="input_message"
           fullWidth
           multiline
           rows={8}
+          onChange={(e) => setMessage(e.target.value)}
           required
         />
         <Button
