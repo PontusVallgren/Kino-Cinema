@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import { CustomText } from "./CustomMUI/CustomUI";
 
 type ReviewProps = {
   id: string;
@@ -54,7 +55,7 @@ const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
         method='POST'
         onSubmit={onSubmit}
       >
-        <h1>Skriv en recension</h1>
+        <CustomText variant='h5'>Skriv en recension</CustomText>
         <Rating
           name='simple-controlled'
           value={rating}
@@ -82,16 +83,16 @@ const ReviewForm: React.FC<ReviewProps> = ({ id }) => {
           </Button>
         )}
         {!isLoggedIn && (
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <Box style={{ display: "flex", alignItems: "center" }}>
             <Link href='/login' passHref>
               <Button variant='contained' sx={{ width: "150px" }}>
                 LOGGA IN
               </Button>
             </Link>
-            <p style={{ marginLeft: "1em" }}>
+            <CustomText style={{ marginLeft: "1em" }}>
               Logga in för att skriva en recension
-            </p>
-          </div>
+            </CustomText>
+          </Box>
         )}
       </Box>
     </>

@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import DetailPageHero from "../../components/DetailPageHero";
@@ -6,7 +7,6 @@ import Reviews from "../../components/Reviews";
 import Trailer from "../../components/Trailer";
 import { movies } from "../../server/models";
 import { DetailsInfo } from "../../types";
-import classes from "./index.module.css";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params!.id;
@@ -53,14 +53,14 @@ const MovieDetails: NextPage<MovieDetailsProps> = ({
   };
 
   return (
-    <div className={classes.container}>
+    <Box className='main'>
       <DetailPageHero toggleTrailer={toggleTrailer} banner={backgroundImg} />
       {showTrailer && (
         <Trailer trailer={trailer} toggleTrailer={toggleTrailer} />
       )}
       <MovieInformation movie={details} />
       <Reviews reviews={reviews} id={id} />
-    </div>
+    </Box>
   );
 };
 

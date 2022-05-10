@@ -13,13 +13,15 @@ type FilterSelectProps = {
 const FilterSelect: React.FC<FilterSelectProps> = ({ handleChange, value }) => {
   return (
     <Box sx={{ minWidth: 150 }}>
-      <FormControl fullWidth>
-        <InputLabel id='demo-simple-select-filter'>Sortera</InputLabel>
+      <FormControl color='info' fullWidth>
+        <InputLabel color='info' id='select-sort'>
+          Sortera
+        </InputLabel>
         <Select
-          labelId='demo-simple-select-filter'
-          id='demo-simple-select-filter'
+          labelId='select-sort'
+          id='select-sort'
           value={value}
-          label='Sort'
+          label='Sortera'
           onChange={(e) => handleChange(e.target.value)}
         >
           <MenuItem value={"all"}>Alla filmer</MenuItem>
