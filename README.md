@@ -24,7 +24,7 @@ Npm start, npm build and then npm test.
 - In Cypress.env.local
 
 ```bash
-  "username": KalleAnka,
+  "username": secret,
   "password" secret
 ```
 
