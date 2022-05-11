@@ -3,13 +3,15 @@ import React, { useState, FormEvent } from "react";
 import feedbackStyle from "./CustomMUI/feedbackStyle";
 import Button from "@mui/material/Button";
 import Thanks from "../components/Thanks";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function FeedBackForm() {
   const { classes } = feedbackStyle();
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [route, setRoute] = useState();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -28,10 +30,8 @@ export default function FeedBackForm() {
       let responseJson = await response.json();
       if (response.status === 200) {
         setName(""), setEmail("");
-        setMessage("Tack! Formuläret är nu sänt.");
-        console.log(responseJson);
-
-        // ("/Thanks");
+        setMessage("");
+        router.push("/thanks");
       } else {
         setMessage(
           "oj, nu blev det fel. Kontrollera formuläret och försök igen."

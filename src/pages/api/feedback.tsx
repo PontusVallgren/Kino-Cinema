@@ -10,6 +10,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<formfeed>
 ) {
+  console.log(req.body);
   try {
     res.status(200).json({
       name: req.body.name,
