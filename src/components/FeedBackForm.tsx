@@ -2,7 +2,6 @@ import { TextField } from "@mui/material";
 import React, { useState, FormEvent } from "react";
 import feedbackStyle from "./CustomMUI/feedbackStyle";
 import Button from "@mui/material/Button";
-import Thanks from "../components/Thanks";
 import { useRouter } from "next/router";
 
 export default function FeedBackForm() {
@@ -11,7 +10,6 @@ export default function FeedBackForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [route, setRoute] = useState();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
