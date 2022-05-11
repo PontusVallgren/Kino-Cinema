@@ -2,6 +2,8 @@ import { TextField } from "@mui/material";
 import React, { useState, FormEvent } from "react";
 import feedbackStyle from "./CustomMUI/feedbackStyle";
 import Button from "@mui/material/Button";
+import Thanks from "../components/Thanks";
+import Link from "next/link";
 
 export default function FeedBackForm() {
   const { classes } = feedbackStyle();
@@ -28,6 +30,8 @@ export default function FeedBackForm() {
         setName(""), setEmail("");
         setMessage("Tack! Formuläret är nu sänt.");
         console.log(responseJson);
+
+        // ("/Thanks");
       } else {
         setMessage(
           "oj, nu blev det fel. Kontrollera formuläret och försök igen."
@@ -40,7 +44,9 @@ export default function FeedBackForm() {
 
   return (
     <>
-      <h2>Övriga synpunkter eller frågor? Lämna gärna ett meddelande.</h2>
+      <h2 id="head_text">
+        Övriga synpunkter eller frågor? Lämna gärna ett meddelande.
+      </h2>
       <form onSubmit={handleSubmit}>
         <TextField
           className={classes.name}
