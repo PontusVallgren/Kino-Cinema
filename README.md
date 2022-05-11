@@ -19,7 +19,7 @@ Material UI prevent us from spending lots of time for css and its animation. And
 
 # Test with Cypress, set env varialbles
 
-Npm start, then npm test.
+Npm start, npm build and then npm test.
 
 - In Cypress.env.local
 
@@ -27,3 +27,10 @@ Npm start, then npm test.
   "username": KalleAnka,
   "password" secret
 ```
+
+There are four tests;
+
+1. Contact: testing so that user can click on menu and be able to fill out feedback-form.
+2. loginReview: Testing login, user is able to access mypages during login and visiting moviepage to fill out a review, then logout and get to homepage.
+3. Testing so uder can be able to reach every main-rout from navbar.
+4. User should be able to use filterfunction, visible movietrailer on page, click on "fler filmer"-btn, click on a movie and get to movie information- page.
