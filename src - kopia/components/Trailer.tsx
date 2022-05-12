@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import React from "react";
 
 type TrailerProps = {
@@ -8,7 +7,7 @@ type TrailerProps = {
 
 const Trailer: React.FC<TrailerProps> = ({ trailer, toggleTrailer }) => {
   return (
-    <Box
+    <div
       onClick={toggleTrailer}
       style={{
         position: "fixed",
@@ -38,7 +37,7 @@ const Trailer: React.FC<TrailerProps> = ({ trailer, toggleTrailer }) => {
         frameBorder='0'
         allowFullScreen
       ></iframe>
-    </Box>
+    </div>
   );
 };
 

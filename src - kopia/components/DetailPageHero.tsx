@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/Image";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import { Box } from "@mui/material";
 
 type DetailsPageHeroProps = {
   banner: string;
@@ -13,7 +12,7 @@ const DetailPageHero: React.FC<DetailsPageHeroProps> = ({
   toggleTrailer,
 }) => {
   return (
-    <Box sx={{ position: "relative" }}>
+    <div style={{ position: "relative" }}>
       <Image
         src={banner}
         layout='responsive'
@@ -35,7 +34,7 @@ const DetailPageHero: React.FC<DetailsPageHeroProps> = ({
           cursor: "pointer",
         }}
       />
-    </Box>
+    </div>
   );
 };
 

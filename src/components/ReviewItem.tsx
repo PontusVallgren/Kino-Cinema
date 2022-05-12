@@ -1,8 +1,15 @@
 import React from "react";
-import Image from "next/Image";
-import classes from "./Reviews.module.css";
-import placeholder from "./Img/placeholder-review.png";
 import StarRateIcon from "@mui/icons-material/StarRate";
+import {
+  Avatar,
+  Box,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import useMovieStyles from "./CustomMUI/movieStyles";
+import { CustomText } from "./CustomMUI/CustomUI";
 
 type Review = {
   username: string;
@@ -15,24 +22,23 @@ type ReviewItemProps = {
 };
 
 const ReviewItem: React.FC<ReviewItemProps> = ({ review }) => {
+  const { classes } = useMovieStyles();
   return (
-    <li className={classes.reviewItem_ctn}>
-      <Image
-        src={placeholder}
-        width='80px'
-        height='80px'
-        layout='fixed'
-        alt='avatar'
-      />
-      <div className={classes.reviewItem_info}>
-        <h1>{review.username}</h1>
-        <span className={classes.reviewItem_rating}>
-          <StarRateIcon fontSize='inherit'></StarRateIcon>
-          {review.rating}
-        </span>
-        <p>{review.comment}</p>
-      </div>
-    </li>
+    <ListItem alignItems='flex-start' className={classes.reviewItem}>
+      <ListItemAvatar>
+        <Avatar alt='Avatar' src=''></Avatar>
+      </ListItemAvatar>
+      <ListItemText disableTypography>
+        <Box sx={{ color: "white" }}>
+          <CustomText fontSize={24}>{review.username}</CustomText>
+          <Box sx={{ display: "flex", alignItems: "center", fontSize: "19px" }}>
+            <StarRateIcon sx={{ color: "yellow" }} fontSize='small' />
+            {review.rating}
+          </Box>
+          <CustomText>{review.comment}</CustomText>
+        </Box>
+      </ListItemText>
+    </ListItem>
   );
 };
 
