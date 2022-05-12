@@ -24,6 +24,13 @@ describe("usertesting 'kontakta oss'- page", () => {
     const newText =
       "Hej! Kan ni börja sälja sockervadd på bion? Det är sååå gott! mvh/Kalle";
     cy.get("[id=input_message]").type(`${newText}`);
+    cy.get(".MuiButton-root").click();
+
+    cy.request("POST", "api/feedback", {
+      name: "KalleAnka",
+    }).then((response) => {
+      expect(response.isOkStatusCode);
+    });
   });
 });
 export {};

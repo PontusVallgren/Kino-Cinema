@@ -33,16 +33,21 @@ describe("usertesting 'Logga in'-page", () => {
     cy.get('[href="/movies"] > .MuiButtonBase-root')
       .click()
       .get(
-        ':nth-child(2) > .MovieItem_link__8D7kt > [style="box-sizing: border-box; display: inline-block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative; max-width: 100%;"] > .MovieItem_thumbnail__IeN4F'
+        ':nth-child(1) > .MuiPaper-root > a > [style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;"] > .tss-12sz21i-thumbnail'
       )
+      .click();
+    cy.get(".tss-1qhjf0z-toggleReview > .MuiTypography-root");
+    cy.get('[data-testid="KeyboardArrowDownIcon"]')
       .click()
-      .get("[class =Reviews_btnCtn__tmEei]")
-      .children()
-      .click({ multiple: true })
       .get("#outlined-multiline-static")
-      .type(`${newText}`);
+      .type(`${newText}`)
+      .should("have.value", `${newText}`);
 
-    //we have not a btn to remove reviews-- therefor test ends here.
+    //Comment this out to test reviews-btn all way
+    // cy.request("POST", "api/movies/1/reviews", {
+    // }).then((response) => {
+    //   expect(response.isOkStatusCode);
+    // });
 
     cy.get('[href="/mypage"] > .MuiButtonBase-root')
       .should("be.visible")

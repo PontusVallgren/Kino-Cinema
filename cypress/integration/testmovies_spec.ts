@@ -3,7 +3,7 @@
 describe("usertesting moviepage", () => {
   it("test that filterfunction can sort by highest rating", () => {
     cy.visit("/movies");
-    cy.get(".MuiOutlinedInput-root > #demo-simple-select-filter")
+    cy.get(".MuiOutlinedInput-root > #select-sort")
       .click()
       .get('[data-value="rating"]')
       .click();
