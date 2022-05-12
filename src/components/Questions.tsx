@@ -10,35 +10,23 @@ import questionsStyle from "./CustomMUI/questionsStyle";
 
 export default function Questions() {
   const [open, setOpen] = React.useState(false);
-  const [secondOpen, setSecondOpen] = React.useState(false);
-  const [thirdOpen, setThirdOpen] = React.useState(false);
-  const [fourOpen, setfourOpen] = React.useState(false);
-  const [fiveOpen, setfiveOpen] = React.useState(false);
-  const [sixOpen, setSixOpen] = React.useState(false);
-  const [sevenOpen, setSevenOpen] = React.useState(false);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
 
   const { classes } = questionsStyle();
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
-  const handleClick_Two = () => {
-    setSecondOpen(!secondOpen);
-  };
-  const handleClick_Three = () => {
-    setThirdOpen(!thirdOpen);
-  };
-  const handleClick_Four = () => {
-    setfourOpen(!fourOpen);
-  };
-  const handleClick_Five = () => {
-    setfiveOpen(!fiveOpen);
-  };
-  const handleClick_Six = () => {
-    setSixOpen(!sixOpen);
-  };
-  const handleClick_Seven = () => {
-    setSevenOpen(!sevenOpen);
+  // const handleClick = (value: number) => {
+  //   const currentIndex = checked.indexOf(value);
+  //   const newChecked = [...checked];
+  //   if (currentIndex === -1) {
+  //     setOpen(!open);
+  //   }
+  // };
+  const handleListItemClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
+    setSelectedIndex(index);
+    // setOpen(!open);
   };
 
   return (
@@ -53,7 +41,10 @@ export default function Questions() {
         </ListSubheader>
       }
     >
-      <ListItemButton onClick={handleClick}>
+      <ListItemButton
+        selected={selectedIndex === 0}
+        onClick={(event) => handleListItemClick(event, 0)}
+      >
         <ListItemText primary="Hur länge innan föreställningen kan jag avboka min biljett?" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
@@ -65,18 +56,21 @@ export default function Questions() {
         </List>
       </Collapse>
 
-      <ListItemButton onClick={handleClick_Two}>
+      <ListItemButton
+        selected={selectedIndex === 1}
+        onClick={(event) => handleListItemClick(event, 1)}
+      >
         <ListItemText primary="När släpps biobiljetter för bokning?" />
-        {secondOpen ? <ExpandLess /> : <ExpandMore />}
+        {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
-      <Collapse in={secondOpen} timeout="auto" unmountOnExit>
+      <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
             <ListItemText secondary="Onsdag varannan vecka släpps biobiljetter för kommande visningar. " />
           </ListItemButton>
         </List>
       </Collapse>
-
+      {/* 
       <ListItemButton onClick={handleClick_Three}>
         <ListItemText primary="Kan jag avboka eller boka om mina betalda biljetter?" />
         {thirdOpen ? <ExpandLess /> : <ExpandMore />}
@@ -135,7 +129,7 @@ export default function Questions() {
             <ListItemText secondary="Kontakta oss antingen genom att besöka oss på plats, ringa eller maila. Det går även att nå oss via formuläret på 'Lämna feedback'." />
           </ListItemButton>
         </List>
-      </Collapse>
+      </Collapse> */}
     </List>
   );
 }
