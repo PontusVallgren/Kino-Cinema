@@ -3,19 +3,16 @@ import MovieList from "../../components/MovieList";
 import PreviousPageButton from "../../components/PreviousPageButton";
 import FilterSelect from "../../components/FilterSelect";
 import { Movie } from "../../types";
+import classes from "./index.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import {
   CenterHorizon,
   CustomButton,
-  CustomText,
 } from "../../components/CustomMUI/CustomUI";
 import { movies } from "../../server/models";
 import { sortData } from "../../server/utils/filter";
 import mongoose from "mongoose";
-import { Box, Container, Grid } from "@mui/material";
-import useMovieStyles from "../../components/CustomMUI/movieStyles";
-import { display } from "@mui/system";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   mongoose.connect(process.env.DB_URL!);
@@ -34,8 +31,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const Movies: NextPage<{ movies: Movie[] }> = ({ movies }) => {
-  const { classes } = useMovieStyles();
-
   const [filter, setFilter] = useState({
     sort: "",
     size: 9,
@@ -69,21 +64,13 @@ const Movies: NextPage<{ movies: Movie[] }> = ({ movies }) => {
   };
 
   return (
-    <Container
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-      maxWidth={false}
-      className='main'
-    >
+    <div className={classes.container}>
       <PreviousPageButton />
-      <Box>
-        <Box className={classes.selectBox}>
-          <CustomText variant='h3' gutterBottom>
-            Filmer
-          </CustomText>
-          <FilterSelect handleChange={handleChange} value={filter.sort} />
-        </Box>
-        <MovieList movies={movies} />
-      </Box>
+      <div className={classes.selectCtn}>
+        <h1 className={classes.title}>Filmer</h1>
+        <FilterSelect handleChange={handleChange} value={filter.sort} />
+      </div>
+      <MovieList movies={movies} />
       <CenterHorizon sx={{ mb: 3 }}>
         <CustomButton
           color='primary'
@@ -94,7 +81,7 @@ const Movies: NextPage<{ movies: Movie[] }> = ({ movies }) => {
           Ladda fler filmer
         </CustomButton>
       </CenterHorizon>
-    </Container>
+    </div>
   );
 };
 

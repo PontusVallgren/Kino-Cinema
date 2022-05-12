@@ -1,7 +1,8 @@
 import React from "react";
 import MovieItem from "../components/MovieItem";
-import classes from "./MovieList.module.css";
 import { Movie } from "../types";
+import Grid from "@mui/material/Grid";
+import { Container } from "@mui/material";
 
 type MovieListProps = {
   movies: Movie[];
@@ -9,11 +10,13 @@ type MovieListProps = {
 
 const MovieList: React.FC<MovieListProps> = ({ movies }) => {
   return (
-    <ul className={classes.moviesCtn}>
-      {movies.map((movie) => (
-        <MovieItem key={movie.id} movie={movie} />
-      ))}
-    </ul>
+    <Container>
+      <Grid container spacing={4} justifyContent='center'>
+        {movies.map((movie) => (
+          <MovieItem key={movie.id} movie={movie} />
+        ))}
+      </Grid>
+    </Container>
   );
 };
 
