@@ -1,7 +1,7 @@
 import Cookies from 'cookies';
 import Iron from '@hapi/iron';
 import { GetServerSideProps, NextPage } from 'next';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Router from 'next/router';
 import {
   CenterHorizon,
@@ -10,6 +10,16 @@ import {
 } from '../../components/CustomMUI/CustomUI';
 import classes from './index.module.css';
 import { LoggedInContext } from '../../components/login/IsLoggedIn';
+import {
+  Avatar,
+  Modal,
+  Typography,
+  ImageList,
+  ImageListItem,
+  Button,
+} from '@mui/material';
+import ProfilePicChanger from '../../components/myPage/ProfilePicChanger';
+import { Box } from '@mui/system';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
   const sessionStr = cookies.get('session');
@@ -37,12 +47,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     notFound: true,
   };
 };
-
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 type MyPageProps = {
   username: string;
   firstname: string;
   lastname: string;
   loggedIn: boolean;
+  handleImageChange: () => void;
 };
 const MyPage: NextPage<MyPageProps> = ({
   username,
@@ -51,6 +71,10 @@ const MyPage: NextPage<MyPageProps> = ({
   loggedIn,
 }) => {
   const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
+  const [profileImage, setProfileImage] = useState('');
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const handleOnClickLogout = async () => {
     Router.push('/');
     changeLogInState(false, username);
@@ -60,6 +84,27 @@ const MyPage: NextPage<MyPageProps> = ({
         'Content-Type': 'application/json',
       },
     });
+  };
+  const handleImageChange = (profileImage: string) => {
+    setProfileImage(profileImage);
+  };
+  const itemData = [
+    {
+      img: '/robin.jpg',
+      title: 'Robin Björson',
+    },
+    {
+      img: '/sarcastic.jpg',
+      title: 'Sarcastic',
+    },
+    {
+      img: '/scott.jpg',
+      title: 'Michael Scott',
+    },
+  ];
+  const handleSaveProfile = () => {
+    handleClose();
+    // TODO: Save profilepic to DB
   };
   return (
     <div className="main">
@@ -75,6 +120,52 @@ const MyPage: NextPage<MyPageProps> = ({
         <div className={classes.background}>
           <div className={classes.mainContent}>
             <h2>Profil</h2>
+            <Box display="flex" justifyContent="center">
+              <Avatar
+                src={profileImage}
+                sx={{ width: 100, height: 100 }}
+                onClick={handleOpen}
+              />
+              <ProfilePicChanger
+                handleImageChange={handleImageChange}
+                pic1={'/robin.jpg'}
+                pic2={'/sarcastic.jpg'}
+                pic3={'/scott'}
+              />
+            </Box>
+            <Modal
+              disablePortal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Välj profilbild
+                </Typography>
+                <ImageList
+                  sx={{ width: 500, height: 450 }}
+                  cols={3}
+                  rowHeight={164}
+                >
+                  {itemData.map((item) => (
+                    <ImageListItem key={item.img}>
+                      <img
+                        src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                        srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                        alt={item.title}
+                        loading="lazy"
+                        onClick={() => setProfileImage(item.img)}
+                      />
+                    </ImageListItem>
+                  ))}
+                </ImageList>
+                <Button variant="contained" onClick={handleSaveProfile}>
+                  Spara
+                </Button>
+              </Box>
+            </Modal>
             <div className={classes.nameInfo}>
               <label>
                 Förnamn
