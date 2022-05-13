@@ -42,9 +42,7 @@ export default function FeedBackForm() {
 
   return (
     <>
-      <h2 id="head_text">
-        Övriga synpunkter eller frågor? Lämna gärna ett meddelande.
-      </h2>
+      <h2>Övriga synpunkter eller frågor? Lämna gärna ett meddelande.</h2>
       <form onSubmit={handleSubmit}>
         <TextField
           className={classes.name}
