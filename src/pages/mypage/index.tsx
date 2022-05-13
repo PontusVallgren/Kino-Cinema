@@ -20,8 +20,6 @@ import {
 } from '@mui/material';
 import ProfilePicChanger from '../../components/myPage/ProfilePicChanger';
 import { Box } from '@mui/system';
-import { userAccounts } from '../../server/models';
-import { userAccountSchema } from '../../server/schema';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
   const sessionStr = cookies.get('session');
