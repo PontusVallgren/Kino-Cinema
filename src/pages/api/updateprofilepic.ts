@@ -14,7 +14,8 @@ export default async function UpdateProfilePic(
       profileImage
     );
     res.status(200).json(accounts);
-    console.log(accounts);
     res.end();
-  } else res.status(404).end();
+  } else {
+    res.status(404).end();
+  }
 }

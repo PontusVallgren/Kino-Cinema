@@ -95,9 +95,6 @@ const MyPage: NextPage<MyPageProps> = ({
       },
     });
   };
-  /*const handleImageChange = (profileImage: string) => {
-    setProfileImage(profileImage);
-  }; */
   const itemData = [
     {
       img: '/robin.jpg',
@@ -142,12 +139,6 @@ const MyPage: NextPage<MyPageProps> = ({
                 sx={{ width: 100, height: 100 }}
                 onClick={handleOpen}
               />
-              {/*   <ProfilePicChanger
-                handleImageChange={handleImageChange}
-                pic1={'/robin.jpg'}
-                pic2={'/sarcastic.jpg'}
-                pic3={'/scott'}
-              /> */}
             </Box>
             <Modal
               disablePortal
