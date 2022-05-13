@@ -25,7 +25,7 @@ export default function Contact() {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="tabs">
-              <Tab label="Kontakta oss" value="1" id="contact_us" />
+              <Tab label="Kontakta oss" value="1" />
               <Tab label="Frågor och Svar" value="2" />
               <Tab label="Åldersgränser" value="3" />
               <Tab label="Lämna Feedback" value="4" />
