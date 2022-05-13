@@ -19,6 +19,7 @@ export default async function postAccount(
     userpassword: hash,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
+    profileImage: '',
   };
 
   if (!isSameAccount && userInfo) {

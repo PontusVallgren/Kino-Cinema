@@ -18,8 +18,7 @@ import {
   ImageListItem,
   Button,
 } from '@mui/material';
-import ProfilePicChanger from '../../components/myPage/ProfilePicChanger';
-import { Box } from '@mui/system';
+import Box from '@mui/material/Box';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
   const sessionStr = cookies.get('session');
@@ -74,11 +73,18 @@ const MyPage: NextPage<MyPageProps> = ({
   profileImageCookie,
 }) => {
   const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
-  const [profileImage, setProfileImage] = useState(profileImageCookie);
+  const [profileImage, setProfileImage] = useState('');
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  useEffect(() => {
+    console.log(profileImageCookie);
+    if (profileImageCookie) {
+      setProfileImage(profileImageCookie);
+    } else {
+      setProfileImage('');
+    }
+  }, []);
   const handleOnClickLogout = async () => {
     Router.push('/');
     changeLogInState(false, username);
@@ -89,9 +95,9 @@ const MyPage: NextPage<MyPageProps> = ({
       },
     });
   };
-  const handleImageChange = (profileImage: string) => {
+  /*const handleImageChange = (profileImage: string) => {
     setProfileImage(profileImage);
-  };
+  }; */
   const itemData = [
     {
       img: '/robin.jpg',
@@ -108,7 +114,6 @@ const MyPage: NextPage<MyPageProps> = ({
   ];
   const handleSaveProfile = async () => {
     handleClose();
-    // TODO: Save profilepic to DB
     const update = await fetch('/api/updateprofilepic', {
       method: 'POST',
       headers: {
