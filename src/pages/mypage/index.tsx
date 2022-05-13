@@ -20,6 +20,8 @@ import {
 } from '@mui/material';
 import ProfilePicChanger from '../../components/myPage/ProfilePicChanger';
 import { Box } from '@mui/system';
+import { userAccounts } from '../../server/models';
+import { userAccountSchema } from '../../server/schema';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
   const sessionStr = cookies.get('session');
@@ -102,9 +104,16 @@ const MyPage: NextPage<MyPageProps> = ({
       title: 'Michael Scott',
     },
   ];
-  const handleSaveProfile = () => {
+  const handleSaveProfile = async () => {
     handleClose();
     // TODO: Save profilepic to DB
+    const update = await fetch('/api/updateprofilepic', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, profileImage }),
+    });
   };
   return (
     <div className="main">
@@ -126,12 +135,12 @@ const MyPage: NextPage<MyPageProps> = ({
                 sx={{ width: 100, height: 100 }}
                 onClick={handleOpen}
               />
-              <ProfilePicChanger
+              {/*   <ProfilePicChanger
                 handleImageChange={handleImageChange}
                 pic1={'/robin.jpg'}
                 pic2={'/sarcastic.jpg'}
                 pic3={'/scott'}
-              />
+              /> */}
             </Box>
             <Modal
               disablePortal
