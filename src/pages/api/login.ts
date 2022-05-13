@@ -32,6 +32,7 @@ export default async function handleUserInfo(
             firstName: userInfo.firstName,
             lastName: userInfo.lastName,
             loggedIn: true,
+            profileImage: userInfo.profileImage,
           },
           ENC_KEY,
           Iron.defaults

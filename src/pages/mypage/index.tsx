@@ -1,7 +1,7 @@
 import Cookies from 'cookies';
 import Iron from '@hapi/iron';
 import { GetServerSideProps, NextPage } from 'next';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Router from 'next/router';
 import {
   CenterHorizon,
@@ -37,6 +37,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             firstname: session.firstName,
             lastname: session.lastName,
             loggedIn: session.loggedIn,
+            profileImageCookie: session.profileImage,
           },
         };
       }
@@ -64,6 +65,7 @@ type MyPageProps = {
   firstname: string;
   lastname: string;
   loggedIn: boolean;
+  profileImageCookie: string;
   handleImageChange: () => void;
 };
 const MyPage: NextPage<MyPageProps> = ({
@@ -71,12 +73,14 @@ const MyPage: NextPage<MyPageProps> = ({
   firstname,
   lastname,
   loggedIn,
+  profileImageCookie,
 }) => {
   const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
-  const [profileImage, setProfileImage] = useState('');
+  const [profileImage, setProfileImage] = useState(profileImageCookie);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   const handleOnClickLogout = async () => {
     Router.push('/');
     changeLogInState(false, username);
