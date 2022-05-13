@@ -1,20 +1,20 @@
-import Cookies from 'cookies';
-import Iron from '@hapi/iron';
-import { GetServerSideProps, NextPage } from 'next';
-import React, { useContext } from 'react';
-import Router from 'next/router';
+import Cookies from "cookies";
+import Iron from "@hapi/iron";
+import { GetServerSideProps, NextPage } from "next";
+import React, { useContext } from "react";
+import Router from "next/router";
 import {
   CenterHorizon,
   CustomButton,
   CustomText,
-} from '../../components/CustomMUI/CustomUI';
-import classes from './index.module.css';
-import { LoggedInContext } from '../../components/login/IsLoggedIn';
+} from "../../components/CustomMUI/CustomUI";
+import classes from "./index.module.css";
+import { LoggedInContext } from "../../components/login/IsLoggedIn";
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
-  const sessionStr = cookies.get('session');
+  const sessionStr = cookies.get("session");
   const ENC_KEY =
-    process.env.ENC_KEY || 'default_key_for_risback_cinema_hello_there';
+    process.env.ENC_KEY || "default_key_for_risback_cinema_hello_there";
   if (sessionStr) {
     try {
       const session = await Iron.unseal(sessionStr, ENC_KEY, Iron.defaults);
@@ -52,12 +52,12 @@ const MyPage: NextPage<MyPageProps> = ({
 }) => {
   const { isLoggedIn, changeLogInState } = useContext(LoggedInContext);
   const handleOnClickLogout = async () => {
-    Router.push('/');
+    Router.push("/");
     changeLogInState(false, username);
-    const res = await fetch('/api/logout', {
-      method: 'POST',
+    const res = await fetch("/api/logout", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
   };

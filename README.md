@@ -16,3 +16,14 @@ Having a unified design would be neat since it is a same website that we worked 
 So we discussed and decided to use some components with Material UI. For example, we use custom button(used MUI) that can be used again easily for everyone with our own theme colors.
 
 Material UI prevent us from spending lots of time for css and its animation. And it supports icons as well, so didn't need to spend so much time to use icons.
+
+# Test with Cypress, set env varialbles
+
+Npm start, then npm test.
+
+- In Cypress.env.local
+
+```bash
+  "username": KalleAnka,
+  "password" secret
+```
