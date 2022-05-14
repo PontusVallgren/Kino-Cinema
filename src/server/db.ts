@@ -1,5 +1,5 @@
-import { connect, connection, Document, Model } from "mongoose";
-import { userAccountProps } from "../types";
+import { connect, connection, Document, Model } from 'mongoose';
+import { userAccountProps } from '../types';
 
 const url = process.env.DB_URL;
 
@@ -18,4 +18,18 @@ export const getData = async (model: Model<ModelType>) => {
   const result = await model.find();
 
   return result;
+};
+
+export const updateProfilePic = async (
+  model: Model<ModelType>,
+  username: string,
+  profileImage: string
+) => {
+  await connect(url);
+  const update = await model.findOneAndUpdate(
+    { username },
+    { profileImage },
+    { new: true }
+  );
+  return update;
 };

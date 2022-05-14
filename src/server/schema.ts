@@ -1,5 +1,5 @@
-import { userAccountProps } from "../types";
-import { Schema } from "mongoose";
+import { userAccountProps } from '../types';
+import { Schema } from 'mongoose';
 
 export const userAccountSchema = new Schema<userAccountProps>({
   username: {
@@ -17,5 +17,8 @@ export const userAccountSchema = new Schema<userAccountProps>({
   lastName: {
     type: String,
     required: true,
+  },
+  profileImage: {
+    type: String,
   },
 });

@@ -30,6 +30,7 @@ export interface userAccountProps {
   userpassword: string;
   firstName: string;
   lastName: string;
+  profileImage: string;
 }
 
 export interface visiblePasswordState {
