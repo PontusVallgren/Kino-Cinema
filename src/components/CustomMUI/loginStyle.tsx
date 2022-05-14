@@ -42,7 +42,7 @@ const useLoginStyles = makeStyles()((theme) => ({
     marginLeft: "2px",
   },
   warning: {
-    fontSize: "1.2rem",
+    fontSize: "1.1rem",
     marginLeft: "5px",
     paddingBottom: "5px",
     color: "#f74848",
