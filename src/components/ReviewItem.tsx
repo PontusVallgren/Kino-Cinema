@@ -6,16 +6,10 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
-  Typography,
 } from "@mui/material";
 import useMovieStyles from "./CustomMUI/movieStyles";
 import { CustomText } from "./CustomMUI/CustomUI";
-
-type Review = {
-  username: string;
-  rating: number;
-  comment: string;
-};
+import { Review } from "../types";
 
 type ReviewItemProps = {
   review: Review;

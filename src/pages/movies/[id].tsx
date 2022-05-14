@@ -6,7 +6,7 @@ import MovieInformation from "../../components/MovieInformation";
 import Reviews from "../../components/Reviews";
 import Trailer from "../../components/Trailer";
 import { movies } from "../../server/models";
-import { DetailsInfo } from "../../types";
+import { DetailsInfo, Review } from "../../types";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.params!.id;
@@ -35,7 +35,7 @@ type MovieDetailsProps = {
   id: string;
   backgroundImg: string;
   trailer: string;
-  reviews: [];
+  reviews: Review[];
   details: DetailsInfo;
 };
 

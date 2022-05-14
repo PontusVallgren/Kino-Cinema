@@ -3,6 +3,12 @@ export type menuProps = {
   path: string;
 };
 
+export enum Sort {
+  ALL = "all",
+  RATING = "rating",
+  ORDER = "order",
+}
+
 export type Movie = {
   id: string;
   title: string;
@@ -14,6 +20,12 @@ export type Movie = {
   length: string;
   age: number;
   description: string;
+};
+
+export type Review = {
+  username: string;
+  rating: number;
+  comment: string;
 };
 
 export type DetailsInfo = {

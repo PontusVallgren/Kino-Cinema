@@ -4,6 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { Sort } from "../types";
 
 type FilterSelectProps = {
   handleChange: (value: string) => void;
@@ -24,9 +25,9 @@ const FilterSelect: React.FC<FilterSelectProps> = ({ handleChange, value }) => {
           label='Sortera'
           onChange={(e) => handleChange(e.target.value)}
         >
-          <MenuItem value={"all"}>Alla filmer</MenuItem>
-          <MenuItem value={"rating"}>Högsta rating</MenuItem>
-          <MenuItem value={"order"}>Sortera A-Z</MenuItem>
+          <MenuItem value={Sort.ALL}>Alla filmer</MenuItem>
+          <MenuItem value={Sort.RATING}>Högsta rating</MenuItem>
+          <MenuItem value={Sort.ORDER}>Sortera A-Z</MenuItem>
         </Select>
       </FormControl>
     </Box>

@@ -15,7 +15,6 @@ import { sortData } from "../../server/utils/filter";
 import mongoose from "mongoose";
 import { Box, Container, Grid } from "@mui/material";
 import useMovieStyles from "../../components/CustomMUI/movieStyles";
-import { display } from "@mui/system";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   mongoose.connect(process.env.DB_URL!);
