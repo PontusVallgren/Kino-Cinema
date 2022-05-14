@@ -17,8 +17,12 @@ import {
   ImageList,
   ImageListItem,
   Button,
+  ListItemButton,
+  ListItemText,
+  List,
 } from '@mui/material';
 import Box from '@mui/material/Box';
+import Image from 'next/image';
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const cookies = new Cookies(context.req, context.res);
   const sessionStr = cookies.get('session');
@@ -78,7 +82,6 @@ const MyPage: NextPage<MyPageProps> = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   useEffect(() => {
-    console.log(profileImageCookie);
     if (profileImageCookie) {
       setProfileImage(profileImageCookie);
     } else {
@@ -121,14 +124,18 @@ const MyPage: NextPage<MyPageProps> = ({
   };
   return (
     <div className="main">
-      <CustomButton
-        color="error"
-        variant="contained"
-        onClick={handleOnClickLogout}
-      >
-        Logga ut
-      </CustomButton>
-      <CustomText>Mina Sidor</CustomText>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', padding: 2 }}>
+        <CustomButton
+          color="error"
+          variant="contained"
+          onClick={handleOnClickLogout}
+        >
+          Logga ut
+        </CustomButton>
+      </Box>
+      <CustomText sx={{ textAlign: 'center', paddingTop: 2, paddingBottom: 2 }}>
+        Mina Sidor
+      </CustomText>
       <CenterHorizon>
         <div className={classes.background}>
           <div className={classes.mainContent}>
@@ -158,9 +165,10 @@ const MyPage: NextPage<MyPageProps> = ({
                 >
                   {itemData.map((item) => (
                     <ImageListItem key={item.img}>
-                      <img
-                        src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                        srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                      <Image
+                        width={90}
+                        height={100}
+                        src={item.img}
                         alt={item.title}
                         loading="lazy"
                         onClick={() => setProfileImage(item.img)}
@@ -176,38 +184,35 @@ const MyPage: NextPage<MyPageProps> = ({
             <div className={classes.nameInfo}>
               <label>
                 Förnamn
-                <h4>{firstname}</h4>
+                <Typography variant="h5">{firstname}</Typography>
               </label>
               <label>
                 Efternamn
-                <h4>{lastname}</h4>
+                <Typography variant="h5">{lastname}</Typography>
               </label>
               <label>
                 Användarnamn
-                <h4>{username}</h4>
+                <Typography variant="h5">{username}</Typography>
               </label>
             </div>
-            <div className={classes.tickets}>
-              <h2>Mina biljetter</h2>
-              <ul>
-                <li>
-                  <p>Filmtitel</p>
-                  <p>Tid / Visning</p>
-                </li>
-                <li>
-                  <span>The Godfather</span>
-                  <span>18.02.2022 09:00</span>
-                </li>
-                <li>
-                  <span>Idiocracy</span>
-                  <span>18.02.2022 09:00</span>
-                </li>
-                <li>
-                  <span>The Batman</span>
-                  <span>18.02.2022 09:00</span>
-                </li>
-              </ul>
-            </div>
+            <List
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                flexDirection: 'column',
+              }}
+            >
+              <ListItemButton>
+                <ListItemText primary="The Godfather " />
+                <ListItemText primary="18.02.2022 09:00" />
+              </ListItemButton>
+              <ListItemButton>
+                <ListItemText primary="Idiocracy 18.02.2022 09:00" />
+              </ListItemButton>
+              <ListItemButton>
+                <ListItemText primary="The Batman 18.02.2022 09:00" />
+              </ListItemButton>
+            </List>
           </div>
         </div>
       </CenterHorizon>
