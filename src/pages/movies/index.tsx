@@ -12,12 +12,12 @@ import {
 } from "../../components/CustomMUI/CustomUI";
 import { movies } from "../../server/models";
 import { sortData } from "../../server/utils/filter";
-import mongoose from "mongoose";
+import mongoose, {connect} from "mongoose";
 import { Box, Container, Grid } from "@mui/material";
 import useMovieStyles from "../../components/CustomMUI/movieStyles";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  mongoose.connect(process.env.DB_URL!);
+  connect('mongodb://localhost:27017/kino');
   const res = await movies.find();
   const sort = context.query.sort as string;
   const size = (context.query.size as string) || "9";

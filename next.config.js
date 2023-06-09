@@ -18,6 +18,7 @@ const nextConfig = {
       "imgs.aftonbladet-cdn.se",
       "static.toiimg.com",
       "d2iltjk184xms5.cloudfront.net",
+      "m.media-amazon.com",
     ],
   },
   url: {

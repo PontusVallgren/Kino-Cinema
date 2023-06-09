@@ -1,7 +1,7 @@
 import { connect, connection, Document, Model } from 'mongoose';
 import { userAccountProps } from '../types';
 
-const url = process.env.DB_URL;
+const url = "mongodb://localhost:27017/kino";
 
 if (!url) {
   throw Error(`DB_URL doesn't exist in .env.local`);
